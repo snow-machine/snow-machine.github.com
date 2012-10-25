@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>液位测量标准版软件需求分析</title>
+<meta http-equiv="Content-Type" content="text/html;charset=gbk"/>
+<meta name="title" content="液位测量标准版软件需求分析"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-05-04 11:31:36 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">液位测量标准版软件需求分析</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 引言</a>
+<ul>
+<li><a href="#sec-1-1">1.1 编写目的</a></li>
+<li><a href="#sec-1-2">1.2 背景</a></li>
+<li><a href="#sec-1-3">1.3 参考资料</a></li>
+<li><a href="#sec-1-4">1.4 缩略词</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 概述</a>
+<ul>
+<li><a href="#sec-2-1">2.1 总体要求</a></li>
+<li><a href="#sec-2-2">2.2 技术要求</a></li>
+<li><a href="#sec-2-3">2.3 使用特点</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 系统新特点</a>
+<ul>
+<li><a href="#sec-3-1">3.1 新查询报文</a></li>
+<li><a href="#sec-3-2">3.2 新接口板报文</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 网內查询</a></li>
+<li><a href="#sec-5">5 分区设置</a></li>
+<li><a href="#sec-6">6 液位处理</a></li>
+<li><a href="#sec-7">7 软件标准化</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 引言</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 编写目的</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+   液位测量需求分析在于为“液位测量标准版”软件提拱：
+</p><ol>
+<li>提出软件总体要求，作为软件开发人员，最终使用者了解的基础
+</li>
+<li>提出软件性能要求，作为软件设计的基础
+</li>
+<li>为软件测试提供依据
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 背景</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+   公司在2011年开发了“测温标准版”、“应力测量标准版”软件，2012年提出的液位测量需求
+   是在己有测温的基础上，增加液位测量，因此确定“液位测量标准版”软件，依据“应力测
+   量标准版”架构，增加新的功能，满足需求。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 参考资料</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+<ul>
+<li>测温标准版软件需求分析
+</li>
+<li>测温标准版软件第一次迭代
+</li>
+<li>测温标准版软件第二次迭代
+</li>
+<li>测温标准版软件第三次迭代
+</li>
+<li>测温标准版软件使用说明书
+</li>
+<li>应力测量标准版软件第一次迭代
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 缩略词</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+<ul>
+<li>软件：“液位测量标准版”软件以下简称“软件”
+</li>
+<li>设备：和软件连接的各种测量仪表，如：解调器，液位仪
+</li>
+<li>客户端：设备参数设置软件
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 概述</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 总体要求</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<p>  
+  以下是相对于“应力测量标准版软件”的新要求：
+</p><ul>
+<li>兼容各种设备，包括658系列解调器，液位仪
+</li>
+<li>多液位仪管理、查询、计算、显示、报警
+</li>
+<li>液位计算的各种容错处理，故障检测
+</li>
+<li>油罐的液位，探头分区设置，高低液位报警设置
+</li>
+<li>液位高度图形化显示，有历史液位曲线
+</li>
+<li>液位仪标定操作，液位仪的报警、复位控制
+</li>
+<li>* 历史数据查询、报表打印功能，报表可分时段、分页打印
+</li>
+<li>** 用户权限管理
+</li>
+<li>** 网内的任何一台计算机上观看油库的工作情况和查询油库的各种参数，进行网上查
+    询
+</li>
+<li>*** 处理后的信号通过RS485，以MODBUS-RTU协议传送给DCS系统
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 技术要求</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<ul>
+<li>工作温度：-40℃～80℃
+</li>
+<li>环境湿度：≤95%
+</li>
+<li>被测介质温度：-20℃～60℃
+</li>
+<li>测量范围：0～15m
+</li>
+<li>测温精度：1mm
+</li>
+<li>浮球直径：95mm
+</li>
+<li>分辨率：0.1mm
+</li>
+<li>被测介质压力：常压
+</li>
+<li>适用场合：所有储罐
+</li>
+<li>传输距离：≤3km 
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 使用特点</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+<ul>
+<li>最终用户：机房值班人员，操作尽可能简单，不要开发用不着的功能
+</li>
+<li>由于软件目的是监测，可靠性是第一位的，不能漏报，误报，精度达到指标
+</li>
+<li>有完善的实时数据、异常记录，用于发生问题时追溯
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 系统新特点</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+  软件增加了液位，液位开关两种设备，增加了软件测量类型，系统组成如下图：
+</p>
+<p>
+  从软件角度看，处理器、液位仪，开关都是设备，统一使用站号管理，通过串口1查询；报
+  警信号通过串口2发送到处接端子板，包括温度报警信息、液位报警信息、液位开关报警信
+  息，处接端子板再将报警以MODBUS协议发送到DCS系统。
+</p>
+<p>  
+  <img src="images/system.jpg" alt="images/system.jpg" width="645"/>
+</p>
+<p>
+  从图中可以看出，软件需增加串口1的液位、液位开关查询协议，俢改串口2的接口板报文。
+</p>
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 新查询报文</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<p>
+   新的查询报文增加了液位仪的查询，增加了查询方式0x51。
+</p>
+<!-- This HTML table template is generated by emacs 23.2.1 -->
+<table border="1">
+  <tr>
+    <td colspan="2" align="center" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询报文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td colspan="2" align="center" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回报文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      数据说明&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      数据说明&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;帧头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xFAFA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;帧头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xFAFA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;命令码&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xDC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;命令码&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xDC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;数据长度&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0x04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;数据长度&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;主机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;主机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;备机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;备机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;通道号&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;通道号&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;查询方式&nbsp;
+    </td>
+    <td align="left" valign="top">
+      0x01/11/21/31/41/51/61
+    </td>
+    <td align="center" valign="top">
+      &nbsp;查询方式&nbsp;
+    </td>
+    <td align="left" valign="top">
+      0x01/11/21/31/41/51/61
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;验证码&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX-XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;帧尾&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xF5F5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;环境温度&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;验证码&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;帧尾&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xF5F5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>         
+   查询报文说明：
+</p><ul>
+<li>命令码：0xDC，表示查询请求
+</li>
+<li>主机站号：设备站号与主机站号相同，返回请求数据
+</li>
+<li>备机站号：对处理器有意义，处理器站号与备机站号相同，进入备机状态
+</li>
+<li>通道号：对处理器有意义，查询通道号，0x01~0x40
+</li>
+<li>查询方式：
+<ul>
+<li>0x01：通道探头位置滤波值 (658-02B-I,II,III)
+</li>
+<li>0x11：通道探头位置差滤波值 (658-02B-I,II,III)
+</li>
+<li>0x21：通道探头位置差补偿滤波值 (658-02B-I,II,III)
+</li>
+<li>0x31：通道探头波长值 (658-02B-A)
+</li>
+<li>0x41：通道探头边沿差滤波值 (658-02B-I,II,III)
+</li>
+<li>0x51：液位滤波值
+</li>
+<li>0x61：液位开关状态
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>         
+   返回报文数据说明：
+</p><ul>
+<li>0x01/11/21：返回数据中，毎个探头位置值由2个字节组成，先高后低
+</li>
+<li>0x31：返回数据中，毎个探头波长值由3个字节组成，先高后低；虽然浮点数由4个字节组
+     成，由于探头波长范围从1500.0f~1599.0f，因此最高位字节是一个固定数，不需要传
+     送
+</li>
+<li>0x41：返回数据中，毎个探头位置值由4个字节组成，先高后低
+</li>
+<li>0x51：液位值是从0.0000~15.0000的小数，有四位小数，返回数据用3个字节表示，
+     最高位是液位值的整数，次高位是第1,2位小数，低位是3,4位小数
+</li>
+<li>0x61：液位开关状态，返回数据：0xBA正常、0xBB预警、0xBC报警
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 新接口板报文</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<p>   
+   设备有处理器、液位仪、液位开关，软件向处接端子板发送的报警数有温度值、应力值、
+   液位值、液位开关信号，新的报警板报文，增加了数据类型概念，各种类型的报警都使
+   用一种报文。
+</p>
+<!-- This HTML table template is generated by emacs 23.2.1 -->
+<table border="1">
+  <tr>
+    <td colspan="4" align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接口板报文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;数据说明&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;数据说明&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;帧头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xFAFA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;&nbsp;&nbsp;状态&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;BA/BB/BC/BD&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      &nbsp;命令码&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xBB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;&nbsp;数据值&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX-XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;数据长度&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0x0E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;&nbsp;验证码&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;主机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="center" valign="top">
+      &nbsp;&nbsp;&nbsp;帧尾&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;0xF5F5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;备机站号&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      "库站号"&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      "分区号"&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      XX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      &nbsp;数据类型&nbsp;
+    </td>
+    <td align="left" valign="top">
+      0x01/11/51/61&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>          
+   报文说明：
+</p><ul>
+<li>新接口板报文是上位机向处接端子板发送的，有四种类型的数据：温度、应力、液
+     位、液位开关
+</li>
+<li>“数据数型”是0x01，说明是温度报警，“状态”是分区温度状态，“数据值”是分区温度
+     最大值
+<ul>
+<li>温度值是从-30,0度~120.0的浮点数，有一位小数，“数据值用”2个字节表示，高字节是温度
+       整数部分，低字节是温度小数部分，符号位是低字节的最高位
+</li>
+</ul>
+
+</li>
+<li>“数据数型”是0x11，说明是应力报警，“状态”是分区应力状态，“数据值”是分区应
+     力值
+<ul>
+<li>应力值是整数(有正负)，“数据值用”2个字节表示，高字节表示应力值的高位，低字节表示
+       应力值的低位
+</li>
+</ul>
+
+</li>
+<li>“数据数型”是0x51，说明是液位报警，“状态”是库站液位状态，“数据值”是库站液
+     位值
+<ul>
+<li>液位值是从0.0000~15.0000的小数，有四位小数，“数据值”用3个字节表示，最高位是液
+       位值的整数，次高位是第1,2位小数，低位是3,4位小数
+</li>
+</ul>
+
+</li>
+<li>“数据数型”是0x61，说明是液位开关报警，“状态”是液位甘关状态，无“数据值“
+</li>
+<li>状态：0xBA正常、0xBB预警、0xBC报警、0xBD故障
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 网內查询</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+  有些項目有需要在网内的任何一台计算机上观看软件工作情况，进行网上查询，软件借助
+  远程控制实现这个需求。
+</p>
+<p>
+  如玉门液位仪项目中，系统由北站、南站、中央控制室组成；北站是一个独立的监测单
+  元，由若干设备和“上位机1”组成；南站也是一个独立的监测单元，由若干设备和“上位机
+  2”组成；值班人员在中央控制室，用“工控机”监控北站、南站的工作情况；北站、南站与
+  中央控制室组成局域网。
+</p>
+<p>  
+  <img src="images/net1.jpg" alt="images/net1.jpg" width="545"/>
+</p>
+<p>
+  在“上位机1”、“上位机2”和“工控机”上安装远程控制软件，将“上位机1”、“上位机2”配制
+  成“被控”，“工控机”配制成“主控”，可设定连接的用户名及密码。
+</p>
+<p>
+  远程控制软件有很多选择，常用的有PcAnywhere、Netman、DlinkPC、TeamViewer、
+  LogMeIn，推荐使用pcAnywhere。
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 分区设置</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+  分区设置是软件重要的功能，“库站-分区”是用户概念，“设备-探头”是物理概念，分区是
+  两者的纽带。
+</p>
+<p>
+  软件在测温的基础上增加测液位和液位开关功能，软件即要能应于：单纯测温的项目、测
+  温+测液位的项目；“库站“包含多个温度分区和一个液位区，温度分区內包含多个温度探
+  头，液位区包含一个液位(探头/开关)，参见下图：
+</p>
+<p>
+  <img src="images/region.jpg" alt="images/region.jpg" width="508"/>
+</p>
+<p>  
+  图中左边是“库站”探头安装示意，A-F是温度探头，G是液位(探头/开关)；右边是“库站”分区示
+  意；1-4温度分区各包含若干温度探头，液位区包含液位(探头/开关)G。
+</p>
+<p>
+  “库站”设置完成后，“库站”有若干分区温度数据，一个液位数据；如软件应用于只有测温
+  的项目中，液位区不分配(探头/开关)，“库站”将只有温度数据。
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 液位处理</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+  液位处理有以下特点：
+</p><ul>
+<li>从液位仪传上来的数据就是液位值，不需要标定
+</li>
+<li>从液位开关传上来的数据就是报警状态，不需要标定，不需要门限设置
+</li>
+<li>软件需要对液位值滤波
+</li>
+<li>液位高于液位高限值或低于液位低限值，产生液位报警
+</li>
+<li>液位值以图形方式在表现层显示
+</li>
+<li>液位探头丢失，要报液位故障
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> 软件标准化</h2>
+<div class="outline-text-2" id="text-7">
+
+
+<p>
+  软件要适用于各种测量温度、液位的项目，以下概念保证软件的通用性：
+</p><ul>
+<li>项目界面由信息工程人员设计，设置到软件中
+</li>
+<li>用分区设置将“库站”和“设备”联系起来
+</li>
+<li>温度点和液位点由信息工程人员用鼠标动态布点
+</li>
+<li>用一级界面显示系统內各“库站”的信息，用二级界面显示“库站”內各分区的细节
+</li>
+</ul>
+
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-05-04 11:31:36 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+code {color:#8b2252;font-family:"DejaVu Sans Mono",monospace}
+code:before,code:after {color:black;background-color:white}
+code:before {content:"「"}
+code:after {content:"」"}
+
+var.εf {
+color:#8b2252;font-family:"DejaVu Sans Mono",monospace;font-style:normal;
+white-space:nowrap;
+}
+span.ref {font-family:"Arial Unicode MS","DejaVu Sans";font-size:small;background-color:#e8ffff}
+span.ref:before {content:"※ "}
+
+pre[class] { width:80%; white-space:pre-wrap; padding:1ex; background-color:#f0fff0; border:solid thin; font-family:"DejaVu Sans Mono",monospace}
+
+pre.code {border-color:#bebebe}
+pre.math {background-color:#f9f9e9}
+
+pre.bashshell {border-color:#9400d3}
+pre.bash {border-color:#9400d3}
+pre.php {border-color:#2e8b57}
+
+pre.cmd {border-color:#8b8970}
+pre.powershell {border-color:#191970}
+
+pre.python {border-color:#0000ff}
+pre.perl {border-color:#ffc0cb}
+pre.ruby {border-color:#cd2626}
+
+pre.elisp {border-color:#b03060}
+pre.erlang {border-color:#2e8b57}
+pre.haskell {border-color:#00b2ee}
+
+pre.css {border-color:#ff8844}
+pre.html {border-color:#00bfff}
+pre.html6 {border-color:#cd853f}
+pre.xml {border-color:#ff0000}
+pre.js {border-color:#90ee90}
+
+pre.c {border-color:#454545}
+pre.java {border-color:#a020f0}
+pre.clojure {border-color:#4169e1}
+pre.scala {border-color:#cdb38b}
+
+pre.bbcode {border-color:#c71585}
+pre.lsl {border-color:#1e90ff}
+pre.mma {border-color:#cd0000}
+pre.povray {border-color:#ff00ff}
+pre.ocaml {border-color:#6b8e23}
+
+pre.cl {border-color:#708090}
+pre.scheme {border-color:#ff8c00}
+pre.vbs {border-color:#778899}
+
+pre span.builtin {color:#7a378b}
+pre span.comment-delimiter {color:#b22222}
+pre span.comment {color:#b22222}
+pre span.constant {color:#008b8b}
+pre span.doc {color:#8b2252}
+pre span.function-name {color:#0000ff}
+pre span.keyword {color:#a020f0}
+pre span.preprocessor {color:#da70d6}
+pre span.string {color:#8b2252}
+pre span.type {color:#228b22}
+pre span.variable-name {color:#a0522d}
+pre span.warning {color:#ff0000;font-weight:bold}
+pre span.bold {font-weight:bold}
+pre span.default {color:#000000;background-color:#f0fff0}
+pre span.underline {text-decoration:underline}
+
+pre.ahk span.xahk-mode-command-name {color:#0000ff}
+pre.css span.css-property {color:#a0522d}
+pre.css span.css-selector {color:#0000ff}
+pre.elisp span.regexp-grouping-backslash,pre.elisp span.regexp-grouping-construct {font-weight:bold}
+pre.ocaml span.tuareg-font-lock-governing {color:#a020f0}
+pre.ocaml span.tuareg-font-lock-operator {color:#006b00}
+pre.perl span.cperl-array {color:#0000ff;background-color:#eeeed1;font-weight:bold}
+pre.perl span.cperl-hash {color:#ff0000;background-color:#eeeed1;font-weight:bold;font-style:italic}
+pre.perl span.cperl-nonoverridable {color:#66cd00}
+pre.xml span.sgml-namespace {color:#da70d6}
+
+a.cabri,a.gcf,a.ggb {display:inline-block;background-position:left center !important}
+a.cabri {background:url(ics/cabri.png) no-repeat left center;padding-left:16px}
+a.gcf {background:url(ics/gcf.png) no-repeat left center;padding-left:14px}
+a.ggb {background:url(ics/ggb.png) no-repeat left center;padding-left:34px;height:32px;line-height:32px}
+
+a.jv {background-color:#e6e6fa}
+
+span.xahnote {color:#3cb371}
+span.xahnote:before {content:"(XahNote: "}
+span.xahnote:after {content:")"}
+
+span.jsbtn {padding:.5ex;margin:.5ex;font-size:2ex;background-color:yellow;border:solid thin gray}

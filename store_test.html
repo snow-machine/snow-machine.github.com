@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>铁电测试程序需求分析</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="铁电测试程序需求分析"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-06-06 17:25:14 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">铁电测试程序需求分析</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 引言</a>
+<ul>
+<li><a href="#sec-1-1">1.1 编写目的</a></li>
+<li><a href="#sec-1-2">1.2 背景</a></li>
+<li><a href="#sec-1-3">1.3 参考资料</a></li>
+<li><a href="#sec-1-4">1.4 缩略词</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 概述</a>
+<ul>
+<li><a href="#sec-2-1">2.1 总体要求</a></li>
+<li><a href="#sec-2-2">2.2 技术要求</a></li>
+<li><a href="#sec-2-3">2.3 使用特点</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 硬件信号</a>
+<ul>
+<li><a href="#sec-3-1">3.1 输入信号</a></li>
+<li><a href="#sec-3-2">3.2 输出信号</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 引言</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 编写目的</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+   铁电测试程序需求分析在于为“铁电测试程序”软件提拱：
+</p><ol>
+<li>提出软件总体要求，作为软件开发人员，最终使用者了解的基础
+</li>
+<li>提出软件性能要求，作为软件设计的基础
+</li>
+<li>为软件测试提供依据
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 背景</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+   铁电存储器质量有问题，需要开发一个全面测试程序
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 参考资料</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+<ul>
+<li>无
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 缩略词</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+<ul>
+<li>软件：“铁电测试”软件以下简称“软件”
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 概述</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 总体要求</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<ul>
+<li>用io方式对9个铁电测试
+</li>
+<li>测试地址要求全面，覆盖32k字节
+</li>
+<li>测试以U101，U401，U701为第一组，U201，U501，U801为第二组，U301，U601，U701为第
+     三组
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 技术要求</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<ul>
+<li>无
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 使用特点</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+<ul>
+<li>无
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 硬件信号</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 输入信号</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<tr><th scope="col">编号</th>
+<th scope="col">说明</th>
+<th scope="col">简述</th>
+<th scope="col">备注</th></tr>
+<tr><td>1<br/><br/><br/></td>
+<td>60/P0.2/SCK<br/>59/P0.3/SO<br/>58/P0.4/SI<br/>57/P0.5/BSCS</td>
+<td>SPI铁电存<br/>储器<br/><br/></td>
+<td>U1<br/><br/><br/></td></tr>
+<tr><td>2<br/><br/></td>
+<td>83/P5.5/SCK1<br/>84/P5.4/SO1<br/>82/P5.6/SI1</td>
+<td>IO铁电存储<br/>器<br/></td>
+<td>U101<br/>U201<br/>U301</td></tr>
+<tr><td>3<br/><br/></td>
+<td>49/P3.5/SCK4<br/>50/P3.4/SO4<br/>48/P3.6/SI4</td>
+<td>IO铁电存储<br/>器<br/></td>
+<td>U401<br/>U501<br/>U601</td></tr>
+<tr><td>4<br/><br/></td>
+<td>45/P2.1/SCK7<br/>44/P2.2/SO7<br/>46/P2.0/SI7</td>
+<td>IO铁电存储<br/>器<br/></td>
+<td>U701<br/>U801<br/>U901</td></tr>
+<tr><td>5<br/><br/><br/><br/><br/><br/><br/><br/></td>
+<td>88/P5.0/SCS1<br/>87/P5.1/SCS2<br/>86/P5.2/SCS3<br/>54/P3.0/SCS4<br/>53/P3.1/SCS5<br/>52/P3.2/SCS6<br/>42/P2.4/SCS7<br/>41/P2.5/SCS8<br/>40/P2.6/SCS9</td>
+<td>IO片选<br/><br/><br/><br/><br/><br/><br/><br/></td>
+<td>U101<br/>U201<br/>U301<br/>U401<br/>U501<br/>U601<br/>U701<br/>U801<br/>U901</td></tr>
+</table>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 输出信号</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<tr><th scope="col">编号</th>
+<th scope="col">说明</th>
+<th scope="col">简述</th>
+<th scope="col">备注</th></tr>
+<tr><td>1<br/></td>
+<td>72/P7.0/LED7<br/></td>
+<td>工作指<br/>示灯</td>
+<td>U3<br/></td></tr>
+<tr><td>2<br/></td>
+<td>98/P4.0/LED1-1<br/>97/P4.1/LED1-2</td>
+<td>测试灯<br/></td>
+<td>U101<br/></td></tr>
+<tr><td>3<br/></td>
+<td>96/P4.2/LED2-1<br/>95/P4.3/LED2-2</td>
+<td>测试灯<br/></td>
+<td>U201<br/></td></tr>
+<tr><td>4<br/></td>
+<td>94/P4.4/LED3-1<br/>93/P4.5/LED3-2</td>
+<td>测试灯<br/></td>
+<td>U301<br/></td></tr>
+<tr><td>5<br/></td>
+<td>80/P6.0/LED4-1<br/>79/P6.1/LED4-2</td>
+<td>测试灯<br/></td>
+<td>U401<br/></td></tr>
+<tr><td>6<br/></td>
+<td>78/P6.2/LED5-1<br/>77/P6.3/LED5-2</td>
+<td>测试灯<br/></td>
+<td>U501<br/></td></tr>
+<tr><td>7<br/></td>
+<td>76/P6.4/LED6-1<br/>75/P6.3/LED6-2</td>
+<td>测试灯<br/></td>
+<td>U601<br/></td></tr>
+<tr><td>8<br/></td>
+<td>36/P1.0/LED7-1<br/>35/P1.1/LED7-2</td>
+<td>测试灯<br/></td>
+<td>U701<br/></td></tr>
+<tr><td>9<br/></td>
+<td>34/P1.2/LED8-1<br/>32/P1.4/LED8-2</td>
+<td>测试灯<br/></td>
+<td>U801<br/></td></tr>
+<tr><td>10<br/></td>
+<td>31/P1.5/LED9-1<br/>30/P1.6/LED9-2</td>
+<td>测试灯<br/></td>
+<td>U901<br/></td></tr>
+<tr><td>11<br/></td>
+<td>67/P7.5/BTY1<br/>68/P7.4/BTY2</td>
+<td>发声控<br/>制</td>
+<td><br/></td></tr>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-06-06 17:25:14 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

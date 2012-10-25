@@ -1,0 +1,4 @@
+tar (child): tmp.tar.gz：无法 open: 没有那个文件或目录
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>autoscan</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="autoscan"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:57 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">autoscan</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 autoscan</a>
+<ul>
+<li><a href="#sec-1-1">1.1 结构</a></li>
+<li><a href="#sec-1-2">1.2 autoscan</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 configure.scan 　　</a></li>
+<li><a href="#sec-1-2-2">1.2.2 aclocal 　　</a></li>
+<li><a href="#sec-1-2-3">1.2.3 autoconf</a></li>
+<li><a href="#sec-1-2-4">1.2.4 Makefile.am</a></li>
+<li><a href="#sec-1-2-5">1.2.5 automake</a></li>
+<li><a href="#sec-1-2-6">1.2.6 Makefile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> autoscan</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 结构</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>                  -------------
+<span class="linenr"> 2:  </span>                 (   autoscan  )
+<span class="linenr"> 3:  </span>                  -------------
+<span class="linenr"> 4:  </span>+----------------+          +----------------+           
+<span class="linenr"> 5:  </span>| Source code    +---------&gt;+ configure.scan |
+<span class="linenr"> 6:  </span>+----------------+          +-------+--------+          
+<span class="linenr"> 7:  </span>                                    |
+<span class="linenr"> 8:  </span>                                    |
+<span class="linenr"> 9:  </span>                            ------- |
+<span class="linenr">10:  </span>                           ( edit  )|
+<span class="linenr">11:  </span>                            ------- |      -----------
+<span class="linenr">12:  </span>                                    |     (  aclocal  )
+<span class="linenr">13:  </span>                                    *      -----------
+<span class="linenr">14:  </span>+--------------+             +------+------+           +-------------+
+<span class="linenr">15:  </span>| Makefile.am  |             | configure.in+----------&gt;+ aclocal.m4  |
+<span class="linenr">16:  </span>+--------------+             +-------------+           +-------------+
+<span class="linenr">17:  </span>           \                    /    \                    /
+<span class="linenr">18:  </span>            \   -----------    /      \   -----------    /
+<span class="linenr">19:  </span>             \ (  automake )  /        \ ( autoconf  )  /
+<span class="linenr">20:  </span>              \ -----------  /          \ -----------  /
+<span class="linenr">21:  </span>               \            /            \            /
+<span class="linenr">22:  </span>                \          /              \          /
+<span class="linenr">23:  </span>                 *        *                *        *
+<span class="linenr">24:  </span>              +--------------+            +--------------+
+<span class="linenr">25:  </span>              | Makefile.in  |            | configure    |
+<span class="linenr">26:  </span>              +--------------+            +--------------+
+<span class="linenr">27:  </span>                        \                   /
+<span class="linenr">28:  </span>                         \                 /
+<span class="linenr">29:  </span>                          \               /
+<span class="linenr">30:  </span>                           \             /
+<span class="linenr">31:  </span>                            \           /
+<span class="linenr">32:  </span>                             *         *
+<span class="linenr">33:  </span>                           -------------
+<span class="linenr">34:  </span>                          (  Makefile   )
+<span class="linenr">35:  </span>                           -------------
+<span class="linenr">36:  </span>
+<span class="linenr">37:  </span>
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> autoscan</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+autoscan 是用来扫描源代码目录生成configure.scan文件的。autoscan可以用目录名做为参
+数，但如果你不使用参数的话，那么autoscan将认为使用的是当前目录。autoscan将扫描你
+所指定目录中的源文件，并创建configure.scan文件。
+</p>
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> configure.scan 　　</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+
+<p>
+configure.scan包含了系统配置的基本选项，里面都是一些宏定义。我们需要将它改名为
+configure.in
+</p>
+<p>
+生成的configure.scan示例：
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>#                                               -*- Autoconf -*-
+<span class="linenr"> 2:  </span><span class="org-preprocessor"># Process</span> this file with autoconf to produce a configure script.
+<span class="linenr"> 3:  </span>
+<span class="linenr"> 4:  </span>AC_PREREQ(2.61)
+<span class="linenr"> 5:  </span>AC_INIT(FULL-PACKAGE-NAME, VERSION, BUG-REPORT-ADDRESS)
+<span class="linenr"> 6:  </span>AC_CONFIG_SRCDIR([src/xlayout.h])
+<span class="linenr"> 7:  </span>AC_CONFIG_HEADER([config.h])
+<span class="linenr"> 8:  </span>
+<span class="linenr"> 9:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> programs.
+<span class="linenr">10:  </span>AC_PROG_CC
+<span class="linenr">11:  </span>
+<span class="linenr">12:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> libraries.
+<span class="linenr">13:  </span>
+<span class="linenr">14:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> header files.
+<span class="linenr">15:  </span>AC_PATH_X
+<span class="linenr">16:  </span><span class="org-type">AC_HEADER_STDC</span>
+<span class="linenr">17:  </span><span class="org-function-name">AC_CHECK_HEADERS</span>([stdlib.h string.h unistd.h])
+<span class="linenr">18:  </span>
+<span class="linenr">19:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> typedefs, structures, and <span class="org-type">compiler</span> <span class="org-variable-name">characteristics</span>.
+<span class="linenr">20:  </span><span class="org-type">AC_C_CONST</span>
+<span class="linenr">21:  </span>
+<span class="linenr">22:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> library functions.
+<span class="linenr">23:  </span>
+<span class="linenr">24:  </span><span class="org-function-name">AC_CONFIG_FILES</span>([Makefile
+<span class="linenr">25:  </span>                 src/Makefile])
+<span class="linenr">26:  </span>AC_OUTPUT
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+经修改的configure.in示例：
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>#                                               -*- Autoconf -*-
+<span class="linenr"> 2:  </span><span class="org-preprocessor"># Process</span> this file with autoconf to produce a configure script.
+<span class="linenr"> 3:  </span>
+<span class="linenr"> 4:  </span>AC_PREREQ(2.61)
+<span class="linenr"> 5:  </span>AC_INIT([xlayout], [0.8], grep@gamil.com)
+<span class="linenr"> 6:  </span>AC_CONFIG_SRCDIR([src/xlayout.h])
+<span class="linenr"> 7:  </span>AC_CONFIG_HEADER([src/config.h])
+<span class="linenr"> 8:  </span>AC_CONFIG_FILES([Makefile src/Makefile])
+<span class="linenr"> 9:  </span>
+<span class="linenr">10:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> programs.
+<span class="linenr">11:  </span>AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+<span class="linenr">12:  </span>AC_PROG_CC
+<span class="linenr">13:  </span>
+<span class="linenr">14:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> libraries.
+<span class="linenr">15:  </span>
+<span class="linenr">16:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> header files.
+<span class="linenr">17:  </span>AC_PATH_X
+<span class="linenr">18:  </span><span class="org-type">AC_HEADER_STDC</span>
+<span class="linenr">19:  </span><span class="org-function-name">AC_CHECK_HEADERS</span>([stdlib.h string.h unistd.h])
+<span class="linenr">20:  </span>AC_EGREP_HEADER(ease_multi, ease.h, AC_DEFINE(HAVE_EASE_MULTI, 1, [Define to 1 <span class="org-keyword">if</span> you have ease_multi]))
+<span class="linenr">21:  </span>
+<span class="linenr">22:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> typedefs, structures, and <span class="org-type">compiler</span> <span class="org-variable-name">characteristics</span>.
+<span class="linenr">23:  </span><span class="org-type">AC_C_CONST</span>
+<span class="linenr">24:  </span>
+<span class="linenr">25:  </span><span class="org-preprocessor"># Checks</span> <span class="org-keyword">for</span> library functions.
+<span class="linenr">26:  </span><span class="org-function-name">AC_CHECK_LIB</span>(ease, ease)
+<span class="linenr">27:  </span>AC_CHECK_LIB(X11, XOpenDisplay)
+<span class="linenr">28:  </span>AC_CHECK_LIB(Xmu, XmuClientWindow)
+<span class="linenr">29:  </span>
+<span class="linenr">30:  </span>AC_OUTPUT
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> aclocal 　　</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+
+<p>
+aclocal是一个perl脚本程序。aclocal根据configure.in文件的内容，自动生成aclocal.m4
+文件。 aclocal的定义是："aclocal - create aclocal.m4 by scanning configure.ac"。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> autoconf</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+
+<p>
+autoconf是用来产生configure文件的。configure是一个脚本，它能设置源程序来适应
+各种不同的操作系统平台，并且根据不同的系统来产生合适的Makefile，从而可以使你的源
+代码能在不同的操作系统平台上被编译出来。
+</p>
+<p>
+产生了configure.in和aclocal.m4两个宏文件后，我们就可以使用autoconf来产生
+configure文件了。
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Makefile.am</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+
+<p>
+Makefile.am是用来生成Makefile.in的，需要你手工书写。Makefile.am中定义了一些内
+容：
+</p>
+<p>
+示例：
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr">1:  </span>SUBDIRS = src
+<span class="linenr">2:  </span>DIST_SUBDIRS = src
+<span class="linenr">3:  </span>dist_doc_DATA = README
+<span class="linenr">4:  </span>man_MANS = man/xlayout.1
+<span class="linenr">5:  </span>EXTRA_DIST = man/xlayout.1 src/xlayout.h
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> automake</h4>
+<div class="outline-text-4" id="text-1-2-5">
+
+
+<p>
+我们使用automake &ndash;add-missing来产生Makefile.in。
+</p>
+<p>
+选项&ndash;add-missing的定义是"add missing standard files to package"，它会让
+automake加入一个标准的软件包所必须的一些文件。
+</p>
+<p>
+我们用automake产生出来的Makefile.in文件是符合GNU Makefile惯例的，接下来我们只要执
+行configure这个shell脚本就可以产生合适的Makefile文件了。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Makefile</h4>
+<div class="outline-text-4" id="text-1-2-6">
+
+
+<p>
+在符合GNU Makefiel惯例的Makefile中，包含了一些基本的预先定义的操作：
+</p>
+<ul>
+<li>make
+</li>
+</ul>
+
+
+<p>
+根据Makefile编译源代码，连接，生成目标文件，可执行文件。
+</p>
+<ul>
+<li>make clean
+</li>
+</ul>
+
+
+<p>
+清除上次的make命令所产生的object文件(后缀为".o"的文件)及可执行文件。
+</p>
+<ul>
+<li>make install
+</li>
+</ul>
+
+
+<p>
+将编译成功的可执行文件安装到系统目录中，一般为/usr/local/bin目录。
+</p>
+<ul>
+<li>make dist
+</li>
+</ul>
+
+
+<p>
+产生发布软件包文件(即distribution package)。这个命令将会将可执行文件及相关文件打
+包成一个tar.gz压缩的文件用来作为发布软件的软件包。
+</p>
+<p>
+它会在当前目录下生成一个名字类似"PACKAGE-VERSION.tar.gz"的文件。PACKAGE和VERSION，
+是我们在configure.in中定义的AM<sub>INIT</sub><sub>AUTOMAKE</sub>(PACKAGE, VERSION)。
+</p>
+<ul>
+<li>make distcheck
+</li>
+</ul>
+
+
+<p>
+生成发布软件包并对其进行测试检查，以确定发布包的正确性。这个操作将自动把压缩包文
+件解开，然后执行configure命令，并且执行make，来确认编译不出现错误，最后提示你软件
+包已经准备好，可以发布了。
+</p>
+<ul>
+<li>distclean
+</li>
+</ul>
+
+
+<p>
+类似make clean，但同时也将configure生成的文件全部删除掉，包括Makefile。
+</p></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:57 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

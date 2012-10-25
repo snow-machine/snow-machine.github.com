@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>图片生成报错</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="图片生成报错"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:53 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">图片生成报错</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">图片生成报错</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-java"><span class="linenr">1:  </span><span class="org-constant">org</span>.<span class="org-constant">awareness</span>.<span class="org-constant">user</span>.<span class="org-constant">commons</span>.<span class="org-constant">image</span>.<span class="org-constant">utils</span>.<span class="org-type">ImageUtils</span>
+<span class="linenr">2:  </span><span class="org-variable-name">&#26377;&#22270;&#29255;&#33258;&#21160;&#29983;&#25104;&#22120;</span>&#65292;windows&#19978;&#27491;&#24120;,linux&#19978;&#23601;&#25253;&#20197;&#19978;&#38169;&#35823;
+<span class="linenr">3:  </span>
+<span class="linenr">4:  </span><span class="org-constant">java</span>.<span class="org-constant">lang</span>.InternalError: 
+<span class="linenr">5:  </span>Can<span class="org-string">'t connect to X11 window server using '</span>localhost:11.0<span class="org-warning">'</span><span class="org-string"> as the value of the DISPLAY variable.</span>
+<span class="linenr">6:  </span><span class="org-string">at sun.awt.X11GraphicsEnvironment.initDisplay(Native Method)</span>
+<span class="linenr">7:  </span><span class="org-string">at sun.awt.X11GraphicsEnvironment.&lt;clinit&gt;(X11GraphicsEnvironment.java:134)</span>
+<span class="linenr">8:  </span><span class="org-string">at java.lang.Class.forName0(Native Method)</span>
+<span class="linenr">9:  </span><span class="org-string">at java.lang.Class.forName(Class.java:141) </span>
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+原因是windows内核集成了gui，而linux上没有启动x server
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">解决办法：</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<ol>
+<li>启动x server
+</li>
+<li>在java运行参数上加-Djava.awt.headless=true 
+</li>
+</ol>
+
+
+<p>
+修改${TOMCAT<sub>HOME</sub>}/bin/catalina.sh 
+</p>
+<p>
+在org.apache.catalina.startup.Bootstrap "$@" *
+部分后面前加上  -Djava.awt.headless=true \  修改为如下:
+共有7处.
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh"><span class="linenr">  1:  </span><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">sh</span>
+<span class="linenr">  2:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">-----------------------------------------------------------------------------</span>
+<span class="linenr">  3:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Start/Stop Script for the CATALINA Server</span>
+<span class="linenr">  4:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr">  5:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Environment Variable Prequisites</span>
+<span class="linenr">  6:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr">  7:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">CATALINA_HOME   May point at your Catalina "build" directory.</span>
+<span class="linenr">  8:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr">  9:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">CATALINA_BASE   (Optional) Base directory for resolving dynamic portions</span>
+<span class="linenr"> 10:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">of a Catalina installation.  If not present, resolves to</span>
+<span class="linenr"> 11:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">the same directory that CATALINA_HOME points to.</span>
+<span class="linenr"> 12:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 13:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">CATALINA_OPTS   (Optional) Java runtime options used when the "start",</span>
+<span class="linenr"> 14:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">or "run" command is executed.</span>
+<span class="linenr"> 15:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 16:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">CATALINA_TMPDIR (Optional) Directory path location of temporary directory</span>
+<span class="linenr"> 17:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">the JVM should use (java.io.tmpdir).  Defaults to</span>
+<span class="linenr"> 18:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">$CATALINA_BASE/temp.</span>
+<span class="linenr"> 19:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 20:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JAVA_HOME       Must point at your Java Development Kit installation.</span>
+<span class="linenr"> 21:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">Required to run the with the "debug" or "javac" argument.</span>
+<span class="linenr"> 22:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 23:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JRE_HOME        Must point at your Java Development Kit installation.</span>
+<span class="linenr"> 24:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">Defaults to JAVA_HOME if empty.</span>
+<span class="linenr"> 25:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 26:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JAVA_OPTS       (Optional) Java runtime options used when the "start",</span>
+<span class="linenr"> 27:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">"stop", or "run" command is executed.</span>
+<span class="linenr"> 28:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 29:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JPDA_TRANSPORT  (Optional) JPDA transport used when the "jpda start"</span>
+<span class="linenr"> 30:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">command is executed. The default is "dt_socket".</span>
+<span class="linenr"> 31:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 32:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JPDA_ADDRESS    (Optional) Java runtime options used when the "jpda start"</span>
+<span class="linenr"> 33:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">command is executed. The default is 8000.</span>
+<span class="linenr"> 34:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 35:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JPDA_SUSPEND    (Optional) Java runtime options used when the "jpda start"</span>
+<span class="linenr"> 36:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">command is executed. Specifies whether JVM should suspend</span>
+<span class="linenr"> 37:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">execution immediately after startup. Default is "n".</span>
+<span class="linenr"> 38:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 39:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JPDA_OPTS       (Optional) Java runtime options used when the "jpda start"</span>
+<span class="linenr"> 40:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">command is executed. If used, JPDA_TRANSPORT, JPDA_ADDRESS,</span>
+<span class="linenr"> 41:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">and JPDA_SUSPEND are ignored. Thus, all required jpda</span>
+<span class="linenr"> 42:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">options MUST be specified. The default is:</span>
+<span class="linenr"> 43:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 44:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">-Xdebug -Xrunjdwp:transport=$JPDA_TRANSPORT,</span>
+<span class="linenr"> 45:  </span><span class="org-comment-delimiter">#                       </span><span class="org-comment">address=$JPDA_ADDRESS,server=y,suspend=$JPDA_SUSPEND</span>
+<span class="linenr"> 46:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 47:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">JSSE_HOME       (Optional) May point at your Java Secure Sockets Extension</span>
+<span class="linenr"> 48:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">(JSSE) installation, whose JAR files will be added to the</span>
+<span class="linenr"> 49:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">system class path used to start Tomcat.</span>
+<span class="linenr"> 50:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 51:  </span><span class="org-comment-delimiter">#   </span><span class="org-comment">CATALINA_PID    (Optional) Path of the file which should contains the pid</span>
+<span class="linenr"> 52:  </span><span class="org-comment-delimiter">#                   </span><span class="org-comment">of catalina startup java process, when start (fork) is used</span>
+<span class="linenr"> 53:  </span><span class="org-comment-delimiter">#</span>
+<span class="linenr"> 54:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">$Id: catalina.sh 609438 2008-01-06 22:14:28Z markt $</span>
+<span class="linenr"> 55:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">-----------------------------------------------------------------------------</span>
+<span class="linenr"> 56:  </span>
+<span class="linenr"> 57:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">OS specific support.  $var _must_ be set to either true or false.</span>
+<span class="linenr"> 58:  </span><span class="org-variable-name">cygwin</span>=false
+<span class="linenr"> 59:  </span><span class="org-variable-name">os400</span>=false
+<span class="linenr"> 60:  </span><span class="org-variable-name">darwin</span>=false
+<span class="linenr"> 61:  </span><span class="org-keyword">case</span> <span class="org-string">"`uname`"</span><span class="org-keyword"> in</span>
+<span class="linenr"> 62:  </span>CYGWIN*) <span class="org-variable-name">cygwin</span>=true;;
+<span class="linenr"> 63:  </span>OS400*) <span class="org-variable-name">os400</span>=true;;
+<span class="linenr"> 64:  </span>Darwin*) <span class="org-variable-name">darwin</span>=true;;
+<span class="linenr"> 65:  </span><span class="org-keyword">esac</span>
+<span class="linenr"> 66:  </span>
+<span class="linenr"> 67:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">resolve links - $0 may be a softlink</span>
+<span class="linenr"> 68:  </span><span class="org-variable-name">PRG</span>=<span class="org-string">"$0"</span>
+<span class="linenr"> 69:  </span>
+<span class="linenr"> 70:  </span><span class="org-keyword">while</span> [ -h <span class="org-string">"$PRG"</span> ]; <span class="org-keyword">do</span>
+<span class="linenr"> 71:  </span>  <span class="org-variable-name">ls</span>=<span class="org-sh-quoted-exec">`ls -ld "$PRG"`</span>
+<span class="linenr"> 72:  </span>  <span class="org-variable-name">link</span>=<span class="org-sh-quoted-exec">`expr "$ls" : '.*-&gt; \(.*\)$'`</span>
+<span class="linenr"> 73:  </span>  <span class="org-keyword">if</span> expr <span class="org-string">"$link"</span> : <span class="org-string">'/.*'</span> &gt; /dev/null; <span class="org-keyword">then</span>
+<span class="linenr"> 74:  </span>    <span class="org-variable-name">PRG</span>=<span class="org-string">"$link"</span>
+<span class="linenr"> 75:  </span>  <span class="org-keyword">else</span>
+<span class="linenr"> 76:  </span>    <span class="org-variable-name">PRG</span>=<span class="org-sh-quoted-exec">`dirname "$PRG"`</span>/<span class="org-string">"$link"</span>
+<span class="linenr"> 77:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr"> 78:  </span><span class="org-keyword">done</span>
+<span class="linenr"> 79:  </span>
+<span class="linenr"> 80:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Get standard environment variables</span>
+<span class="linenr"> 81:  </span><span class="org-variable-name">PRGDIR</span>=<span class="org-sh-quoted-exec">`dirname "$PRG"`</span>
+<span class="linenr"> 82:  </span>
+<span class="linenr"> 83:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Only set CATALINA_HOME if not already set</span>
+<span class="linenr"> 84:  </span>[ -z <span class="org-string">"$CATALINA_HOME"</span> ] &amp;&amp; <span class="org-variable-name">CATALINA_HOME</span>=<span class="org-sh-quoted-exec">`cd "$PRGDIR/.." ; pwd`</span>
+<span class="linenr"> 85:  </span>
+<span class="linenr"> 86:  </span><span class="org-keyword">if</span> [ -r <span class="org-string">"$CATALINA_BASE"</span>/bin/setenv.sh ]; <span class="org-keyword">then</span>
+<span class="linenr"> 87:  </span>  . <span class="org-string">"$CATALINA_BASE"</span>/bin/setenv.sh
+<span class="linenr"> 88:  </span><span class="org-keyword">elif</span> [ -r <span class="org-string">"$CATALINA_HOME"</span>/bin/setenv.sh ]; <span class="org-keyword">then</span>
+<span class="linenr"> 89:  </span>  . <span class="org-string">"$CATALINA_HOME"</span>/bin/setenv.sh
+<span class="linenr"> 90:  </span><span class="org-keyword">fi</span>
+<span class="linenr"> 91:  </span>
+<span class="linenr"> 92:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">For Cygwin, ensure paths are in UNIX format before anything is touched</span>
+<span class="linenr"> 93:  </span><span class="org-keyword">if</span> $<span class="org-variable-name">cygwin</span>; <span class="org-keyword">then</span>
+<span class="linenr"> 94:  </span>  [ -n <span class="org-string">"$JAVA_HOME"</span> ] &amp;&amp; <span class="org-variable-name">JAVA_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --unix "$JAVA_HOME"`</span>
+<span class="linenr"> 95:  </span>  [ -n <span class="org-string">"$JRE_HOME"</span> ] &amp;&amp; <span class="org-variable-name">JRE_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --unix "$JRE_HOME"`</span>
+<span class="linenr"> 96:  </span>  [ -n <span class="org-string">"$CATALINA_HOME"</span> ] &amp;&amp; <span class="org-variable-name">CATALINA_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --unix "$CATALINA_HOME"`</span>
+<span class="linenr"> 97:  </span>  [ -n <span class="org-string">"$CATALINA_BASE"</span> ] &amp;&amp; <span class="org-variable-name">CATALINA_BASE</span>=<span class="org-sh-quoted-exec">`cygpath --unix "$CATALINA_BASE"`</span>
+<span class="linenr"> 98:  </span>  [ -n <span class="org-string">"$CLASSPATH"</span> ] &amp;&amp; <span class="org-variable-name">CLASSPATH</span>=<span class="org-sh-quoted-exec">`cygpath --path --unix "$CLASSPATH"`</span>
+<span class="linenr"> 99:  </span>  [ -n <span class="org-string">"$JSSE_HOME"</span> ] &amp;&amp; <span class="org-variable-name">JSSE_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --unix "$JSSE_HOME"`</span>
+<span class="linenr">100:  </span><span class="org-keyword">fi</span>
+<span class="linenr">101:  </span>
+<span class="linenr">102:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">For OS400</span>
+<span class="linenr">103:  </span><span class="org-keyword">if</span> $<span class="org-variable-name">os400</span>; <span class="org-keyword">then</span>
+<span class="linenr">104:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Set job priority to standard for interactive (interactive - 6) by using</span>
+<span class="linenr">105:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">the interactive priority - 6, the helper threads that respond to requests</span>
+<span class="linenr">106:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">will be running at the same priority as interactive jobs.</span>
+<span class="linenr">107:  </span>  <span class="org-variable-name">COMMAND</span>=<span class="org-string">'chgjob job('</span>$<span class="org-variable-name">JOBNAME</span><span class="org-string">') runpty(6)'</span>
+<span class="linenr">108:  </span>  system $<span class="org-variable-name">COMMAND</span>
+<span class="linenr">109:  </span>
+<span class="linenr">110:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Enable multi threading</span>
+<span class="linenr">111:  </span>  <span class="org-builtin">export</span> <span class="org-variable-name">QIBM_MULTI_THREADED</span>=Y
+<span class="linenr">112:  </span><span class="org-keyword">fi</span>
+<span class="linenr">113:  </span>
+<span class="linenr">114:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Get standard Java environment variables</span>
+<span class="linenr">115:  </span><span class="org-keyword">if</span> $<span class="org-variable-name">os400</span>; <span class="org-keyword">then</span>
+<span class="linenr">116:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">-r will Only work on the os400 if the files are:</span>
+<span class="linenr">117:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">1. owned by the user</span>
+<span class="linenr">118:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">2. owned by the PRIMARY group of the user</span>
+<span class="linenr">119:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">this will not work if the user belongs in secondary groups</span>
+<span class="linenr">120:  </span>  <span class="org-variable-name">BASEDIR</span>=<span class="org-string">"$CATALINA_HOME"</span>
+<span class="linenr">121:  </span>  . <span class="org-string">"$CATALINA_HOME"</span>/bin/setclasspath.sh 
+<span class="linenr">122:  </span><span class="org-keyword">else</span>
+<span class="linenr">123:  </span>  <span class="org-keyword">if</span> [ -r <span class="org-string">"$CATALINA_HOME"</span>/bin/setclasspath.sh ]; <span class="org-keyword">then</span>
+<span class="linenr">124:  </span>    <span class="org-variable-name">BASEDIR</span>=<span class="org-string">"$CATALINA_HOME"</span>
+<span class="linenr">125:  </span>    . <span class="org-string">"$CATALINA_HOME"</span>/bin/setclasspath.sh
+<span class="linenr">126:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">127:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Cannot find $CATALINA_HOME/bin/setclasspath.sh"</span>
+<span class="linenr">128:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"This file is needed to run this program"</span>
+<span class="linenr">129:  </span>    <span class="org-keyword">exit</span> 1
+<span class="linenr">130:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">131:  </span><span class="org-keyword">fi</span>
+<span class="linenr">132:  </span>
+<span class="linenr">133:  </span><span class="org-variable-name">gcj</span>=no
+<span class="linenr">134:  </span><span class="org-string">"$_RUNJAVA"</span> -version 2&gt;&amp;1 | grep -q <span class="org-string">"^gij (GNU libgcj)"</span> &amp;&amp; <span class="org-variable-name">gcj</span>=yes
+<span class="linenr">135:  </span>
+<span class="linenr">136:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Add on extra jar files to CLASSPATH</span>
+<span class="linenr">137:  </span><span class="org-keyword">if</span> [ -n <span class="org-string">"$JSSE_HOME"</span> -a <span class="org-string">"$gcj"</span> != <span class="org-string">"yes"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">138:  </span>  <span class="org-variable-name">CLASSPATH</span>=<span class="org-string">"$CLASSPATH"</span>:<span class="org-string">"$JSSE_HOME"</span>/lib/jcert.jar:<span class="org-string">"$JSSE_HOME"</span>/lib/jnet.jar:<span class="org-string">"$JSSE_HOME"</span>/lib/jsse.jar
+<span class="linenr">139:  </span><span class="org-keyword">fi</span>
+<span class="linenr">140:  </span><span class="org-variable-name">CLASSPATH</span>=<span class="org-string">"$CLASSPATH"</span>:<span class="org-string">"$CATALINA_HOME"</span>/bin/bootstrap.jar:<span class="org-string">"$CATALINA_HOME"</span>/bin/commons-logging-api.jar
+<span class="linenr">141:  </span>
+<span class="linenr">142:  </span><span class="org-keyword">if</span> [ -z <span class="org-string">"$CATALINA_BASE"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">143:  </span>  <span class="org-variable-name">CATALINA_BASE</span>=<span class="org-string">"$CATALINA_HOME"</span>
+<span class="linenr">144:  </span><span class="org-keyword">fi</span>
+<span class="linenr">145:  </span>
+<span class="linenr">146:  </span><span class="org-keyword">if</span> [ -z <span class="org-string">"$CATALINA_TMPDIR"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">147:  </span>  <span class="org-comment-delimiter"># </span><span class="org-comment">Define the java.io.tmpdir to use for Catalina</span>
+<span class="linenr">148:  </span>  <span class="org-variable-name">CATALINA_TMPDIR</span>=<span class="org-string">"$CATALINA_BASE"</span>/temp
+<span class="linenr">149:  </span><span class="org-keyword">fi</span>
+<span class="linenr">150:  </span>
+<span class="linenr">151:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Bugzilla 37848: When no TTY is available, don't output to console</span>
+<span class="linenr">152:  </span><span class="org-variable-name">have_tty</span>=0
+<span class="linenr">153:  </span><span class="org-keyword">if</span> [ <span class="org-string">"`tty`"</span> != <span class="org-string">"not a tty"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">154:  </span>    <span class="org-variable-name">have_tty</span>=1
+<span class="linenr">155:  </span><span class="org-keyword">fi</span>
+<span class="linenr">156:  </span>
+<span class="linenr">157:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">For Cygwin, switch paths to Windows format before running java</span>
+<span class="linenr">158:  </span><span class="org-keyword">if</span> $<span class="org-variable-name">cygwin</span>; <span class="org-keyword">then</span>
+<span class="linenr">159:  </span>  <span class="org-variable-name">JAVA_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$JAVA_HOME"`</span>
+<span class="linenr">160:  </span>  <span class="org-variable-name">JRE_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$JRE_HOME"`</span>
+<span class="linenr">161:  </span>  <span class="org-variable-name">CATALINA_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$CATALINA_HOME"`</span>
+<span class="linenr">162:  </span>  <span class="org-variable-name">CATALINA_BASE</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$CATALINA_BASE"`</span>
+<span class="linenr">163:  </span>  <span class="org-variable-name">CATALINA_TMPDIR</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$CATALINA_TMPDIR"`</span>
+<span class="linenr">164:  </span>  <span class="org-variable-name">CLASSPATH</span>=<span class="org-sh-quoted-exec">`cygpath --path --windows "$CLASSPATH"`</span>
+<span class="linenr">165:  </span>  [ -n <span class="org-string">"$JSSE_HOME"</span> ] &amp;&amp; <span class="org-variable-name">JSSE_HOME</span>=<span class="org-sh-quoted-exec">`cygpath --absolute --windows "$JSSE_HOME"`</span>
+<span class="linenr">166:  </span>  <span class="org-variable-name">JAVA_ENDORSED_DIRS</span>=<span class="org-sh-quoted-exec">`cygpath --path --windows "$JAVA_ENDORSED_DIRS"`</span>
+<span class="linenr">167:  </span><span class="org-keyword">fi</span>
+<span class="linenr">168:  </span>
+<span class="linenr">169:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Set juli LogManager if it is present</span>
+<span class="linenr">170:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Dont use juli LogManager when running with gcj</span>
+<span class="linenr">171:  </span><span class="org-keyword">if</span> [ -r <span class="org-string">"$CATALINA_HOME"</span>/bin/tomcat-juli.jar -a <span class="org-string">"$gcj"</span> != <span class="org-string">"yes"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">172:  </span>  <span class="org-variable-name">JAVA_OPTS</span>=<span class="org-string">"$JAVA_OPTS "</span>-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager<span class="org-string">" "</span>-Djava.util.logging.config.file=<span class="org-string">"$CATALINA_BASE/conf/logging.properties"</span>
+<span class="linenr">173:  </span><span class="org-keyword">fi</span>
+<span class="linenr">174:  </span>
+<span class="linenr">175:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">----- Execute The Requested Command -----------------------------------------</span>
+<span class="linenr">176:  </span>
+<span class="linenr">177:  </span><span class="org-comment-delimiter"># </span><span class="org-comment">Bugzilla 37848: only output this if we have a TTY</span>
+<span class="linenr">178:  </span><span class="org-keyword">if</span> [ $<span class="org-variable-name">have_tty</span> -eq 1 ]; <span class="org-keyword">then</span>
+<span class="linenr">179:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"Using CATALINA_BASE:   $CATALINA_BASE"</span>
+<span class="linenr">180:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"Using CATALINA_HOME:   $CATALINA_HOME"</span>
+<span class="linenr">181:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"Using CATALINA_TMPDIR: $CATALINA_TMPDIR"</span>
+<span class="linenr">182:  </span>  <span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"debug"</span> -o <span class="org-string">"$1"</span> = <span class="org-string">"javac"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">183:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Using JAVA_HOME:       $JAVA_HOME"</span>
+<span class="linenr">184:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">185:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Using JRE_HOME:       $JRE_HOME"</span>
+<span class="linenr">186:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">187:  </span><span class="org-keyword">fi</span>
+<span class="linenr">188:  </span>
+<span class="linenr">189:  </span><span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"jpda"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">190:  </span>  <span class="org-keyword">if</span> [ -z <span class="org-string">"$JPDA_TRANSPORT"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">191:  </span>    <span class="org-variable-name">JPDA_TRANSPORT</span>=<span class="org-string">"dt_socket"</span>
+<span class="linenr">192:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">193:  </span>  <span class="org-keyword">if</span> [ -z <span class="org-string">"$JPDA_ADDRESS"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">194:  </span>    <span class="org-variable-name">JPDA_ADDRESS</span>=<span class="org-string">"8000"</span>
+<span class="linenr">195:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">196:  </span>  <span class="org-keyword">if</span> [ -z <span class="org-string">"$JPDA_SUSPEND"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">197:  </span>    <span class="org-variable-name">JPDA_SUSPEND</span>=<span class="org-string">"n"</span>
+<span class="linenr">198:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">199:  </span>  <span class="org-keyword">if</span> [ -z <span class="org-string">"$JPDA_OPTS"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">200:  </span>    <span class="org-variable-name">JPDA_OPTS</span>=<span class="org-string">"-Xdebug -Xrunjdwp:transport=$JPDA_TRANSPORT,address=$JPDA_ADDRESS,server=y,suspend=$JPDA_SUSPEND"</span>
+<span class="linenr">201:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">202:  </span>  <span class="org-variable-name">CATALINA_OPTS</span>=<span class="org-string">"$CATALINA_OPTS $JPDA_OPTS"</span>
+<span class="linenr">203:  </span>  <span class="org-builtin">shift</span>
+<span class="linenr">204:  </span><span class="org-keyword">fi</span>
+<span class="linenr">205:  </span>
+<span class="linenr">206:  </span><span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"debug"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">207:  </span>  <span class="org-keyword">if</span> $<span class="org-variable-name">os400</span>; <span class="org-keyword">then</span>
+<span class="linenr">208:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Debug command not available on OS400"</span>
+<span class="linenr">209:  </span>    <span class="org-keyword">exit</span> 1
+<span class="linenr">210:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">211:  </span>    <span class="org-builtin">shift</span>
+<span class="linenr">212:  </span>    <span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"-security"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">213:  </span>      <span class="org-builtin">echo</span> <span class="org-string">"Using Security Manager"</span>
+<span class="linenr">214:  </span>      <span class="org-builtin">shift</span>
+<span class="linenr">215:  </span>      <span class="org-keyword">exec</span> <span class="org-string">"$_RUNJDB"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">216:  </span>        -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">217:  </span>        -sourcepath <span class="org-string">"$CATALINA_HOME"</span>/../../jakarta-tomcat-catalina/catalina/src/share <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">218:  </span>        -Djava.security.manager <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">219:  </span>        -Djava.security.policy==<span class="org-string">"$CATALINA_BASE"</span>/conf/catalina.policy <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">220:  </span>        -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">221:  </span>        -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">222:  </span>        -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">223:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">224:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">225:  </span>        org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start
+<span class="linenr">226:  </span>    <span class="org-keyword">else</span>
+<span class="linenr">227:  </span>      <span class="org-keyword">exec</span> <span class="org-string">"$_RUNJDB"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">228:  </span>        -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">229:  </span>        -sourcepath <span class="org-string">"$CATALINA_HOME"</span>/../../jakarta-tomcat-catalina/catalina/src/share <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">230:  </span>        -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">231:  </span>        -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">232:  </span>        -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">233:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">234:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">235:  </span>        org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start
+<span class="linenr">236:  </span>    <span class="org-keyword">fi</span>
+<span class="linenr">237:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">238:  </span>
+<span class="linenr">239:  </span><span class="org-keyword">elif</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"run"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">240:  </span>
+<span class="linenr">241:  </span>  <span class="org-builtin">shift</span>
+<span class="linenr">242:  </span>  <span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"-security"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">243:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Using Security Manager"</span>
+<span class="linenr">244:  </span>    <span class="org-builtin">shift</span>
+<span class="linenr">245:  </span>    <span class="org-keyword">exec</span> <span class="org-string">"$_RUNJAVA"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">246:  </span>      -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">247:  </span>      -Djava.security.manager <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">248:  </span>      -Djava.security.policy==<span class="org-string">"$CATALINA_BASE"</span>/conf/catalina.policy <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">249:  </span>      -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">250:  </span>      -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">251:  </span>      -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">252:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">253:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">254:  </span>      org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start
+<span class="linenr">255:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">256:  </span>    <span class="org-keyword">exec</span> <span class="org-string">"$_RUNJAVA"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">257:  </span>      -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">258:  </span>      -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">259:  </span>      -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">260:  </span>      -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">261:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">262:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">263:  </span>      org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start
+<span class="linenr">264:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">265:  </span>
+<span class="linenr">266:  </span><span class="org-keyword">elif</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"start"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">267:  </span>
+<span class="linenr">268:  </span>  <span class="org-builtin">shift</span>
+<span class="linenr">269:  </span>  touch <span class="org-string">"$CATALINA_BASE"</span>/logs/catalina.out
+<span class="linenr">270:  </span>  <span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"-security"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">271:  </span>    <span class="org-keyword">if</span> [ <span class="org-string">"$gcj"</span> = <span class="org-string">"yes"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">272:  </span>      <span class="org-builtin">echo</span> <span class="org-string">"The java-gcj-compat-dev environment currently doesn't support"</span>
+<span class="linenr">273:  </span>      <span class="org-builtin">echo</span> <span class="org-string">"a security manager. Please check the TOMCAT5_SECURITY variable"</span>
+<span class="linenr">274:  </span>      <span class="org-builtin">echo</span> <span class="org-string">"in /etc/default/tomcat5.5."</span>
+<span class="linenr">275:  </span>      <span class="org-keyword">exit</span> 1
+<span class="linenr">276:  </span>    <span class="org-keyword">fi</span>
+<span class="linenr">277:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"Using Security Manager"</span>
+<span class="linenr">278:  </span>    <span class="org-builtin">shift</span>
+<span class="linenr">279:  </span>    <span class="org-string">"$_RUNJAVA"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">280:  </span>      -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">281:  </span>      -Djava.security.manager <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">282:  </span>      -Djava.security.policy==<span class="org-string">"$CATALINA_BASE"</span>/conf/catalina.policy <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">283:  </span>      -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">284:  </span>      -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">285:  </span>      -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">286:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">287:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">288:  </span>      org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">289:  </span>      &gt;&gt; <span class="org-string">"$CATALINA_BASE"</span>/logs/catalina.out 2&gt;&amp;1 &amp;
+<span class="linenr">290:  </span>
+<span class="linenr">291:  </span>      <span class="org-keyword">if</span> [ <span class="org-negation-char">!</span> -z <span class="org-string">"$CATALINA_PID"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">292:  </span>        <span class="org-builtin">echo</span> $<span class="org-variable-name">!</span> &gt; $<span class="org-variable-name">CATALINA_PID</span>
+<span class="linenr">293:  </span>      <span class="org-keyword">fi</span>
+<span class="linenr">294:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">295:  </span>    <span class="org-string">"$_RUNJAVA"</span> $<span class="org-variable-name">JAVA_OPTS</span> $<span class="org-variable-name">CATALINA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">296:  </span>      -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">297:  </span>      -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">298:  </span>      -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">299:  </span>      -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">300:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">301:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">302:  </span>      org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> start <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">303:  </span>      &gt;&gt; <span class="org-string">"$CATALINA_BASE"</span>/logs/catalina.out 2&gt;&amp;1 &amp;
+<span class="linenr">304:  </span>
+<span class="linenr">305:  </span>      <span class="org-keyword">if</span> [ <span class="org-negation-char">!</span> -z <span class="org-string">"$CATALINA_PID"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">306:  </span>        <span class="org-builtin">echo</span> $<span class="org-variable-name">!</span> &gt; $<span class="org-variable-name">CATALINA_PID</span>
+<span class="linenr">307:  </span>      <span class="org-keyword">fi</span>
+<span class="linenr">308:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">309:  </span>
+<span class="linenr">310:  </span><span class="org-keyword">elif</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"stop"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">311:  </span>
+<span class="linenr">312:  </span>  <span class="org-builtin">shift</span>
+<span class="linenr">313:  </span>  <span class="org-variable-name">FORCE</span>=0
+<span class="linenr">314:  </span>  <span class="org-keyword">if</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"-force"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">315:  </span>    <span class="org-builtin">shift</span>
+<span class="linenr">316:  </span>    <span class="org-variable-name">FORCE</span>=1
+<span class="linenr">317:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">318:  </span>
+<span class="linenr">319:  </span>  <span class="org-string">"$_RUNJAVA"</span> $<span class="org-variable-name">JAVA_OPTS</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">320:  </span>    -Djava.endorsed.dirs=<span class="org-string">"$JAVA_ENDORSED_DIRS"</span> -classpath <span class="org-string">"$CLASSPATH"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">321:  </span>    -Dcatalina.base=<span class="org-string">"$CATALINA_BASE"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">322:  </span>    -Dcatalina.home=<span class="org-string">"$CATALINA_HOME"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">323:  </span>    -Djava.io.tmpdir=<span class="org-string">"$CATALINA_TMPDIR"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">324:  </span>        <span class="org-comment-delimiter"># </span><span class="org-comment">java io exception 101028</span>
+<span class="linenr">325:  </span>        -Djava.awt.headless=true <span class="org-string">\ </span>
+<span class="linenr">326:  </span>    org.apache.catalina.startup.Bootstrap <span class="org-string">"$@"</span> stop
+<span class="linenr">327:  </span>
+<span class="linenr">328:  </span>  <span class="org-keyword">if</span> [ $<span class="org-variable-name">FORCE</span> -eq 1 ]; <span class="org-keyword">then</span>
+<span class="linenr">329:  </span>    <span class="org-keyword">if</span> [ <span class="org-negation-char">!</span> -z <span class="org-string">"$CATALINA_PID"</span> ]; <span class="org-keyword">then</span>
+<span class="linenr">330:  </span>       <span class="org-builtin">echo</span> <span class="org-string">"Killing: `cat $CATALINA_PID`"</span>
+<span class="linenr">331:  </span>       kill -9 <span class="org-sh-quoted-exec">`cat $CATALINA_PID`</span>
+<span class="linenr">332:  </span>    <span class="org-keyword">else</span>
+<span class="linenr">333:  </span>       <span class="org-builtin">echo</span> <span class="org-string">"Kill failed: \$CATALINA_PID not set"</span>
+<span class="linenr">334:  </span>    <span class="org-keyword">fi</span>
+<span class="linenr">335:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">336:  </span>
+<span class="linenr">337:  </span><span class="org-keyword">elif</span> [ <span class="org-string">"$1"</span> = <span class="org-string">"version"</span> ] ; <span class="org-keyword">then</span>
+<span class="linenr">338:  </span>
+<span class="linenr">339:  </span>    <span class="org-string">"$_RUNJAVA"</span>   <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">340:  </span>      -classpath <span class="org-string">"$CATALINA_HOME/server/lib/catalina.jar"</span> <span class="org-sh-escaped-newline">\</span>
+<span class="linenr">341:  </span>      org.apache.catalina.util.ServerInfo
+<span class="linenr">342:  </span>
+<span class="linenr">343:  </span><span class="org-keyword">else</span>
+<span class="linenr">344:  </span>
+<span class="linenr">345:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"Usage: catalina.sh ( commands ... )"</span>
+<span class="linenr">346:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"commands:"</span>
+<span class="linenr">347:  </span>  <span class="org-keyword">if</span> $<span class="org-variable-name">os400</span>; <span class="org-keyword">then</span>
+<span class="linenr">348:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"  debug             Start Catalina in a debugger (not available on OS400)"</span>
+<span class="linenr">349:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"  debug -security   Debug Catalina with a security manager (not available on OS400)"</span>
+<span class="linenr">350:  </span>  <span class="org-keyword">else</span>
+<span class="linenr">351:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"  debug             Start Catalina in a debugger"</span>
+<span class="linenr">352:  </span>    <span class="org-builtin">echo</span> <span class="org-string">"  debug -security   Debug Catalina with a security manager"</span>
+<span class="linenr">353:  </span>  <span class="org-keyword">fi</span>
+<span class="linenr">354:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  jpda start        Start Catalina under JPDA debugger"</span>
+<span class="linenr">355:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  run               Start Catalina in the current window"</span>
+<span class="linenr">356:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  run -security     Start in the current window with security manager"</span>
+<span class="linenr">357:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  start             Start Catalina in a separate window"</span>
+<span class="linenr">358:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  start -security   Start in a separate window with security manager"</span>
+<span class="linenr">359:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  stop              Stop Catalina"</span>
+<span class="linenr">360:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  stop -force       Stop Catalina (followed by kill -KILL)"</span>
+<span class="linenr">361:  </span>  <span class="org-builtin">echo</span> <span class="org-string">"  version           What version of tomcat are you running?"</span>
+<span class="linenr">362:  </span>  <span class="org-keyword">exit</span> 1
+<span class="linenr">363:  </span>
+<span class="linenr">364:  </span><span class="org-keyword">fi</span>
+</pre>
+</div></div></div></div></div></div></div>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:53 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>经验总结</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="经验总结"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-08-17 23:39:35 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">经验总结</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 find</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-1-1">1.1 删除项目中svn文件夹</a></li>
+<li><a href="#sec-1-2">1.2 建立Tag信息</a></li>
+<li><a href="#sec-1-3">1.3 建立cscope.file</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 cvs</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-2-1">2.1 导入命令</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 svn</a>
+<ul>
+<li><a href="#sec-3-1">3.1 恢复到以前的版本</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> find</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> 删除项目中svn文件夹</h4>
+<div class="outline-text-4" id="text-1-1">
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">find . -name <span class="org-string">".svn"</span> -exec ls -l {} <span class="org-string">\;</span>  
+find . -name <span class="org-string">".svn"</span> -exec rm -r {} <span class="org-string">\;</span>
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> 建立Tag信息</h4>
+<div class="outline-text-4" id="text-1-2">
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">find . -name <span class="org-string">"*.cs"</span> -print | etags - 
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> 建立cscope.file</h4>
+<div class="outline-text-4" id="text-1-3">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">find . -name <span class="org-string">"*.cs"</span> &gt; cscope.lists
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> cvs</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> 导入命令</h4>
+<div class="outline-text-4" id="text-2-1">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">floss$ cvs import -m <span class="org-string">"log msg"</span> projname vendortag releasetag
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+-m 参数是指一个简单的描述，这将被作为整个工程的第一条日志信息，以后的每次提交
+操作都会有自己的日志信息。其后的参数为工程名称，您以后在捡出操作时将用到这个工
+程名称。您可以任意指定工程名称，但在多数情况下，人们习惯使用与工程主目录相同的
+工程名。出版商标记与版本标记主要用于CVS的簿记工作，您完全不必担心它们的命名，
+它们今后很少用到。现在，我们使用用户名与"start"作为这两个参数。
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">floss$ cvs import -m <span class="org-string">"initial import into CVS"</span> myproj jrandom start
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> svn</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 恢复到以前的版本</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<ul>
+<li>svn update -r24:23 . (.是指当前目录)
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-08-17 23:39:35 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

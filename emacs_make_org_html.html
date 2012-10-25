@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>管理org-html导出</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="管理org-html导出"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-04-04 13:53:52 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">管理org-html导出</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 缘起</a></li>
+<li><a href="#sec-2">2 添加导航</a>
+<ul>
+<li><a href="#sec-2-1">2.1 要求</a></li>
+<li><a href="#sec-2-2">2.2 实现方法</a></li>
+<li><a href="#sec-2-3">2.3 添加导航</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 给代码添图片框</a>
+<ul>
+<li><a href="#sec-3-1">3.1 要求</a></li>
+<li><a href="#sec-3-2">3.2 实现方法</a></li>
+<li><a href="#sec-3-3">3.3 添加图片框</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 根据图片大小，俢改图片html</a>
+<ul>
+<li><a href="#sec-4-1">4.1 要求</a></li>
+<li><a href="#sec-4-2">4.2 实现方法</a></li>
+<li><a href="#sec-4-3">4.3 俢改图片html</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 综合</a>
+<ul>
+<li><a href="#sec-5-1">5.1 单个文件转换函数</a></li>
+<li><a href="#sec-5-2">5.2 处理毎个文件</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 生成index.html</a>
+<ul>
+<li><a href="#sec-6-1">6.1 要求</a></li>
+<li><a href="#sec-6-2">6.2 实现方法</a></li>
+<li><a href="#sec-6-3">6.3 生成index</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 缘起</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+  用org-mode有日子了，写了些笔记，零星生成了网页，最近学习elisp，用学到的知识，做
+  了网页的自动生成索引，为代码显示加上漂亮的图片框，自己挺满意，总结一下:)
+</p>
+<p>
+   首先，在~/org/journal/中写笔记，输出目录为~/org_html，在.emacs中加上：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr">1:  </span>(setq org-publish-project-alist
+<span class="linenr">2:  </span>      '((<span class="org-string">"myorg"</span>
+<span class="linenr">3:  </span>         <span class="org-builtin">:base-directory</span> <span class="org-string">"~/org/journal/"</span>
+<span class="linenr">4:  </span>         <span class="org-builtin">:publishing-directory</span> <span class="org-string">"~/org_html/"</span>
+<span class="linenr">5:  </span>         <span class="org-builtin">:section-numbers</span> nil
+<span class="linenr">6:  </span>         <span class="org-builtin">:table-of-contents</span> nil
+<span class="linenr">7:  </span>         <span class="org-builtin">:style</span> <span class="org-string">"&lt;link rel=\"stylesheet\"</span>
+<span class="linenr">8:  </span><span class="org-string">                     href=\"css/core.css\"</span>
+<span class="linenr">9:  </span><span class="org-string">                     type=\"text/css\"&gt;"</span>)))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 添加导航</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 要求</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<p>
+    用org-export生成的html中没有导航，要给毎个文件添加导航是一件无聊的事，我想
+    让emacs自动扫描目录，找到html文件，自动加上导航。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 实现方法</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<p>
+   用org-export生成的html文件都有如下部分：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">... &#30465;&#30053; ...
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"preamble"</span>&gt;
+
+&lt;/<span class="org-function-name">div</span>&gt;
+
+<span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">&#25171;&#31639;&#28155;&#21152;&#23548;&#33322;&#30340;&#22320;&#26041; </span><span class="org-comment-delimiter">--&gt;</span>
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"content"</span>&gt;
+&lt;<span class="org-function-name">h1</span> <span class="org-variable-name">class</span>=<span class="org-string">"title"</span>&gt;<span class="org-underline"><span class="org-bold">machine index</span></span>&lt;/<span class="org-function-name">h1</span>&gt;
+... &#30465;&#30053; ...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+   在指定位置添加如下一段：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"nav"</span>&gt;
+  &lt;<span class="org-function-name">ul</span>&gt; Menu
+    &lt;<span class="org-function-name">li</span>&gt;&lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"#"</span>&gt;top&lt;/<span class="org-function-name">a</span>&gt;&lt;/<span class="org-function-name">li</span>&gt;
+    &lt;<span class="org-function-name">li</span>&gt;&lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"index.html"</span>&gt;index&lt;/<span class="org-function-name">a</span>&gt;&lt;/<span class="org-function-name">li</span>&gt;
+  &lt;/<span class="org-function-name">ul</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+   计划这样实现要求：
+</p><ul>
+<li>打开文件
+</li>
+<li>如果没有找到&lt;div class="nav"&gt;&hellip;&lt;/div&gt;，就需要添加导航
+</li>
+<li>找到&lt;div id="content"&gt;
+</li>
+<li>用html-mode的sgml-skip-tag-backward函数将光标移到|&lt;div id="content"&gt;
+</li>
+<li>插入导航的代码段
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> 添加导航</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span>(setq changedItems '())
+<span class="linenr"> 2:  </span>
+<span class="linenr"> 3:  </span>(<span class="org-keyword">defun</span> <span class="org-function-name">machine_make_html_tranlate</span> (file)
+<span class="linenr"> 4:  </span>  <span class="org-doc">"tranlate html&#25991;&#20214;.</span>
+<span class="linenr"> 5:  </span><span class="org-doc">1. &#22686;&#21152;&#23548;&#33322;</span>
+<span class="linenr"> 6:  </span><span class="org-doc">2. &#32473;&#20195;&#30721;&#28155;&#21152;&#22270;&#29255;&#26694;"</span>
+<span class="linenr"> 7:  </span>  (<span class="org-keyword">let</span> (name buffer text star end)
+<span class="linenr"> 8:  </span>    (find-file file)
+<span class="linenr"> 9:  </span>    (setq name (file-name-nondirectory file))
+<span class="linenr">10:  </span>    (setq buffer (get-file-buffer name))
+<span class="linenr">11:  </span>    (goto-char (point-min))
+<span class="linenr">12:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">nav</span>
+<span class="linenr">13:  </span>    (<span class="org-keyword">if</span> (not (search-forward <span class="org-string">"&lt;div class=\"nav\""</span> nil t))
+<span class="linenr">14:  </span>        (<span class="org-keyword">progn</span>
+<span class="linenr">15:  </span>          (search-forward <span class="org-string">"&lt;div id=\"content\""</span> nil t)
+<span class="linenr">16:  </span>          (sgml-skip-tag-backward 1)
+<span class="linenr">17:  </span>          (insert (concat <span class="org-string">"&lt;div class=\"nav\"&gt;\n"</span>
+<span class="linenr">18:  </span>                          <span class="org-string">"  &lt;ul&gt; Menu\n"</span>
+<span class="linenr">19:  </span>                          <span class="org-string">"    &lt;li&gt;&lt;a href=\"#\"&gt;top&lt;/a&gt;&lt;/li&gt;\n"</span>
+<span class="linenr">20:  </span>                          <span class="org-string">"    &lt;li&gt;&lt;a href=\"index.html\"&gt;index&lt;/a&gt;&lt;/li&gt;\n"</span>
+<span class="linenr">21:  </span>                          <span class="org-string">"  &lt;/ul&gt;\n"</span>
+<span class="linenr">22:  </span>                          <span class="org-string">"&lt;/div&gt;\n\n"</span>))
+<span class="linenr">23:  </span>          (setq changedItems (cons (concat <span class="org-string">"add "</span> (buffer-file-name) <span class="org-string">"'s nav."</span>) changedItems))))
+<span class="linenr">24:  </span>  ... &#30465;&#30053; ...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>注意最后一句，(setq changedItems (cons &hellip;，用于记录添加导航操
+     作，changedItems的定义在第一行。
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 给代码添图片框</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 要求</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<p>
+   曾经在 <a href="http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html">张驰原</a> 的网页看到code周围，有像emacs环境图片，很喜欢，也想弄一下。
+</p>
+<p>
+   org-mode生成的code是这样的：
+   <img src="images/emacs-image1.jpg" alt="images/emacs-image1.jpg" width="800"/>
+   我想变成：
+   <img src="images/emacs-image2.jpg" alt="images/emacs-image2.jpg" width="800"/>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 实现方法</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<p>
+   实现这种方式厡理：为code加底图(background-image)，code的底图要求有三个部
+   分，title，cont，foot，这三部分又分别由right，left组成，分解成6个图片。
+   <img src="images/emacs-image3.jpg" alt="images/emacs-image3.jpg" width="800"/>
+</p>
+<p>
+   因此实现方式由以下步骤组成：
+</p><ul>
+<li>分解code的底图，分成6个独立的小图片
+</li>
+<li>定义6个图片的css
+</li>
+<li>在html文件中找到"&lt;pre class="src"，在这句之前添加：
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-outer\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-title-right\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-title-left\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-cont-left\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-cont-right\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-footer-right\"</span>&gt;
+&lt;<span class="org-function-name">div</span> class=\<span class="org-string">"emacs-footer-left\"</span>&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>找到&lt;/pre&gt;，在这句之后添加:
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;/<span class="org-function-name">div</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+<p>   
+   在css中，定义底图的定义：
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">.emacs-title-left {
+  background-image: url(../images/title-left.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  padding: 0;
+  padding-top: 30px;
+}
+
+.emacs-title-right {
+  background-image: url(../images/title-right.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+.emacs-cont-left {
+  background-image: url(../images/cont-left.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+.emacs-cont-right {
+  background-image: url(../images/cont-right.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+.emacs-footer-right {
+  background-image: url(../images/footer-right.png);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+.emacs-footer-left {
+  background-image: url(../images/footer-left.png);
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  padding: 0;
+  padding-bottom: 16px;
+  padding-left: 15px;
+  padding-right: 3px;
+}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 添加图片框</h3>
+<div class="outline-text-3" id="text-3-3">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span>... &#30465;&#30053; ...
+<span class="linenr"> 2:  </span>  <span class="org-comment-delimiter">;; </span><span class="org-comment">for code add round image</span>
+<span class="linenr"> 3:  </span>  (goto-char (point-min))
+<span class="linenr"> 4:  </span>  (<span class="org-keyword">while</span> (search-forward <span class="org-string">"&lt;pre class=\"src"</span> nil t)
+<span class="linenr"> 5:  </span>    (sgml-skip-tag-backward 1)
+<span class="linenr"> 6:  </span>    (beginning-of-line)
+<span class="linenr"> 7:  </span>    (backward-char 1)
+<span class="linenr"> 8:  </span>    (beginning-of-line)
+<span class="linenr"> 9:  </span>    (setq text (buffer-substring-no-properties (1+ (point)) (+ (point) 4)))
+<span class="linenr">10:  </span>    (<span class="org-keyword">if</span> (not (string= <span class="org-string">"div"</span> text))
+<span class="linenr">11:  </span>        (<span class="org-keyword">progn</span>
+<span class="linenr">12:  </span>          (insert (concat <span class="org-string">"&lt;div class=\"emacs-outer\"&gt;\n"</span>
+<span class="linenr">13:  </span>                          <span class="org-string">"&lt;div class=\"emacs-title-right\"&gt;\n"</span>
+<span class="linenr">14:  </span>                          <span class="org-string">"&lt;div class=\"emacs-title-left\"&gt;\n"</span>
+<span class="linenr">15:  </span>                          <span class="org-string">"&lt;div class=\"emacs-cont-left\"&gt;\n"</span>
+<span class="linenr">16:  </span>                          <span class="org-string">"&lt;div class=\"emacs-cont-right\"&gt;\n"</span>
+<span class="linenr">17:  </span>                          <span class="org-string">"&lt;div class=\"emacs-footer-right\"&gt;\n"</span>
+<span class="linenr">18:  </span>                          <span class="org-string">"&lt;div class=\"emacs-footer-left\"&gt;"</span>))
+<span class="linenr">19:  </span>          (search-forward <span class="org-string">"&lt;/pre&gt;"</span> nil t)
+<span class="linenr">20:  </span>          (insert (concat <span class="org-string">"\n"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"\n"</span>))
+<span class="linenr">21:  </span>          (setq changedItems 
+<span class="linenr">22:  </span>                (cons (concat <span class="org-string">"tranlate "</span> (buffer-file-name) <span class="org-string">"'s code at "</span> (number-to-string (line-number-at-pos)))
+<span class="linenr">23:  </span>                      changedItems)))
+<span class="linenr">24:  </span>      (search-forward <span class="org-string">"&lt;/pre&gt;"</span> nil t)))      
+<span class="linenr">25:  </span>... &#30465;&#30053; ...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>(sgml-skip-tag-backward 1)，sgml-mode中，跳到tag的开始
+</li>
+<li>(beginning-of-line)，光标移到行首
+</li>
+<li>(if (not (string= "div" text))，判断是否己经有图片框
+</li>
+<li>(setq changedItems (cons (concat &hellip;，添加俢改记录
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 根据图片大小，俢改图片html</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 要求</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+<p>   
+   org-export生成的img是这样的：
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"#"</span>&gt;&lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"images/emacs-image1.jpg"</span> <span class="org-variable-name">alt</span>=<span class="org-string">"emacs-image1.jpg"</span>/&gt;&lt;/<span class="org-function-name">a</span>&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+   没有定义图片的寛度，我需要根据图片大小添加width，同时去除图片外的&lt;a href="#"&gt;。
+</p><ul>
+<li>如图片寛度是430，那么俢改成的img
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"images/emacs-image1.jpg"</span> <span class="org-variable-name">alt</span>=<span class="org-string">"images/emacs-image1.jpg"</span> <span class="org-variable-name">width</span>=<span class="org-string">"430"</span>/&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>如图片太寛，大于800，如图片寛度1600，那么俢改成的img
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">&lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"images/emacs-image1.jpg"</span> <span class="org-variable-name">alt</span>=<span class="org-string">"images/emacs-image1.jpg"</span> <span class="org-variable-name">width</span>=<span class="org-string">"800"</span>/&gt;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 实现方法</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+<ul>
+<li>找到html代码中的img，取出图片文件名
+</li>
+<li>用identify -format "%w" filename，得到图片寛度
+</li>
+<li>寛度大子800，用replace-match，俢改width＝"800"
+</li>
+<li>寛度小于800，用replace-match，俢改width＝"实际寛度"
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 俢改图片html</h3>
+<div class="outline-text-3" id="text-4-3">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span><span class="org-comment-delimiter">;; </span><span class="org-comment">image width</span>
+<span class="linenr"> 2:  </span>(goto-char (point-min))
+<span class="linenr"> 3:  </span>(<span class="org-keyword">while</span> (re-search-forward <span class="org-string">"&lt;a href=\"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+\"&gt;&lt;img src=\"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\" alt=\"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+\"/&gt;&lt;/a&gt;"</span> nil t)
+<span class="linenr"> 4:  </span>  (setq name (match-string-no-properties 1))
+<span class="linenr"> 5:  </span>  (setq string 
+<span class="linenr"> 6:  </span>        (shell-command-to-string 
+<span class="linenr"> 7:  </span>         (concat <span class="org-string">"identify -format \"%w\" "</span> org_html_path name)))
+<span class="linenr"> 8:  </span>  (setq width (string-to-number string))
+<span class="linenr"> 9:  </span>  (<span class="org-keyword">if</span> (&gt; width 800)
+<span class="linenr">10:  </span>      (replace-match <span class="org-string">"&lt;img src=\"\\1\" alt=\"\\1\" width=\"800\"/&gt;"</span>)
+<span class="linenr">11:  </span>    (replace-match <span class="org-string">"&lt;img src=\"\\1\" alt=\"\\1\" width=\""</span> width <span class="org-string">"\"/&gt;"</span>))
+<span class="linenr">12:  </span>  (setq changedItems 
+<span class="linenr">13:  </span>        (cons (concat <span class="org-string">"tranlate "</span> (buffer-file-name) <span class="org-string">"'s image at "</span> (number-to-string (line-number-at-pos)))
+<span class="linenr">14:  </span>              changedItems)))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>shell-command-to-string，在elisp中调用shell命令
+</li>
+<li>(setq changedItems (cons (concat &hellip;，添加俢改记录
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 综合</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+  现在，我能对一个html文件：
+</p><ol>
+<li>增加导航
+</li>
+<li>给代码添加图片框
+</li>
+<li>根据图片大小，俢改图片html
+</li>
+</ol>
+
+
+<p>  
+  org-export生成的若于html文件，都需要做处理，我想用一个函数实现，这到目的：
+</p><ul>
+<li>自动在org-export目标目录中找到所有html文件，放入list
+</li>
+<li>用mapcar处理毎个文件
+</li>
+<li>记录毎一个处理，全部文件处理完成后，显示到临时buffer中
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 单个文件转换函数</h3>
+<div class="outline-text-3" id="text-5-1">
+
+
+<p>
+  完成：
+</p><ol>
+<li>增加导航
+</li>
+<li>给代码添加图片框
+</li>
+<li>根据图片大小，俢改图片html
+</li>
+</ol>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span><span class="org-comment-delimiter">;; </span><span class="org-comment">org public path</span>
+<span class="linenr"> 2:  </span>(setq org_html_path <span class="org-string">"~/org_html/"</span>)
+<span class="linenr"> 3:  </span>(setq changedItems '())
+<span class="linenr"> 4:  </span>
+<span class="linenr"> 5:  </span>(<span class="org-keyword">defun</span> <span class="org-function-name">machine_make_html_tranlate</span> (file)
+<span class="linenr"> 6:  </span>  <span class="org-doc">"tranlate html&#25991;&#20214;.</span>
+<span class="linenr"> 7:  </span><span class="org-doc">1. &#22686;&#21152;&#23548;&#33322;</span>
+<span class="linenr"> 8:  </span><span class="org-doc">2. &#32473;&#20195;&#30721;&#28155;&#21152;&#22270;&#29255;&#26694;</span>
+<span class="linenr"> 9:  </span><span class="org-doc">3. &#26681;&#25454;&#22270;&#29255;&#22823;&#23567;&#65292;&#20450;&#25913;&#22270;&#29255;html"</span>
+<span class="linenr">10:  </span>  (<span class="org-keyword">let</span> (name buffer text star end)
+<span class="linenr">11:  </span>    (find-file file)
+<span class="linenr">12:  </span>    (setq name (file-name-nondirectory file))
+<span class="linenr">13:  </span>    (setq buffer (get-file-buffer name))
+<span class="linenr">14:  </span>    (goto-char (point-min))
+<span class="linenr">15:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">nav</span>
+<span class="linenr">16:  </span>    (<span class="org-keyword">if</span> (not (search-forward <span class="org-string">"&lt;div class=\"nav\""</span> nil t))
+<span class="linenr">17:  </span>        (<span class="org-keyword">progn</span>
+<span class="linenr">18:  </span>          (search-forward <span class="org-string">"&lt;div id=\"content\""</span> nil t)
+<span class="linenr">19:  </span>          (sgml-skip-tag-backward 1)
+<span class="linenr">20:  </span>          (insert (concat <span class="org-string">"&lt;div class=\"nav\"&gt;\n"</span>
+<span class="linenr">21:  </span>                          <span class="org-string">"  &lt;ul&gt; Menu\n"</span>
+<span class="linenr">22:  </span>                          <span class="org-string">"    &lt;li&gt;&lt;a href=\"#\"&gt;top&lt;/a&gt;&lt;/li&gt;\n"</span>
+<span class="linenr">23:  </span>                          <span class="org-string">"    &lt;li&gt;&lt;a href=\"index.html\"&gt;index&lt;/a&gt;&lt;/li&gt;\n"</span>
+<span class="linenr">24:  </span>                          <span class="org-string">"  &lt;/ul&gt;\n"</span>
+<span class="linenr">25:  </span>                          <span class="org-string">"&lt;/div&gt;\n\n"</span>))
+<span class="linenr">26:  </span>          (setq changedItems (cons (concat <span class="org-string">"add "</span> (buffer-file-name) <span class="org-string">"'s nav."</span>) changedItems))))
+<span class="linenr">27:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">for code add round image</span>
+<span class="linenr">28:  </span>    (goto-char (point-min))
+<span class="linenr">29:  </span>    (<span class="org-keyword">while</span> (search-forward <span class="org-string">"&lt;pre class=\"src"</span> nil t)
+<span class="linenr">30:  </span>      (sgml-skip-tag-backward 1)
+<span class="linenr">31:  </span>      (beginning-of-line)
+<span class="linenr">32:  </span>      (backward-char 1)
+<span class="linenr">33:  </span>      (beginning-of-line)
+<span class="linenr">34:  </span>      (setq text (buffer-substring-no-properties (1+ (point)) (+ (point) 4)))
+<span class="linenr">35:  </span>      (<span class="org-keyword">if</span> (not (string= <span class="org-string">"div"</span> text))
+<span class="linenr">36:  </span>          (<span class="org-keyword">progn</span>
+<span class="linenr">37:  </span>            (insert (concat <span class="org-string">"&lt;div class=\"emacs-outer\"&gt;\n"</span>
+<span class="linenr">38:  </span>                            <span class="org-string">"&lt;div class=\"emacs-title-right\"&gt;\n"</span>
+<span class="linenr">39:  </span>                            <span class="org-string">"&lt;div class=\"emacs-title-left\"&gt;\n"</span>
+<span class="linenr">40:  </span>                            <span class="org-string">"&lt;div class=\"emacs-cont-left\"&gt;\n"</span>
+<span class="linenr">41:  </span>                            <span class="org-string">"&lt;div class=\"emacs-cont-right\"&gt;\n"</span>
+<span class="linenr">42:  </span>                            <span class="org-string">"&lt;div class=\"emacs-footer-right\"&gt;\n"</span>
+<span class="linenr">43:  </span>                            <span class="org-string">"&lt;div class=\"emacs-footer-left\"&gt;"</span>))
+<span class="linenr">44:  </span>            (search-forward <span class="org-string">"&lt;/pre&gt;"</span> nil t)
+<span class="linenr">45:  </span>            (insert (concat <span class="org-string">"\n"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"\n"</span>))
+<span class="linenr">46:  </span>            (setq changedItems 
+<span class="linenr">47:  </span>                  (cons (concat <span class="org-string">"tranlate "</span> (buffer-file-name) <span class="org-string">"'s code at "</span> (number-to-string (line-number-at-pos)))
+<span class="linenr">48:  </span>                        changedItems)))
+<span class="linenr">49:  </span>        (search-forward <span class="org-string">"&lt;/pre&gt;"</span> nil t)))      
+<span class="linenr">50:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">image width</span>
+<span class="linenr">51:  </span>    (goto-char (point-min))
+<span class="linenr">52:  </span>    (<span class="org-keyword">while</span> (re-search-forward <span class="org-string">"&lt;a href=\"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+\"&gt;&lt;img src=\"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">\" alt=\"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+\"/&gt;&lt;/a&gt;"</span> nil t)
+<span class="linenr">53:  </span>      (setq name (match-string-no-properties 1))
+<span class="linenr">54:  </span>      (setq string 
+<span class="linenr">55:  </span>            (shell-command-to-string 
+<span class="linenr">56:  </span>             (concat <span class="org-string">"identify -format \"%w\" "</span> org_html_path name)))
+<span class="linenr">57:  </span>      (setq width (string-to-number string))
+<span class="linenr">58:  </span>      (<span class="org-keyword">if</span> (&gt; width 800)
+<span class="linenr">59:  </span>          (replace-match <span class="org-string">"&lt;img src=\"\\1\" alt=\"\\1\" width=\"800\"/&gt;"</span>)
+<span class="linenr">60:  </span>        (replace-match <span class="org-string">"&lt;img src=\"\\1\" alt=\"\\1\" width=\""</span> width <span class="org-string">"\"/&gt;"</span>))
+<span class="linenr">61:  </span>      (setq changedItems 
+<span class="linenr">62:  </span>            (cons (concat <span class="org-string">"tranlate "</span> (buffer-file-name) <span class="org-string">"'s image at "</span> (number-to-string (line-number-at-pos)))
+<span class="linenr">63:  </span>                  changedItems)))
+<span class="linenr">64:  </span>    (<span class="org-keyword">if</span> (not (buffer-modified-p)) 
+<span class="linenr">65:  </span>        (kill-this-buffer)
+<span class="linenr">66:  </span>      (<span class="org-keyword">progn</span>
+<span class="linenr">67:  </span>        (save-buffer)))))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>(if (not (buffer-modified-p))，判断buffer是否己俢改
+</li>
+<li>未俢改，kill-this-buffer
+</li>
+<li>己俢改，save-buffer，并保持打开
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 处理毎个文件</h3>
+<div class="outline-text-3" id="text-5-2">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span>(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-tranlate</span> ()
+<span class="linenr"> 2:  </span>  <span class="org-doc">"&#36716;&#25563;org public path&#19979;&#30340;&#25152;&#26377;html.</span>
+<span class="linenr"> 3:  </span><span class="org-doc">&#22312;&#25991;&#20214;&#20013;&#36755;&#20986;log."</span>
+<span class="linenr"> 4:  </span>  (interactive)
+<span class="linenr"> 5:  </span>  (setq changedItems '())
+<span class="linenr"> 6:  </span>  (setq outputBuffer <span class="org-string">"*machine org html tranlate output*"</span>)
+<span class="linenr"> 7:  </span>  (<span class="org-keyword">with-output-to-temp-buffer</span> outputBuffer
+<span class="linenr"> 8:  </span>    (mapcar 'machine_make_html_tranlate
+<span class="linenr"> 9:  </span>            (find-lisp-find-files org_html_path <span class="org-string">"\\.html$"</span>))
+<span class="linenr">10:  </span>    (mapcar 'print (reverse changedItems))
+<span class="linenr">11:  </span>    (princ <span class="org-string">"\n\n--- Done deal! ---"</span>)))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>用(find-lisp-find-files org_html_path "\\.html$"))，在org_html_path目录下寻
+    找html文件
+</li>
+<li>(mapcar 'machine_make_html_tranlate &hellip;，对毎个文件调用 machine_make_html_tranlate
+</li>
+<li>(with-output-to-temp-buffer outputBuffer &hellip;，在outputBuffer中显示俢改记录
+</li>
+<li>(reverse changedItems)，将 changedItems倒序
+</li>
+</ul>
+
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 生成index.html</h2>
+<div class="outline-text-2" id="text-6">
+
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 要求</h3>
+<div class="outline-text-3" id="text-6-1">
+
+
+<p>
+   我有很多笔记，分成emacs、linux、latex、work等类，毎增加一个，在索引文件
+   (index.html)中都要俢改，很烦；我想让自动收集目录下的文件，并分类，生成
+   index.html，多方便。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> 实现方法</h3>
+<div class="outline-text-3" id="text-6-2">
+
+
+<p>
+    先建立index.html框架，将需要的类别写好：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-html">  ... &#30465;&#30053; ...
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">emacs</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">latex</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">linux</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">c/c++</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">java</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">work</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+
+&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"table-of-contents"</span>&gt;
+  &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">other</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;
+  ... &#30465;&#30053; ...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>在dired-mode中，选中若于文件
+</li>
+<li>给定类别名，在index.html中，找到类别所在位置
+</li>
+<li>依次打开文件，找到文件title，用title作为文件的链接名
+</li>
+<li>更新index.html的日期
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 生成index</h3>
+<div class="outline-text-3" id="text-6-3">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1:  </span>(<span class="org-keyword">defun</span> <span class="org-function-name">org-make-html-index</span> (type)
+<span class="linenr"> 2:  </span>  <span class="org-doc">"get the &#29305;&#23450;&#31867;&#22411;&#30340; html,&#22312; index.html &#20013;&#20998;&#31867;."</span>
+<span class="linenr"> 3:  </span>  (interactive <span class="org-string">"stype: "</span>)
+<span class="linenr"> 4:  </span>  (<span class="org-keyword">let</span> (text name title filename list start)
+<span class="linenr"> 5:  </span>    (setq list (dired-get-marked-files))
+<span class="linenr"> 6:  </span>    (setq name <span class="org-string">"index.html"</span>)
+<span class="linenr"> 7:  </span>    (setq filename (concat org_html_path name))
+<span class="linenr"> 8:  </span>    (<span class="org-keyword">if</span> (not (file-exists-p filename))
+<span class="linenr"> 9:  </span>        (<span class="org-warning">error</span> <span class="org-string">"no %s"</span> name))
+<span class="linenr">10:  </span>    (find-file filename)
+<span class="linenr">11:  </span>    (goto-char (point-min))
+<span class="linenr">12:  </span>    (setq text nil)
+<span class="linenr">13:  </span>    (<span class="org-keyword">while</span> (not (string= text type))
+<span class="linenr">14:  </span>      (<span class="org-keyword">if</span> (not (search-forward <span class="org-string">"&lt;h3&gt;"</span> nil t))
+<span class="linenr">15:  </span>          (<span class="org-warning">error</span> <span class="org-string">"no %s type"</span> type))
+<span class="linenr">16:  </span>      (setq start (point))
+<span class="linenr">17:  </span>      (search-forward <span class="org-string">"&lt;/h3&gt;"</span>)
+<span class="linenr">18:  </span>      (backward-char 5)
+<span class="linenr">19:  </span>      (setq text (buffer-substring-no-properties start (point))))
+<span class="linenr">20:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">find type</span>
+<span class="linenr">21:  </span>    (search-forward <span class="org-string">"&lt;/div&gt;"</span> nil t)
+<span class="linenr">22:  </span>    (forward-char 1)
+<span class="linenr">23:  </span>    (setq start (point))
+<span class="linenr">24:  </span>    (search-forward <span class="org-string">"&lt;div id=\"table-of-contents\""</span> nil t)
+<span class="linenr">25:  </span>    (beginning-of-line)
+<span class="linenr">26:  </span>    (delete-region start (point))
+<span class="linenr">27:  </span>    (mapcar
+<span class="linenr">28:  </span>     (<span class="org-keyword">lambda</span> (name)
+<span class="linenr">29:  </span>       (find-file name)
+<span class="linenr">30:  </span>       (goto-char (point-min))
+<span class="linenr">31:  </span>       (search-forward <span class="org-string">"&lt;title&gt;"</span> nil t)
+<span class="linenr">32:  </span>       (setq start (point))
+<span class="linenr">33:  </span>       (search-forward <span class="org-string">"&lt;/title&gt;"</span> nil t)
+<span class="linenr">34:  </span>       (backward-char 8)
+<span class="linenr">35:  </span>       (setq title (buffer-substring-no-properties start (point)))
+<span class="linenr">36:  </span>       (bury-buffer)
+<span class="linenr">37:  </span>       (insert (concat <span class="org-string">"\n"</span> <span class="org-string">"&lt;div id=\"outline-container\"&gt;"</span> 
+<span class="linenr">38:  </span>                       <span class="org-string">"&lt;a href=\""</span> (file-name-nondirectory name) <span class="org-string">"\"&gt;"</span>
+<span class="linenr">39:  </span>                       title <span class="org-string">"&lt;/a&gt;\n"</span> <span class="org-string">"&lt;/div&gt;"</span> <span class="org-string">"\n"</span>)))
+<span class="linenr">40:  </span>     list)
+<span class="linenr">41:  </span>    (insert <span class="org-string">"\n"</span>)
+<span class="linenr">42:  </span>    <span class="org-comment-delimiter">;; </span><span class="org-comment">update date</span>
+<span class="linenr">43:  </span>    (search-forward <span class="org-string">"&lt;p class=\"date\"&gt;Date: "</span> nil t)
+<span class="linenr">44:  </span>    (setq start (point))
+<span class="linenr">45:  </span>    (search-forward <span class="org-string">"&lt;/p&gt;"</span> nil t)
+<span class="linenr">46:  </span>    (backward-char 4)
+<span class="linenr">47:  </span>    (delete-region start (point))
+<span class="linenr">48:  </span>    (insert (format-time-string <span class="org-string">"%Y-%m-%d %H:%M:%S"</span>))
+<span class="linenr">49:  </span>    (save-buffer)))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>这函数要在dired-mode中运行
+</li>
+<li>(interactive "stype: ")，提示输入类型，"s"表示输入字符串，其他输入方式参
+     见：<a href="http://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Using-Interactive">(info)interactive</a>
+</li>
+<li>(setq list (dired-get-marked-files))，取出marked files
+</li>
+<li>如里在index.html中找不到type，退出
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp">... &#30465;&#30053; ...
+  (<span class="org-keyword">while</span> (not (string= text type))
+    (<span class="org-keyword">if</span> (not (search-forward <span class="org-string">"&lt;h3&gt;"</span> nil t))
+        (<span class="org-warning">error</span> <span class="org-string">"no %s type"</span> type))
+... &#30465;&#30053; ...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>(delete-region start (point))，删除type厡有的文件链接
+</li>
+<li>(setq title (buffer-substring-no-properties start (point)))，寻找文件的
+     title
+</li>
+<li>(insert (format-time-string "%Y-%m-%d %H:%M:%S"))，更新日期
+</li>
+</ul>
+
+
+<p>
+emacs is pretty.
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-04-04 13:53:52 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

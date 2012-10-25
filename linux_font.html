@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>linux字体</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="linux字体"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:46 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">linux字体</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 linux字体</a>
+<ul>
+<li><a href="#sec-1-1">1.1 GTK1的程序</a></li>
+<li><a href="#sec-1-2">1.2 GTK2和QT程序</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> linux字体</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<ul>
+<li>每一个刚刚把Linux装上的朋友面对的第一个问题就是汉化，美化。linux默认的字体实
+     在是不怎么漂亮，特别是对中文更是如此。本文所介绍的是基于
+     freetype/Fontconfig/Xft的，xtt我没用，使用的字体都是TrueType。linux下常见的
+     GUI程序有三种，GTK1、GTK2和QT，基于这三种图形库的程序在美化上是有不同要求的。
+     XFree86下常用的字体绘制方桉有xtt,freetype/Fontconfig/Xft。下面分别来看看
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> GTK1的程序</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<ul>
+<li>可以从库里安装wqy字体，
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">user:/home/user# apt-cache search wqy
+ttf-wqy-zenhei - <span class="org-string">"WenQuanYi Zen Hei"</span> A Hei-Ti Style (sans-serif) Chinese font
+xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>在.emacs配置
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp">(create-fontset-from-fontset-spec
+<span class="org-string">"-*-courier-medium-r-normal-*-17-*-*-*-*-*-fontset-user,</span>
+<span class="org-string">chinese-gb2312:-*-wenquanyi bitmap song-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
+<span class="org-string">chinese-gbk:-*-wenquanyi bitmap song-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
+<span class="org-string">chinese-gb18030:-*-wenquanyi bitmap song-medium-r-normal-*-16-*-*-*-*-*-*-*"</span>
+)
+(setq default-frame-alist (append '((font . <span class="org-string">"fontset-user"</span>)) default-frame-alist))
+(set-default-font <span class="org-string">"fontset-user"</span>)
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>这样emacs就可以使用WenQuanYi Bitmap Song字体了,也可以把c:/windows/fonts/下的
+     simsun.ttc,simhei.ttf,simkai.ttf考到linux下，建立目录
+     /usr/share/fonts/truetype/myttf/（这是我随便命名的）。进入这个新建的目录。这
+     一步就是在 /etc/X11/xorg.conf的Section "files"段里面的Fontpath属性里说明的详
+     细后面会讲。
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">Section <span class="org-string">"Files"</span>
+        FontPath   <span class="org-string">"/usr/share/fonts/truetype/myttf/"</span>
+EndSection
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>X现在知道字体在哪里了。那gtk1的程序还不能直接使用它们，因为我们还没有给它们
+     "注册",这就需要在前面设定的Fontpath里生成两个文件fonts.dir fonts.scale这两个
+     文件里有Fontpath下所有字体的列表信息，就是一个"索引"。有了这个"索引"，gtk1的
+     程序就可以找到相应的字体了。生成这两个文件的工具有mkfontdir,mkfontscale。好
+     了，上面两步如果正确完成了，reboot你的gtk1程序现在就可以正常显示汉字了。常见
+     的gtk1程序有xmms，emacs
+
+</li>
+<li>在.emacs配置
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-lisp">(create-fontset-from-fontset-spec
+<span class="org-string">"-*-courier-medium-r-normal-*-17-*-*-*-*-*-fontset-user,</span>
+<span class="org-string">chinese-gb2312:-*-song ti-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
+<span class="org-string">chinese-gbk:-*-song ti-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
+<span class="org-string">chinese-gb18030:-*-song ti-medium-r-normal-*-16-*-*-*-*-*-*-*"</span>
+)
+(setq default-frame-alist (append '((font . <span class="org-string">"fontset-user"</span>)) default-frame-alist))
+(set-default-font <span class="org-string">"fontset-user"</span>)
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>这样emacs就可以使用宋体了,如何不知道如何写字体描述，可以运行xfontsel命令，试试就知道了
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> GTK2和QT程序</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li>ttf字体只要拷贝到/usr/share/fonts/目录下，可以有多级目录，运行fc-cache，就可
+     以使用了
+</li>
+</ul>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:46 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

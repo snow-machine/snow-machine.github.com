@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>emacs文件编码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="emacs文件编码"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:55 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">emacs文件编码</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 emacs文件编码</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> emacs文件编码</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">C-h C coding &lt;RET&gt;
+&#25551;&#36848;&#32534;&#30721;&#31995;&#32479; coding
+C-h C &lt;RET&gt;
+&#25551;&#36848;&#24403;&#21069;&#20351;&#29992;&#30340;&#32534;&#30721;&#31995;&#32479;
+M-x list-coding-systems
+&#26174;&#31034;&#25152;&#26377;&#25903;&#25345;&#30340;&#32534;&#30721;&#31995;&#32479;&#30340;&#21015;&#34920;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+命令 C-h C(describe-coding-system) 显示特定编码系统的信息。您可以指定编码系统名称
+作为参数；或者，不指定参数，它将描述当前使用的各种编码系统，包括当前缓冲区、默认
+值，以及识别编码系统的优先级列表(参见识别编码)。要显示所有支持的编码系统，输入
+list-coding-systems。列表中包含了各种编码系统的信息，包括用在状态行中的代表字母
+(参见状态行)。
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">&#24403; Emacs &#26080;&#27861;&#33258;&#21160;&#36873;&#25321;&#27491;&#30830;&#30340;&#32534;&#30721;&#31995;&#32479;&#26102;&#65292;&#24744;&#21487;&#20197;&#29992;&#36825;&#20123;&#21629;&#20196;&#26469;&#25351;&#23450;&#19968;&#20010;&#65306;
+C-x &lt;RET&gt; f coding &lt;RET&gt;
+&#20351;&#29992;&#32534;&#30721;&#31995;&#32479; coding &#26469;&#26597;&#30475;&#24403;&#21069;&#32531;&#20914;&#21306;&#20013;&#30340;&#25991;&#20214;&#12290;
+C-x &lt;RET&gt; c coding &lt;RET&gt;
+&#25351;&#23450;&#19979;&#19968;&#20010;&#21629;&#20196;&#30340;&#32534;&#30721;&#31995;&#32479;&#20026; coding&#12290;
+C-x &lt;RET&gt; k coding &lt;RET&gt;
+&#35774;&#32622;&#38190;&#30424;&#36755;&#20837;&#30340;&#32534;&#30721;&#31995;&#32479;&#20026; coding&#12290;
+C-x &lt;RET&gt; t coding &lt;RET&gt;
+&#35774;&#32622;&#32456;&#31471;&#36755;&#20986;&#30340;&#32534;&#30721;&#31995;&#32479;&#20026; coding&#12290;
+C-x &lt;RET&gt; p input-coding &lt;RET&gt; output-coding &lt;RET&gt;
+&#20351;&#29992;&#32534;&#30721;&#31995;&#32479; input-coding &#21644; output-coding &#20316;&#20026;&#24403;&#21069;&#32531;&#20914;&#21306;&#20013;&#23376;&#36827;&#31243;&#30340;&#36755;&#20837;&#21644;&#36755;&#20986;&#12290;
+C-x &lt;RET&gt; x coding &lt;RET&gt;
+&#22312;&#31383;&#21475;&#31995;&#32479;&#20013;&#19982;&#20854;&#23427;&#31243;&#24207;&#20256;&#36882;&#36873;&#20013;&#25991;&#26412;&#26102;&#20351;&#29992;&#32534;&#30721;&#31995;&#32479; coding&#12290;
+C-x &lt;RET&gt; X coding &lt;RET&gt;
+&#22312;&#31383;&#21475;&#31995;&#32479;&#20013;&#19982;&#20854;&#23427;&#31243;&#24207;&#20256;&#36882;&#19979;&#19968;&#27425;&#36873;&#20013;&#25991;&#26412;&#26102;(&#20165;&#19968;&#27425;)&#20351;&#29992;&#32534;&#30721;&#31995;&#32479; coding&#12290;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:55 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

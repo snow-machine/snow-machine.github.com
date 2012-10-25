@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>The difference between hard and soft links</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="The difference between hard and soft links"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:45 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">The difference between hard and soft links</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 The difference between hard and soft links</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> The difference between hard and soft links</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+I participate in about 30 usenet newsgroups, and in a virtual LUG, and a number
+of questions keep coming up. I've answered a few of these questions often enough
+to have 'canned' an answer, which I modify, depending on the circumstances.
+</p>
+<p>
+Here's one, now&hellip;
+</p>
+<p>
+Q: Can someone give me a simple explanation of the difference between a soft
+link and a hard link? The documentation I've read mention these links but make
+no strong explanations of their meaning and how/when to use them. Thanks!
+</p>
+<p>
+A: OK, I'll give it a try&hellip;
+</p>
+<p>
+Unix files consist of two parts: the data part and the filename part.
+</p>
+<p>
+The data part is associated with something called an 'inode'. The inode carries the map of where the data is, the file permissions, etc. for the data.
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">                       .---------------&gt; ! data ! ! data ! etc
+                      /                  +------+ !------+
+! permbits, etc ! data addresses !
++------------inode---------------+
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+The filename part carries a name and an associated inode number.
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">                 .--------------&gt; ! permbits, etc ! addresses !
+                /                 +---------inode-------------+
+! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
++--------------------+
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+More than one filename can reference the same inode number; these files are said to be 'hard linked' together.
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
++--------------------+
+                <span class="org-sh-escaped-newline">\</span>
+                 &gt;--------------&gt; ! permbits, etc ! addresses !
+                /                 +---------inode-------------+
+! othername ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
++---------------------+
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+On the other hand, there's a special file type whose data part carries a path to
+another file. Since it is a special file, the OS recognizes the data as a path,
+and redirects opens, reads, and writes so that, instead of accessing the data
+within the special file, they access the data in the file named by the data in
+the special file. This special file is called a 'soft link' or a 'symbolic link'
+(aka a 'symlink').
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">     ! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
+     +--------------------+
+                     <span class="org-sh-escaped-newline">\</span>
+                      .-------&gt; ! permbits, etc ! addresses !
+                                +---------inode-------------+
+                                                   /
+                                                  /
+                                                 /
+ .----------------------------------------------<span class="org-string">'</span>
+<span class="org-string">( </span>
+<span class="org-string"> '</span>--&gt;  !<span class="org-string">"/path/to/some/other/file"</span>! 
+       +---------data-------------+
+               /                      }
+ .~ ~ ~ ~ ~ ~ ~                       }-- (redirected at open() <span class="org-keyword">time</span>)
+(                                     }
+ <span class="org-string">'~~&gt; ! filename ! inode # !</span>
+<span class="org-string">      +--------------------+</span>
+<span class="org-string">                      \</span>
+<span class="org-string">                       '</span>------------&gt; ! permbits, etc ! addresses !
+                                      +---------inode-------------+
+                                                         /
+                                                        /
+  .----------------------------------------------------<span class="org-string">'</span>
+<span class="org-string"> (</span>
+<span class="org-string">  '</span>-&gt;  ! data !  ! data ! etc.
+       +------+  +------+ 
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+Now, the filename part of the file is stored in a special file of its own along
+with the filename parts of other files; this special file is called a
+directory. The directory, as a file, is just an array of filename parts of other
+files.
+</p>
+<p>
+When a directory is built, it is initially populated with the filename parts of
+two special files: the '.' and '..' files. The filename part for the '.' file is
+populated with the inode# of the directory file in which the entry has been
+made; '.' is a hardlink to the file that implements the current directory.
+</p>
+<p>
+The filename part for the '..' file is populated with the inode# of the
+directory file that contains the filename part of the current directory
+file. '..' is a hardlink to the file that implements the immediate parent of the
+current directory.
+</p>
+<p>
+The 'ln' command knows how to build hardlinks and softlinks; the 'mkdir' command
+knows how to build directories (the OS takes care of the above hardlinks).
+</p>
+<p>
+There are restrictions on what can be hardlinked (both links must reside on the
+same filesystem, the source file must exist, etc.) that are not applicable to
+softlinks (source and target can be on seperate file systems, source does not
+have to exist, etc.). OTOH, softlinks have other restrictions not shared by
+hardlinks (additional I/O necessary to complete file access, additional storage
+taken up by softlink file's data, etc.)
+</p>
+<p>
+In other words, there's tradeoffs with each.
+</p>
+<p>
+Now, let's demonstrate some of this&hellip;
+ln in action
+</p>
+<p>
+Let's start off with an empty directory, and create a file in it
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ ls -lia 
+total 3
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:16 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:16 ..
+
+~/directory $ echo <span class="org-string">"This is a file"</span> &gt;basic.file
+
+~/directory $ ls -lia 
+total 4
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:17 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:16 ..
+  73478 -rw-r--r--   1 lpitcher users          15 Mar 11 20:17 basic.file
+
+~/directory $ cat basic.file
+This is a file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+Now, let's make a hardlink to the file
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ ln basic.file hardlink.file
+
+~/directory $ ls -lia 
+total 5
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:20 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:18 ..
+  73478 -rw-r--r--   2 lpitcher users          15 Mar 11 20:17 basic.file
+  73478 -rw-r--r--   2 lpitcher users          15 Mar 11 20:17 hardlink.file
+
+~/directory $ cat hardlink.file
+This is a file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+We see that:
+</p><ul>
+<li>hardlink.file shares the same inode (73478) as basic.file
+</li>
+<li>hardlink.file shares the same data as basic.file
+</li>
+</ul>
+
+
+<p>
+If we change the permissions on basic.file:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ chmod a+w basic.file
+
+~/directory $ ls -lia 
+total 5
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:20 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:18 ..
+  73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 basic.file
+  73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 hardlink.file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+then the same permissions change on hardlink.file.
+</p>
+<p>
+The two files (basic.file and hardlink.file) share the same inode and data, but
+have different file names.
+</p>
+<p>
+Let's now make a softlink to the original file:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ ln -s basic.file softlink.file
+
+~/directory $ ls -lia 
+total 5
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:24 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:18 ..
+  73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 basic.file
+  73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 hardlink.file
+  73479 lrwxrwxrwx   1 lpitcher users          10 Mar 11 20:24 softlink.file -&gt; basic.file
+
+~/directory $ cat softlink.file
+This is a file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+Here, we see that although softlink.file accesses the same data as basic.file
+and hardlink.file, it does not share the same inode (73479 vs 73478), nor does
+it exhibit the same file permissions. It does show a new permission bit: the 'l'
+(softlink) bit.
+</p>
+<p>
+If we delete basic.file:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ rm basic.file
+
+~/directory $ ls -lia 
+total 4
+  73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:27 .
+  91804 drwxr-xr-x  29 lpitcher users        2048 Mar 11 20:18 ..
+  73478 -rw-rw-rw-   1 lpitcher users          15 Mar 11 20:17 hardlink.file
+  73479 lrwxrwxrwx   1 lpitcher users          10 Mar 11 20:24 softlink.file -&gt; basic.file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+then we lose the ability to access the linked data through the softlink:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr">1:  </span>~/directory $ cat softlink.file
+<span class="linenr">2:  </span>cat: softlink.file: No such file or directory
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+However, we still have access to the original data through the hardlink:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">~/directory $ cat hardlink.file
+This is a file
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+You will notice that when we deleted the original file, the hardlink didn't
+vanish. Similarly, if we had deleted the softlink, the original file wouldn't
+have vanished.  A further note with respect to hardlink files
+</p>
+<p>
+When deleting files, the data part isn't disposed of until all the filename
+parts have been deleted. There's a count in the inode that indicates how many
+filenames point to this file, and that count is decremented by 1 each time one
+of those filenames is deleted. When the count makes it to zero, the inode and
+its associated data are deleted.
+</p>
+<p>
+By the way, the count also reflects how many times the file has been opened
+without being closed (in other words, how many references to the file are still
+active). This has some ramifications which aren't obvious at first: you can
+delete a file so that no "filename" part points to the inode, without releasing
+the space for the data part of the file, because the file is still open.
+</p>
+<p>
+Have you ever found yourself in this position: you notice that /var/log/messages
+(or some other syslog-owned file) has grown too big, and you
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">rm /var/log/messages
+touch /var/log/messages
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+to reclaim the space, but the used space doesn't reappear? This is because,
+although you've deleted the filename part, there's a process that's got the data
+part open still (syslogd), and the OS won't release the space for the data until
+the process closes it. In order to complete your space reclamation, you have to
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh"><span class="org-builtin">kill</span> -SIGHUP <span class="org-sh-quoted-exec">`cat /var/run/syslogd.pid`</span>
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+to get syslogd to close and reopen the file.
+</p>
+<p>
+You can use this to your advantage in programs: have you ever wondered how you
+could hide a temporary file? Well, you could do the following:
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>{
+<span class="linenr"> 2:  </span>   <span class="org-type">FILE</span> *<span class="org-variable-name">fp</span>;
+<span class="linenr"> 3:  </span>
+<span class="linenr"> 4:  </span>   fp = fopen(<span class="org-string">"some.hidden.file"</span>,<span class="org-string">"w"</span>);
+<span class="linenr"> 5:  </span>   unlink(<span class="org-string">"some.hidden.file"</span>); <span class="org-comment-delimiter">/* </span><span class="org-comment">deletes the filename part </span><span class="org-comment-delimiter">*/</span>
+<span class="linenr"> 6:  </span>
+<span class="linenr"> 7:  </span>   <span class="org-comment-delimiter">/* </span><span class="org-comment">some.hidden.file no longer has a filename and is truely hidden </span><span class="org-comment-delimiter">*/</span>
+<span class="linenr"> 8:  </span>   fprintf(fp,<span class="org-string">"This data won't be found\n"</span>); <span class="org-comment-delimiter">/* </span><span class="org-comment">access the data part </span><span class="org-comment-delimiter">*/</span>
+<span class="linenr"> 9:  </span>   <span class="org-comment-delimiter">/*</span><span class="org-comment">etc</span><span class="org-comment-delimiter">*/</span>
+<span class="linenr">10:  </span>   fclose(fp); <span class="org-comment-delimiter">/* </span><span class="org-comment">finally release the data part </span><span class="org-comment-delimiter">*/</span>
+<span class="linenr">11:  </span>}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:45 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>temperature standard edition software</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="temperature standard edition software"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-08-03 12:17:58 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">temperature standard edition software</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 temperature standard edition software</a>
+<ul>
+<li><a href="#sec-1-1">1.1 devolep journal</a></li>
+<li><a href="#sec-1-2">1.2 temperature software snag high lead unable alarm</a></li>
+<li><a href="#sec-1-3">1.3 temperature software add temperature modulus setup</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> temperature standard edition software</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li>2011-09-20 二
+</li>
+</ul>
+
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> devolep journal</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ol>
+<li>V0.90<sub>110427</sub>
+<ul>
+<li>每一小时保存一次分区温度
+</li>
+<li>增加安装图标
+</li>
+<li>分区温度表记录达到60万行不再记录
+</li>
+<li>分区温度查询超过2000行时，只显示2000行
+      并给出提示
+</li>
+<li>Tag<sub>110429</sub><sub>begin</sub>
+</li>
+</ul>
+
+</li>
+<li>V0.901<sub>110429</sub>
+<ul>
+<li>版本号直接写在页面，不再从数据库取得
+</li>
+<li>去掉系统设置界面的探头故障屏蔽选择
+</li>
+<li>修改处理器通道数时，也要更新探头的master
+</li>
+<li>Tag<sub>110429</sub><sub>good</sub>
+</li>
+</ul>
+
+</li>
+<li>V0.902<sub>110429</sub>
+<ul>
+<li>报警记录保存时，类型错位
+</li>
+<li>Tag<sub>110429</sub><sub>better</sub>
+</li>
+</ul>
+
+</li>
+<li>V0.903<sub>110504</sub>
+<ul>
+<li>修复处理器设置界面，热备处理器编号可修改的问题
+</li>
+<li>修复客户标定没有存到数据库问题
+</li>
+<li>Tag<sub>110504</sub><sub>better</sub>
+</li>
+</ul>
+
+</li>
+<li>V0.910<sub>110531</sub>
+<ul>
+<li>##用客户标定时，标定提示不清楚，不知道是哪个处理器的1号通道 ##
+</li>
+<li>##二级界面探头点提示错误，全同是0个探头 ##
+</li>
+<li>##二级界面标题栏提示：应为库站界面 ##
+</li>
+<li>二级界面去除客户标定 ##
+</li>
+<li>二级界面去除查询 ##
+</li>
+<li>新增加的安装探头数，在分区界面不出现 ##
+</li>
+<li>删除库站，分区自动清空，分区温度应该设为-30 ##
+</li>
+<li>报警查询可根据所有库站，单个库站查询 ##
+</li>
+<li>增加分区故障选择，一个探头故障，所有探头都是故障，屏蔽故障 ##
+</li>
+<li>管理员密码从客户标定出输入 ##
+</li>
+<li>热备处理器全部删除，软件无法运行 ##
+</li>
+<li>差温增加高速升温算法 ##
+</li>
+<li>标定界面按照新I,II,III型，显示正确顺序波长 ##
+</li>
+</ul>
+
+</li>
+<li>V0.911<sub>110603</sub>
+<ul>
+<li>二级界面无报警显示,报警仅仅针对分区，无法定位到点 ##
+</li>
+<li>所有清空分区操作都需确定
+</li>
+<li>客户标定无论成功与否均记录 ##
+</li>
+<li>如果有分区预警，别的分区即便是报警也只报预警 ##
+</li>
+<li>退出软件提示 ##
+</li>
+<li>新增加的安装探头数，在分区界面不出现  ##
+</li>
+<li>提高差温灵敏度 ##
+</li>
+</ul>
+
+</li>
+<li>V0.912<sub>110609</sub>
+<ul>
+<li>报警记录增加探头备注
+</li>
+<li>修改温度数据保存，不再判断数据总量
+</li>
+</ul>
+
+</li>
+<li>V0.913<sub>110617</sub>
+<ul>
+<li>报警板报文间隔时间改为200mS
+</li>
+</ul>
+
+</li>
+<li>V0.914<sub>11062</sub>*
+<ul>
+<li>扩展温度波形显示范围
+</li>
+<li>增加英文版
+</li>
+</ul>
+
+</li>
+<li>V0.916<sub>110711</sub>
+<ul>
+<li>完善故障判断，高灵敏、低灵敏
+</li>
+<li>完善分区报警判断，如果分区内探头有报警、预警，判断为报警
+</li>
+</ul>
+
+</li>
+<li>V0.917<sub>110728</sub>
+<ul>
+<li>修改主备机切换时错误
+</li>
+<li>修改开机时标定探头数大于安装探头数问题
+</li>
+<li>英文版修改个别汉字
+</li>
+</ul>
+
+</li>
+<li>V0.918<sub>110801</sub>
+<ul>
+<li>修改客户标定，产生探头故障，报不出火警
+</li>
+<li>英文版修改个别汉字
+</li>
+</ul>
+
+</li>
+<li>标准版V0.920<sub>110805</sub>
+<ul>
+<li>增加658-02B-A支持
+</li>
+</ul>
+
+</li>
+<li>标准版V0.921<sub>110811</sub> 英文版V1.00<sub>110811</sub>
+<ul>
+<li>增加报文误码识别功能 FA FA XX XX F5 F5 FF FA FA &hellip;
+
+</li>
+</ul>
+
+</li>
+<li>标准版V0.930<sub>110815</sub> 英文版V1.10<sub>110815</sub>
+<ul>
+<li>增加探头定位功能
+</li>
+</ul>
+
+</li>
+<li>标准版V0.940<sub>110916</sub> 英文版V1.21<sub>110917</sub>
+<ul>
+<li>增加设置探头温度系数功能
+</li>
+<li>修改高灵敏度分区故障时无法报警问题
+</li>
+<li>英文版实时温度曲线范围-20-120,中文版-20-100
+</li>
+</ul>
+
+</li>
+<li>标准版V0.941<sub>110921</sub> 英文版V1.22<sub>110921</sub>
+<ul>
+<li>增加从数据库读取探头温度系数判断合法性
+</li>
+</ul>
+
+</li>
+<li>标准版V0.942<sub>111010</sub>
+<ul>
+<li>增加温度缓冲设置功能，不使用温度缓冲将加快报警速度，但影响
+       温度稳定性
+</li>
+</ul>
+
+</li>
+<li>标准版V0.943<sub>111014</sub>
+<ul>
+<li>659-02B-A类型使用区段查询，加快查询速度
+</li>
+<li>去除温度缓冲设置功能
+</li>
+</ul>
+
+</li>
+<li>标准版V0.950<sub>111014</sub>
+<ul>
+<li>返回数据帧中间有乱码，导致通道故障，解决
+</li>
+</ul>
+
+</li>
+<li>标准版V0.951<sub>111015</sub>
+<ul>
+<li>659-02B-A类型处理器少于8台，查询周期会变长，解决
+</li>
+</ul>
+
+</li>
+<li>标准版V0.952<sub>111017</sub>
+<ul>
+<li>惠州系统运行时线路产生大量乱码，导致一帧数据量很大，
+       软件产生内存溢出错误，修改
+</li>
+<li>应信息工程部要求,又增加温度缓冲设置功能，不使用温度缓冲将加快报警速度，但
+       影响温度稳定性
+</li>
+</ul>
+
+</li>
+<li>标准版V0.953<sub>111020</sub>
+<ul>
+<li>乱码识别后,验证码计算有问题，修改
+</li>
+</ul>
+
+</li>
+<li>标准版V0.960<sub>111202</sub>
+<ul>
+<li>判断原始的数据间距
+</li>
+<li>定位唯一性判断
+</li>
+<li>毎帧数据定位错误的数目小于标定探头数的三分之一
+</li>
+</ul>
+
+</li>
+<li>标准版V0.961<sub>111202</sub>
+<ul>
+<li>俢正唯一性判断，波长顺序应是从大到小
+</li>
+</ul>
+
+</li>
+<li>标准版V0.962<sub>111202</sub>
+<ul>
+<li>俢正658－02B－A唯一性判断
+</li>
+<li>俢改：定位过程，只有温度计算正确，才写入到探头计算温度
+</li>
+</ul>
+
+</li>
+<li>标准版V0.963<sub>120220</sub>
+<ul>
+<li>修改：主备机切换时发生差温报警
+</li>
+</ul>
+
+</li>
+<li>标准版V0.964<sub>120316</sub>
+<ul>
+<li>修改：报警板报文主机与备机站号一致
+</li>
+</ul>
+
+</li>
+<li>标准版V0.965<sub>120319</sub>
+<ul>
+<li>修改：上位机俢改:报警板主机站号和备机站号和解调报文一致
+<ul>
+<li>单机模式:备机站号等于主机站号
+</li>
+<li>双机模式:主机站号,备机站号由软件设置决定
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li>标准版V0.966<sub>120320</sub>
+<ul>
+<li>发现V0.963 BUG Slip.cs-&gt;setData问题，改正
+</li>
+</ul>
+
+</li>
+<li>标准版V0.968<sub>120525</sub>
+<ul>
+<li>完善定位处理算法，判断是否有两个探头定位到一个位置，要用绝对值
+</li>
+</ul>
+
+</li>
+<li>标准版V1.0<sub>120608</sub>
+<ul>
+<li>测温范围改为-30&ndash;130度
+</li>
+<li>温度曲线范围改为-30&ndash;130
+</li>
+<li>发给端子板报文，当温度大于120度时，发送120度
+</li>
+</ul>
+
+</li>
+<li>标准版V1.01<sub>120803</sub>
+<ul>
+<li>低灵敏度条件改为：50％以上丢失，报故障
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> temperature software snag high lead unable alarm</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li>测温标准版上位机修改高灵敏度故障时无法报警问题    
+<ul>
+<li>报警判断应该在故障判断之前
+</li>
+<li>报警判断后，如果是报警或预警，不执行故障判断，
+        如果前周期是正常，当前状态设为报警，如前周期是
+        故障，保持状态
+</li>
+<li>报警判断后，如果是正常,判断前周期状态不是故障，
+        将当前状态改为正常
+</li>
+<li>故障判断分为高灵敏度、低灵敏度、屏蔽
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>...
+<span class="linenr"> 2:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#30001;&#27491;&#24120;&#36827;&#20837;&#25253;&#35686;</span>
+<span class="linenr"> 3:  </span><span class="org-keyword">if</span> (atarmStatus&gt;=REGION_STATUS_WARM &amp;&amp; _status!=atarmStatus)
+<span class="linenr"> 4:  </span>{
+<span class="linenr"> 5:  </span>  _display = <span class="org-constant">true</span>;
+<span class="linenr"> 6:  </span>  _logger = <span class="org-constant">true</span>;
+<span class="linenr"> 7:  </span>  _status = atarmStatus;
+<span class="linenr"> 8:  </span>  <span class="org-keyword">return</span>;
+<span class="linenr"> 9:  </span>}
+<span class="linenr">10:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#25253;&#35686;&#25110;&#39044;&#35686;</span>
+<span class="linenr">11:  </span><span class="org-keyword">if</span> (atarmStatus!=REGION_STATUS_RIGHT)
+<span class="linenr">12:  </span>{
+<span class="linenr">13:  </span>  <span class="org-keyword">return</span>;
+<span class="linenr">14:  </span>}
+<span class="linenr">15:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#27491;&#24120;</span>
+<span class="linenr">16:  </span><span class="org-keyword">if</span> (_status&gt;=REGION_STATUS_WARM)
+<span class="linenr">17:  </span>{
+<span class="linenr">18:  </span>  _status = REGION_STATUS_RIGHT;
+<span class="linenr">19:  </span>}
+<span class="linenr">20:  </span>...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>...
+<span class="linenr"> 2:  </span>flag = <span class="org-constant">true</span>;
+<span class="linenr"> 3:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">INFO_REGION_SNAG_LOW</span>
+<span class="linenr"> 4:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#20998;&#21306;&#19979;&#30340;&#25506;&#22836;&#37117;&#26159;&#25925;&#38556;&#65292;&#20998;&#21306;&#26082;&#26159;&#25925;&#38556;</span>
+<span class="linenr"> 5:  </span><span class="org-keyword">if</span> (info.Obligate3.Equals(Info.INFO_REGION_SNAG_LOW))
+<span class="linenr"> 6:  </span>{
+<span class="linenr"> 7:  </span>  flag = <span class="org-constant">false</span>;        
+<span class="linenr"> 8:  </span>  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; GetProbesNum(); ++i)
+<span class="linenr"> 9:  </span>  {
+<span class="linenr">10:  </span>    probe = _probeList[i];
+<span class="linenr">11:  </span>    <span class="org-keyword">if</span> (probe.Master==<span class="org-constant">true</span> &amp;&amp; probe.GetStatus()!=Probe.PROBE_STATUS_SNAG)
+<span class="linenr">12:  </span>    {
+<span class="linenr">13:  </span>      flag = <span class="org-constant">true</span>;
+<span class="linenr">14:  </span>      <span class="org-keyword">break</span>;
+<span class="linenr">15:  </span>    }
+<span class="linenr">16:  </span>  }
+<span class="linenr">17:  </span>}
+<span class="linenr">18:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">INFO_REGION_SNAG_HIGH</span>
+<span class="linenr">19:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#20998;&#21306;&#19979;&#30340;&#25506;&#22836;&#19968;&#20010;&#25925;&#38556;&#65292;&#20998;&#21306;&#26082;&#26159;&#25925;&#38556;</span>
+<span class="linenr">20:  </span><span class="org-keyword">if</span> (info.Obligate3.Equals(Info.INFO_REGION_SNAG_HIGH))
+<span class="linenr">21:  </span>{
+<span class="linenr">22:  </span>  flag = <span class="org-constant">true</span>;      
+<span class="linenr">23:  </span>  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; GetProbesNum(); ++i)
+<span class="linenr">24:  </span>  {
+<span class="linenr">25:  </span>    probe = _probeList[i];
+<span class="linenr">26:  </span>    <span class="org-keyword">if</span> (probe.GetStatus()==Probe.PROBE_STATUS_SNAG)
+<span class="linenr">27:  </span>    {
+<span class="linenr">28:  </span>      flag = <span class="org-constant">false</span>;
+<span class="linenr">29:  </span>      <span class="org-keyword">break</span>;
+<span class="linenr">30:  </span>    }
+<span class="linenr">31:  </span>  }
+<span class="linenr">32:  </span>}
+<span class="linenr">33:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#22914;&#26524;&#25925;&#38556;&#23631;&#34109;&#65292;&#20998;&#21306;&#29366;&#24577;&#27491;&#24120;</span>
+<span class="linenr">34:  </span><span class="org-keyword">if</span> (info.RegionSnagSwitch == <span class="org-constant">false</span>)
+<span class="linenr">35:  </span>{
+<span class="linenr">36:  </span>  flag = <span class="org-constant">true</span>;
+<span class="linenr">37:  </span>  _status = REGION_STATUS_RIGHT;
+<span class="linenr">38:  </span>}
+<span class="linenr">39:  </span>...
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> temperature software add temperature modulus setup</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>增加探头温度系数设置
+<ul>
+<li>设计时已经考虑了温度系数问题
+</li>
+<li>这次在标定界面增加了温度系数设置功能，温度系数范围50-150
+</li>
+<li>可以根据处理器、通道、探头设置温度系数
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-08-03 12:17:58 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

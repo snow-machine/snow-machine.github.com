@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>水木版主term操作</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="水木版主term操作"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-10-08 21:33:33 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">水木版主term操作</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 版面操作</a>
+<ul>
+<li><a href="#sec-1-1">1.1 标记</a>
+<ul>
+<li><a href="#sec-1-1-1">1.1.1 一般标记</a></li>
+<li><a href="#sec-1-1-2">1.1.2 特殊标记</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">1.2 管理</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 版面文章列表</a></li>
+<li><a href="#sec-1-2-2">1.2.2 讨论区选单</a></li>
+<li><a href="#sec-1-2-3">1.2.3 阅读文章</a></li>
+<li><a href="#sec-1-2-4">1.2.4 编辑界面</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 精华区</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1 丝路</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 版面操作</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 标记</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> 一般标记</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<ul>
+<li>m：放入保留区，g：放入文摘区，*：未读贴子，;：不可回复
+</li>
+<li>G=`*+g' M=`*+m' U=`m+;' O=`g+;' b=`m+g' 
+</li>
+<li>B=`b+*'=`M+g'=`G+m' 8=`b+;'=`O+m'=`U+g'
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">[*]---------------------G----------------------[g]
+ |- <span class="org-string">\ </span>                      /------------------ |
+ |    <span class="org-string">\ </span>                   /                    |
+ |      <span class="org-string">\ </span>                /                     |
+ |        <span class="org-string">\ </span>             |                      |
+ M         B-------------b-----------8          O
+ |                       |             <span class="org-string">\ </span>       |
+ |                       |               <span class="org-string">\ </span>     |
+ |                       /                 <span class="org-string">\ </span>   |
+ |                      /                    <span class="org-string">\ </span> |
+ | -------------------/                       | |
+[m]---------------------U----------------------[;]
+</pre>
+</div></div></div></div></div></div></div>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> 特殊标记</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<ul>
+<li>版面进行收精或合集非标记操作，会使文章带有一些标记，这些标记会与前述的标记
+     叠加，可以在文章前按`shift+;'，修改标记
+</li>
+<li>`X' `%' `#'：普通用户不可见标记，`X'：版主用作标记，用于标记删除 `%'：不可
+     见的m标记 `#'：仅作标记，不对文章产生任何作用
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 管理</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 版面文章列表</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<ul>
+<li>`v'：进入信箱  
+</li>
+<li>`ctrl+p'：发贴，`ctrl+r'：回复到信箱 
+</li>
+<li>`ctrl+g'：进入文摘区、保留区、同主题模式等
+</li>
+<li>`E'：修改文章 `d'：单篇删文，`D'：标记删文，`.'：回收站 `shift+.':自删区 `Y':恢复
+</li>
+<li>`ctrl+D'：封人，解封
+</li>
+<li>`a'：顺序搜寻作者 `shift+a'：逆序搜寻作者 `ctrl+a'：查看作者
+</li>
+<li>`/'：顺序搜寻标题 `shift+a'：逆序搜寻标题
+</li>
+<li>`b'：同主题操作，有同主题删除、保留、收精、暂存、制作合集等
+</li>
+<li>'W'：备忘录(进版画面)，模板，治版方针
+</li>
+<li>';`：文章推荐，不可回复，置顶
+</li>
+<li>`shift+\'：切分主题
+</li>
+<li>`shift+4'：到达最后一篇
+</li>
+<li>`shift+6'：溯源定位
+</li>
+<li>`shift+7'：找到主题贴
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 讨论区选单</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<ul>
+<li>`ctrl+a'：将此讨论区放到个人定制区
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 阅读文章</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<ul>
+<li>`r/R'：回复文章 's'(home)：到文章首 `e'(end)：到文章尾
+</li>
+<li>`shift+/'：文章内查找
+</li>
+<li>`p/-&gt;/ctrl+x'：同主题阅读
+</li>
+<li>`q/&lt;-/esc'：返回文章列表
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 编辑界面</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+<ul>
+<li>`pgup/pgdown'：上下翻页
+</li>
+<li>`ctrl+pgup/ctrl+pgdown'：到文章首
+</li>
+<li>`ctrl+w/x'：写完发表
+</li>
+<li>`ctrl+y'：行删除
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 精华区</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>`x'：进入精华区
+</li>
+<li>`a'：新建文件 `g'：新建文件夹   `d'：删除文件 `s'：看文件名（开关）
+</li>
+<li>`i' `J'：放入暂存区，在精华区按`i'，起名加入
+</li>
+<li>`m'：移动文件 `x'：剪切文件 `c'：复制文件 `p'：粘贴文件 `S':排序文件
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 丝路</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<ul>
+<li>`f'：进入丝路。进入要设置丝路的精华区内，按`f',在丝路上按回车，将此精华区设
+     为丝路 
+</li>
+<li>`t/T'：更名 `d/D'：删除 `m/M'：移动 `a'：显示路径
+</li>
+<li>同主题加入丝路，用`b4'
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-10-08 21:33:33 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

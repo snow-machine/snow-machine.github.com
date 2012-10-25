@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>658-02B</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="658-02B"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-08-03 12:17:48 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">658-02B</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 658-02B</a>
+<ul>
+<li><a href="#sec-1-1">1.1 第一次迭代开发日志</a></li>
+<li><a href="#sec-1-2">1.2 第二次迭代开发日志</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 658-02B</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 第一次迭代开发日志</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ol>
+<li>090821
+<ul>
+<li>全同光栅，几个光栅的波长是一样的，因此用原来中心值的方式不能得到波长，
+      需要解调器送出边沿值，由上位机计算波长值。02C需要增加一种报文，送出
+      每个探头的开始、结束边沿值。暂定查询方式0x41
+</li>
+<li>这次针对燕山石化的产品，不用接光开关，但02C程序应支持光开关，电路上
+      光开关接在CPU1上，cpu1用于采样，我认为应接在cpu3上，即通讯cpu，主板
+      和从板都接在光开关上，主板输出，从板输入。位置还是在原来的光开关I/O口。
+</li>
+<li>增加主动发送功能，由于50HZ程序，循环查询报文时间过于频繁，现在程序将
+      通讯集中到一个cpu上，使得主动发送成为可能，02C增加一种报文，设置主动发送
+      状态，命令码：0xEC
+</li>
+<li>采样在正程采样，大波长在前，小波长在后，486-02B是小波长在前，大波长在后，
+      没有必要做成一样。
+</li>
+<li>02C有两块电路板，现在通讯集中到一个cpu上，有可能只装一块电路板。
+</li>
+<li>电路板ad温度测量值，放在波长值查询报文里，和数据一块发出来.
+</li>
+</ul>
+
+</li>
+<li>090824
+<ul>
+<li>发现P5.5-7控制pca<sub>store2</sub>,但CSC2/SI2需要置推挽输出，SO2需置漏极开路，P5口
+      无法做到，需将SO2 83脚移至85
+</li>
+</ul>
+
+</li>
+<li>090825
+<ul>
+<li>发现原来考虑的滤波放在Master/Slave，由于io方式控制store速度太慢（10微秒），
+      改为由PCA1-4采样时直接进行滑窗处理，提高效率。（100nS）
+</li>
+</ul>
+
+</li>
+<li>090901
+<ul>
+<li>pca在正程采样，半程10mS，探头数据在铁电做滑窗处理，如4路并行采样，每做一次滑窗，
+     大概需要40微秒，当4路探头都比较多时，可能会丢失探头；因此软件在内部串行采样，自主
+     切换通道，即每个扫描周期采样一路。结论：要做成并行，采用c8051f120，时序做了大的改变。
+</li>
+<li>软件主动发送方式，速度将为20mS一个通道；查询方式，查询间隔无要求。
+</li>
+<li>全同光栅，在极限温度裂开，但裂开后的探头间距很小，可以由软件识别。OK
+</li>
+<li>master处理器将拥有16通道chunnel
+</li>
+</ul>
+
+</li>
+<li>090902
+<ul>
+<li>经过反复测试，确定为保证响应速度，单片机必须采用f120，并且只能串行采样，
+      才能保证不丢失探头。
+</li>
+</ul>
+
+</li>
+<li>090903
+<ul>
+<li>测试发现，太窄的探头信号，非常容易丢失，建议扫描周期加宽，不一定非要用
+      f120,而且只能使用串行采样。
+</li>
+</ul>
+
+</li>
+<li>090904
+<ul>
+<li>dataBase.c/setChunnel可包含setProbe
+</li>
+<li>不用CLASSNEW方式生成对象
+</li>
+<li>setChunnel同时写入采样信道号，好让Master、slave知道，即Master、slave传递switch给pca1-4，
+      pca1-4传递samChuCod给Master、slave
+</li>
+<li>本次开发，将测试与程序结合在一起，加强测试；比如：processorable的三个实现，get、set对象各有不同
+</li>
+<li>全同光栅裂开的判断
+</li>
+<li>硬件上一定要保证探头信号的宽度
+</li>
+<li>参数设置只能在数据查询状态进行 wrong/
+</li>
+<li>利用跳线判定系统是单板还是双板
+</li>
+</ul>
+
+</li>
+<li>090907
+<ul>
+<li>确定cpu采用f120，16通道数据全部放在内存，comm存储器只保存上升，下降沿
+</li>
+</ul>
+
+</li>
+<li>090911
+<ul>
+<li>for循环全部使用sizeof. wrong/
+</li>
+</ul>
+
+</li>
+<li>090913
+<ul>
+<li>spi方式，1路滑窗操作1路需9.0mS
+</li>
+<li>doMasData 1路需6ms.doSlaData 1路需7mS
+</li>
+</ul>
+
+</li>
+<li>090916
+<ul>
+<li>整体时序ok，pca每两周期处理一个通道，一次采样，一次滤波
+</li>
+<li>sla，每周期取一个store的一个信道
+</li>
+<li>mater，每周期取mas的一个store的一个信道，取sla的一个store的一个信道
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 第二次迭代开发日志</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li>Fri Apr  2 09:18:47     2010
+<ul>
+<li>第二次迭代开始
+</li>
+<li>重新设计时序图、cpu流程
+</li>
+<li>processorMas类设置光开关，processSla类读取光开关.
+</li>
+<li>processorMas类P6.0 &sim; P6.3设为推挽输出，processSla类P6.0 &sim; P6.3设为漏极开
+     路.
+</li>
+<li>processorPca类在正程的奇数从store读取光开关位置.如与现有光开关位置不一致，清除
+     对应通道ready.
+</li>
+<li>processorSla类逆程通过IO读取光开关位置.如与现有光开关位置不一致，在store写入新
+     的光开关位置，不存取数据.
+</li>
+<li>processorMas类在正程如有切换请求，不做任何数据处理；逆程如有切换请求，在store
+     写入光开关位置，不做任何数据处理.
+</li>
+<li>光开关类编写request、response方法，record查询发出raySwitch的request请
+     求，processorMas在正程调用raySwitch的response方法.
+</li>
+<li>从板不焊接U606，直接短接，用于sla使用IO方式读取光开关位置.
+</li>
+<li>ad温度测量只有18引脚连接，19引脚未连接，且18引脚采出来的温度有40度，估计分压电
+     阻不合适.程序将增益改为1，温度值为16度，合适.
+</li>
+</ul>
+
+</li>
+<li>Sat Apr  3 10:09:58     2010
+<ul>
+<li>pca读取光开关与现有光开关位置不一致，不需要清记录，因为每次取完数都将ready置
+     false.
+</li>
+<li>mas切换光开关时，要将dataBase的chunnel所有ready置false
+</li>
+<li>mas切换光开关应放到逆程.
+</li>
+<li>sla读取光开关应放到正程.
+</li>
+<li>raySwitch的request方法，请求通道光开关位置与现有不一致，立即设置
+      raySwitch-&gt;status,pStatus-&gt;switchState，并清除通道记录.
+</li>
+<li>record的request方法不记录以前的请求
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span>...
+<span class="linenr"> 2:  </span>  <span class="org-comment-delimiter">// </span><span class="org-comment">raySwitch&#30340;request&#26041;&#27861;&#65292;&#35831;&#27714;&#36890;&#36947;&#20809;&#24320;&#20851;&#20301;&#32622;&#19982;&#29616;&#26377;&#19981;&#19968;&#33268;&#65292;&#31435;&#21363;&#35774;&#32622;</span>
+<span class="linenr"> 3:  </span>  <span class="org-comment-delimiter">// </span><span class="org-comment">raySwitch-&gt;status,pStatus-&gt;switchState&#65292;&#24182;&#28165;&#38500;&#36890;&#36947;&#35760;&#24405;.</span>
+<span class="linenr"> 4:  </span>  cthis-&gt;state = state;
+<span class="linenr"> 5:  </span>  PDATABASE-&gt;pStatus-&gt;switchState = state;
+<span class="linenr"> 6:  </span>  chunnel = PDATABASE-&gt;chunnel;
+<span class="linenr"> 7:  </span>  <span class="org-keyword">for</span>(tmp=0;tmp&lt;CONFIG_CHUNNEL_GROUP;tmp++)
+<span class="linenr"> 8:  </span>  {
+<span class="linenr"> 9:  </span>    chunnel[tmp].probeNum = nul;
+<span class="linenr">10:  </span>    chunnel[tmp].status = <span class="org-constant">false</span>;
+<span class="linenr">11:  </span>  }        
+<span class="linenr">12:  </span>  cthis-&gt;status = TRUE;
+<span class="linenr">13:  </span>
+<span class="linenr">14:  </span>...
+<span class="linenr">15:  </span>
+<span class="linenr">16:  </span>  <span class="org-comment-delimiter">// </span><span class="org-comment">record&#30340;request&#26041;&#27861;&#19981;&#35760;&#24405;&#20197;&#21069;&#30340;&#35831;&#27714;</span>
+<span class="linenr">17:  </span>  syign = 0x0001;
+<span class="linenr">18:  </span>  sign &lt;&lt;= chuCod;
+<span class="linenr">19:  </span>  <span class="org-comment-delimiter">// </span><span class="org-comment">&#20197;&#21069; queCthis-&gt;request |= sign; </span>
+<span class="linenr">20:  </span>  queCthis-&gt;request = sign; 
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>2012年 03月 28日
+<ul>
+<li>加强异常数据容错
+</li>
+<li>毎个探头位置值必须大于前一个探头位置值
+</li>
+<li>位置值与上周期位置值差大于128，作为突跳夈件；连续突跳4次，才将数据存入滑
+      窗
+</li>
+</ul>
+
+</li>
+<li>2012年 05月 04日 星期五 09:20:24 CST
+<ul>
+<li>processorPca在逆程读到的光开关更改，清空目前存储器信道的状态和探头数
+</li>
+<li>processorMasIII收到光开关请求，清目前内存通道的状态和探头数，置切换标志，
+      doSomething判断标志，如标志是切换请求，不执行；正程开始时切换光开关，清切
+      换标志，清目前内存通道的状态和探头数
+</li>
+</ul>
+
+</li>
+<li>2012年 08月 03日 星期五 12:13:34 CST
+<ul>
+<li>解决探头数时多时少，探头数与数据不一至，右基准丢失或有两个一样的右基准
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-08-03 12:17:48 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

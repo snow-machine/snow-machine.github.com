@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>在debian上安装ctex</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="在debian上安装ctex"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-04-29 日"/>
+<meta name="author" content="the machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">在debian上安装ctex</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 安装texlive-full的问题</a></li>
+<li><a href="#sec-2">2 编译错误</a></li>
+<li><a href="#sec-3">3 安装ctex</a></li>
+<li><a href="#sec-4">4 缺少文件</a></li>
+<li><a href="#sec-5">5 难缠的配置</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 安装texlive-full的问题</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<ul>
+<li>安装ctex之前，先安装了texlive-full，配置时发现了问题
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">Running mktexlsr. This may take some time... done.
+Building format(s) --all.
+This may take some time... done.
+Running updmap-sys. This may take some time...
+updmap-sys failed. Output has been stored in
+/tmp/updmap.iTM10721
+Please include this file if you report a bug.
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>网上查了一下，与updmap.cfg 有关.打开一看/etc/texmf/updmap.d/10local.cfg，有一
+    段是
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">Map song.map
+Map wqyhei.map
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>这是我以前搞的一些map, 可能没有被系统找到哦，我把内容全部注释掉，重新运行
+    apt-get install texlive-full
+</li>
+<li>第一次死机了，关机再来，第二次问题解决
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 编译错误</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<ul>
+<li>texlive-full装完了，编译却发生问题
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">$ latex octave.tex
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7)
+latex: fatal: Could not undump 1 4-byte item(s).
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>百思不得其解，在网上查，有的说修改源代码，有的是说卸载texlive-full，安装
+    texlive
+</li>
+<li>在Debian Bug report logs - #197913，发现了解决办法
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">Is there a suggestion that I should be running 'fmutil -all' twice in
+jadetex postinst when the fmt cannot be dumped?
+
+&gt; sorry for the inconvenience but now tetex-bin has changed 
+&gt; the default answer to debconf question to <span class="org-string">"yes"</span> (i.e. turn on) 
+
+I'm glad to hear that, it's a more sane default.
+
+&gt; so I believe you can safely call update-fmtutil and <span class="org-string">"fmtutil -all"</span>
+
+No, the package needs to be installable whether these are configured
+to be on or off.  I think I have managed to do this with the newest
+jadetex package.
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 安装ctex</h2>
+<div class="outline-text-2" id="text-3">
+
+<ul>
+<li>在 CTAN 的镜象服务器上找到当前的发行版本（这里使用 CTeX 网站的镜象）：
+<ul>
+<li><a href="ftp://ftp.ctex.org/CTAN/language/chinese/ctex.zip">ftp://ftp.ctex.org/CTAN/language/chinese/ctex.zip</a>
+</li>
+</ul>
+
+</li>
+<li>获取源代码后，需要按照 TDS 目录结构重新组织源代码，然后按目录结构复制到发行版
+    中的本地 TEXMF 目录。例如，在 TeX Live 系统中，本地的 TEXMF 目录一般是
+<ul>
+<li><i>usr/share/texmf</i>
+</li>
+</ul>
+
+</li>
+<li>将 ctex 源码目录下的 doc 和 test 目录内容放在 TDS 的
+    <i>usr/share/texmf/doc/latex/ctex</i> 目录下；将其他目录放在 TDS 结构的
+    <i>usr/share/texmf/tex/latex/ctex</i> 目录下
+</li>
+<li>用sudo运行texhash
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 缺少文件</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<ul>
+<li>安装完ctex后，第一次编译，出现错误：
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">&#65285; &#25214;&#19981;&#21040;
+./engine/ctex-cjk-engine.def:11:  \RequirePackage{CJKpunct}[2009/05/06]
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>在<a href="http://ftp.dk.debian.org/ctan/language/chinese/cjkpunct/CJKpunct.sty">http://ftp.dk.debian.org/ctan/language/chinese/cjkpunct/CJKpunct.sty</a>，
+    放在/usr/share/texmf/tex/latex/ctex/ 目录下,问题解决
+
+</li>
+<li>再次编译，又缺少zhwinfonts.tex，下载后(地址在后面)，放在
+    <i>usr/share/texmf/tex/latex/ctex</i> 目录下,问题解决
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">./fontset/ctex-cjk-winfonts.def:5:  \AtBeginDvi{\input{zhwinfonts}}
+
+http://code.google.com/p/ctex-kit/source/browse/trunk/chinese-fonts/\...
+   tex/generic/zhmetrics/zhwinfonts.tex?r=142
+
+\ifCTEX@zhmap
+  \AtBeginDvi{\input{zhwinfonts}}
+\fi
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 难缠的配置</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<ul>
+<li>zhwinfonts.tex
+<ul>
+<li>好像是和标点有关，用不着，全部屏蔽
+</li>
+</ul>
+
+</li>
+<li>ctex调用层次：
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">ctex-common.def-&gt;ctex-cjk-engine.def-&gt;ctex-cjk-winfonts.def-&gt;zhwinfonts.tex
+                          |
+                          v
+                      CJKpunct.sty
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>对应字体
+<ul>
+<li>ctex 宏包默认使用 winfonts 选项，如果不使用其他选项修改字体配置，则需要操作
+      系统中安装有中文 Windows 操作系统自带的四种 TrueType 字体：宋体、黑体、仿宋
+      体、楷体。字体文件名为 sinsun.ttc, sinhei.ttf, simfang.ttf, simkai.ttf，字
+      体名随不同 Windows 版本可能会有区别。
+</li>
+<li>我的系统己安装有song(simsun)，wqyhei(wqy-zenhwi),simkai(simkai)三种字体，
+      需要和crex的字体对应上
+
+</li>
+<li>/usr/share/texmf/tex/latex/ctex/fd/c70rm.fd 修改：
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">\DeclareFontFamily{C70}{rm}{\hyphenchar \font\m@ne}
+\DeclareFontShape{C70}{rm}{m}{n}{&lt;-&gt; CJK * song}{} % unisong
+\DeclareFontShape{C70}{rm}{b}{n}{&lt;-&gt; CJK * wqyhei}{} % unihei
+\DeclareFontShape{C70}{rm}{bx}{n}{&lt;-&gt; CJK * wqyhei}{} % unihei 
+\DeclareFontShape{C70}{rm}{m}{sl}{&lt;-&gt; CJK * song}{} % unisong
+\DeclareFontShape{C70}{rm}{b}{sl}{&lt;-&gt; CJK * wqyhei}{} % unihei 
+\DeclareFontShape{C70}{rm}{bx}{sl}{&lt;-&gt; CJK * wqyhei}{} % unihei 
+\DeclareFontShape{C70}{rm}{m}{it}{&lt;-&gt; CJK * simkai}{} % unikai
+\DeclareFontShape{C70}{rm}{b}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold} % unikai
+\DeclareFontShape{C70}{rm}{bx}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold} % unikai
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>/usr/share/texmf/tex/latex/ctex/fd/c70sr.fd 修改：
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">\DeclareFontFamily{C70}{sf}{\hyphenchar \font\m@ne}
+\DeclareFontShape{C70}{sf}{m}{n}{&lt;-&gt; CJK * simkai}{} ; uniyou
+\DeclareFontShape{C70}{sf}{b}{n}{&lt;-&gt; CJKb * simkai}{\CJKbold} ; uniyou
+\DeclareFontShape{C70}{sf}{bx}{n}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+\DeclareFontShape{C70}{sf}{m}{sl}{&lt;-&gt; CJK * simkaisl}{}
+\DeclareFontShape{C70}{sf}{b}{sl}{&lt;-&gt; CJKb * simkaisl}{\CJKbold}
+\DeclareFontShape{C70}{sf}{bx}{sl}{&lt;-&gt; CJKb * simkaisl}{\CJKbold}
+\DeclareFontShape{C70}{sf}{m}{it}{&lt;-&gt; CJK * simkai}{}
+\DeclareFontShape{C70}{sf}{b}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+\DeclareFontShape{C70}{sf}{bx}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>/usr/share/texmf/tex/latex/ctex/fd/c70tt.fd 修改：
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-list">\DeclareFontFamily{C70}{tt}{\hyphenchar \font\m@ne} ; unifs
+\DeclareFontShape{C70}{tt}{m}{n}{&lt;-&gt; CJK * simkai}{} ; unifs
+\DeclareFontShape{C70}{tt}{b}{n}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+\DeclareFontShape{C70}{tt}{bx}{n}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+\DeclareFontShape{C70}{tt}{m}{sl}{&lt;-&gt; CJK * simkaisl}{}
+\DeclareFontShape{C70}{tt}{b}{sl}{&lt;-&gt; CJKb * simkaisl}{\CJKbold}
+\DeclareFontShape{C70}{tt}{bx}{sl}{&lt;-&gt; CJKb * simkaisl}{\CJKbold}
+\DeclareFontShape{C70}{tt}{m}{it}{&lt;-&gt; CJK * simkai}{}
+\DeclareFontShape{C70}{tt}{b}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+\DeclareFontShape{C70}{tt}{bx}{it}{&lt;-&gt; CJKb * simkai}{\CJKbold}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-04-29 日</p>
+<p class="author">Author: the machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

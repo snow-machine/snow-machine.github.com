@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>658-02B-A</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="658-02B-A"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-05-04 11:20:09 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">658-02B-A</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 658-02B-A</a>
+<ul>
+<li><a href="#sec-1-1">1.1 devolep journal</a></li>
+<li><a href="#sec-1-2">1.2 658-02B-A两种电路</a></li>
+<li><a href="#sec-1-3">1.3 解调单元丛板数据在通道切换时，有时没有跟着变化</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 658-02B-A</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li>2011-09-20 二
+</li>
+</ul>
+
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> devolep journal</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ol>
+<li>2010-11-16
+<ul>
+<li>发现上位机一个问题，波长界面获取的探头数有误,(DE)探头报文与(DC)通道报文的探头
+      号与探头数位置不一样程，Trim.c序里获取探头数达到100多，发现并修改
+</li>
+</ul>
+
+</li>
+<li>2010-11-17
+<ul>
+<li>优化程序，在dataBase.c displayVibration.c displayInfo.c serailDisplay.c serialRecord.c
+       factoey.c 加入#pragma OT(8),程序从61.6K减为56.9K,运行测试程序通过
+</li>
+</ul>
+
+</li>
+<li>2010-11-18
+<ul>
+<li>确定新的波长计算算法，使用awg线性部分，剔除非线性部分
+</li>
+</ul>
+
+</li>
+<li>2010-11-19
+<ul>
+<li>确定awg客户端参数存储方式，存储器内波长均使用3个字节，修改以前的存储器存储方式
+</li>
+</ul>
+
+</li>
+<li>2010-11-22
+<ul>
+<li>awg中心波长、各项参数连续存储，程序时序不变，每个周期判断awg更改状态change，只保
+      存一个信道数据.
+</li>
+<li>开机为awg信道设置初值，并设置awg的update状态，每个周期从store更新一个信道数据.
+</li>
+<li>完成开机从存储器读取参数，并重新计算awg参数
+</li>
+</ul>
+
+</li>
+<li>2010-11-23
+<ul>
+<li>波长计算算法效果达到预期效果，验证算法通过
+</li>
+</ul>
+
+</li>
+<li>2010-11-24
+<ul>
+<li>2010-11-24 验证补偿算法，在高噪声情况下，起到补偿的作用，信道交点处波长
+      跳变18pm，补偿算法验证通过
+</li>
+</ul>
+
+</li>
+<li>2010-11-25
+<ul>
+<li>2010-11-25 完成awg中心波长设置，上位机xsl导入导出
+</li>
+</ul>
+
+</li>
+<li>2011-07-27
+<ul>
+<li>光开关控制，P6.0~P6.6控制光开关
+</li>
+<li>P6.0与P6.4设置时反向，目的是兼顾1*2光开关
+</li>
+<li>P6.5 P6.6控制1*2光开关，用于主备切换，01 10两种
+</li>
+<li>与658-02B-NEW不同，P6.4 P6.5控制1*2光开关，用于主备切换 00 01两种
+</li>
+</ul>
+
+</li>
+<li>2011-08-03
+<ul>
+<li>修改波长计算方法
+</li>
+</ul>
+
+</li>
+<li>2011-09-25
+<ul>
+<li>发现算法重大问题
+</li>
+<li>功率比应为：
+        S = (P<sub>k</sub> - P<sub>k+1</sub>)/((P<sub>k&gt</sub>;P<sub>k+1</sub>)?P<sub>k</sub>:P<sub>k+1</sub>)
+</li>
+</ul>
+
+</li>
+<li>2012-05-04
+<ul>
+<li>最终程序是demodulate-new，不是demodulate
+</li>
+<li>demodulate-new用的是P6.1判断火灾还是解调，demodulate是用P7.1判断火灾还是
+        解调，用P6.1是最后状态
+</li>
+<li>从cvs中删除demodulate，只留demodulate-new，更改为demodulate
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 658-02B-A两种电路</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li>硬件分为：300万为代表的老658-02B-A，光开关在P6.0-P6.5，P6.0
+     与P6.3始终反向，awg是否接满跳线和火灾报警在P7.0,P7.1
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr">1:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">AWG&#31867;&#22411;&#21028;&#26029;</span>
+<span class="linenr">2:  </span><span class="org-type">sbit</span> <span class="org-variable-name">PROCESSOR_AWG_TYPE</span> = P7^0;
+<span class="linenr">3:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#31995;&#32479;&#26159;&#28779;&#28798;&#25253;&#35686;&#22120; &#25110; &#35299;&#35843;&#22120;</span>
+<span class="linenr">4:  </span><span class="org-type">sbit</span> <span class="org-variable-name">PROCESSOR_ATARM_DEMODULATE</span> = P7^1;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+        惠州为代表的新658-02B-A，光开关在P7.0-P7.2，awg是否接满跳
+        线和火灾报警在P6.0,P6.1
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr">1:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">AWG&#31867;&#22411;&#21028;&#26029;</span>
+<span class="linenr">2:  </span><span class="org-type">sbit</span> <span class="org-variable-name">PROCESSOR_AWG_TYPE</span> = P6^0;
+<span class="linenr">3:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#31995;&#32479;&#26159;&#28779;&#28798;&#25253;&#35686;&#22120; &#25110; &#35299;&#35843;&#22120;</span>
+<span class="linenr">4:  </span><span class="org-type">sbit</span> <span class="org-variable-name">PROCESSOR_ATARM_DEMODULATE</span> = P6^1;
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 解调单元丛板数据在通道切换时，有时没有跟着变化</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>问题：丛板数据存在铁电，没有及时存入
+</li>
+<li>定位： <i>processorSl.c</i> 的 <i>doData</i> 函数没有必要和
+      <i>proessorMa.c</i> 一样逐步递减 <i>switchChange</i>
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="linenr"> 1:  </span><span class="org-comment-delimiter">// </span><span class="org-comment">&#22788;&#29702; &#35835;&#20889;comm_store</span>
+<span class="linenr"> 2:  </span><span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">doData</span>()
+<span class="linenr"> 3:  </span>{
+<span class="linenr"> 4:  </span>  <span class="org-comment-delimiter">// </span><span class="org-comment">&#22914;&#20809;&#24320;&#20851;&#21464;&#26356;&#26631;&#24535;&#20026;TRUE&#65292;&#23558;&#26631;&#24535;&#32622;&#20026;FALSE</span>
+<span class="linenr"> 5:  </span>  <span class="org-keyword">if</span> (_pStatus-&gt;switchChange&gt;0x00)
+<span class="linenr"> 6:  </span>  {
+<span class="linenr"> 7:  </span>    _pStatus-&gt;switchChange = 0x00;
+<span class="linenr"> 8:  </span>    <span class="org-comment-delimiter">// </span><span class="org-comment">&#21518;&#32493;&#29366;&#24577; </span>
+<span class="linenr"> 9:  </span>    _pStatus-&gt;workStatus = DATABASE_PRO_WOR_WAIT;
+<span class="linenr">10:  </span>    <span class="org-keyword">return</span>;
+<span class="linenr">11:  </span>  }
+<span class="linenr">12:  </span>  ...
+<span class="linenr">13:  </span>}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-05-04 11:20:09 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>Gtk总结</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Gtk总结"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-08-22 10:35:00 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">Gtk总结</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 了解gtk</a>
+<ul>
+<li><a href="#sec-1-1">1.1 类型转换</a></li>
+<li><a href="#sec-1-2">1.2 callback函数</a></li>
+<li><a href="#sec-1-3">1.3 clipboad应用</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 了解gtk</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  <a href="http://www.gtk.org">GTK(Gimp ToolKit)</a>厡本是图像处理软件GIMP(GNU Image Manipulation Program)的开发
+  工具箱，后来发展成跨平台的图形介面开发套件，GTK基于c语言，也可以使用c++、java、
+  PHP、Perl、Python、Ruby等语言撰写GTK程序。
+</p>
+<p>
+  GTK一般使用c语言来撰写，c语言不支持面向对象，但GTK使用一些方式，支持一点面向对
+  象概念。GTK以结构体(struct)模拟类(class)；新建类用gtk_xxx_new(type)的方式；使
+  用函数名区分毎组类的方法，与GtkWindow相关的方法，都以gtk_window开
+  头，如要设置window的标题，使用:
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c">gtk_window_set_title(GTK_WINDOW(window), <span class="org-string">"awareness"</span>);
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+  gtk_window_set_title第一个参数接受GtkWindow指针，通过这种方式，一组公用方法就专
+  属GtkWindow类使用了。
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 类型转换</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+  GTK的类中只有数据，没有方法，调用相关方法要传递类指针；由于没有多态概念，传入
+  的指针必须转换为指定类型，如GTK_WINDOW，把指针转换为GtkWindow类型：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c">gtk_window_set_title(GTK_WINDOW(window), <span class="org-string">"awareness"</span>);
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+  GTK_WINDOW是一个宏，用来进行指针类型转换，定义如下
+  gtkwindow.h(<i>usr/include/gtk-2.0/gtk</i>)中：   
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="org-preprocessor">#define</span> <span class="org-function-name">GTK_WINDOW</span>(<span class="org-variable-name">obj</span>)                                                       
+        (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_WINDOW, GtkWindow))     
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+  G_TYPE_CHECK_INSTANCE_CAST宏定义在GLib的
+  gtype.h(<i>usr/include/glib-2.0/gobject</i>)中：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="org-preprocessor">#define</span> <span class="org-function-name">G_TYPE_CHECK_INSTANCE_CAST</span>(<span class="org-variable-name">instance</span>, <span class="org-variable-name">g_type</span>, <span class="org-variable-name">c_type</span>)
+    (_G_TYPE_CIC ((instance), (g_type), c_type))                      
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>                                                                              
+   G_TYPE_CHECK_INSTANCE_CAST宏会检查instance是否为g_type的一个实例，如果不是  
+   的话就发出警示讯息，若是的话就将指标转型为c_type型态。
+</p>
+<p>          
+   GTK实际上使用结构链接（link）的方式，GTK中的类继承关系如下：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">GObject                                                                       
+ +--GInitiallyUnowned                                                         
+     +-- GtkObject                                                            
+           +-- GtkWidget                                                      
+                 +-- GtkContainer                                             
+                       +-- GtkBin                                             
+                             +-- GtkWindow                                    
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+   G_TYPE_CHECK_INSTANCE_CAST就是根据这继承关系作转换的，在GTK定义中，毎个高
+   层次的类都会包含低层次类，如：
+</p>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="org-keyword">struct</span> <span class="org-type">_GtkWindow</span>
+{
+  <span class="org-type">GtkBin</span> <span class="org-variable-name">bin</span>;
+
+  gchar *GSEAL (title);
+  gchar *GSEAL (wmclass_name);
+  gchar *GSEAL (wmclass_class);
+  gchar *GSEAL (wm_role);
+
+  GtkWidget *GSEAL (focus_widget);
+  GtkWidget *GSEAL (default_widget);
+  GtkWindow *GSEAL (transient_parent);
+  GtkWindowGeometryInfo *GSEAL (geometry_info);
+  GdkWindow *GSEAL (frame);
+  GtkWindowGroup *GSEAL (group);
+
+  <span class="org-type">guint16</span> <span class="org-function-name">GSEAL</span> (configure_request_count);
+  <span class="org-type">guint</span> <span class="org-function-name">GSEAL</span> (allow_shrink) : 1;
+  <span class="org-type">guint</span> <span class="org-function-name">GSEAL</span> (allow_grow) : 1;
+  <span class="org-type">guint</span> <span class="org-function-name">GSEAL</span> (configure_notify_received) : 1;
+  ...
+}
+
+<span class="org-keyword">struct</span> <span class="org-type">_GtkContainer</span>                                                          
+{                                                                             
+  <span class="org-type">GtkWidget</span> <span class="org-variable-name">widget</span>;                                                           
+
+  <span class="org-type">GtkWidget</span> *<span class="org-variable-name">focus_child</span>;                                                     
+
+  guint border_width : 16;                                                    
+
+  <span class="org-jde-java-font-lock-javadoc">/*&lt; </span><span class="org-jde-java-font-lock-javadoc"><span class="org-constant">private</span></span><span class="org-jde-java-font-lock-javadoc"> &gt;*/</span>                                                             
+  guint need_resize : 1;                                                      
+  guint resize_mode : 2;                                                      
+  guint reallocate_redraws : 1;                                               
+  guint has_focus_chain : 1;                                                  
+};                                                                            
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget。
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> callback函数</h3>
+<div class="outline-text-3" id="text-1-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> clipboad应用</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>gtk_widget_get_clipboard：
+<ul>
+<li>Returns the clipboard object for the given selection to be used with
+       widget. widget must have a GdkDisplay associated with it, so must be
+       attached to a toplevel window.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c">GtkClipboard *gtk_widget_get_clipboard (GtkWidget *widget,
+                                        <span class="org-type">GdkAtom</span> <span class="org-variable-name">selection</span>);
+    <span class="org-constant">widget</span>&#160;:    a GtkWidget             
+
+               a <span class="org-type">GdkAtom</span> which identifies the clipboard <span class="org-type">to</span> <span class="org-variable-name">use</span>.                  
+    selection&#160;: GDK_SELECTION_CLIPBOARD gives the <span class="org-keyword">default</span> clipboard. Another      
+               common value is GDK_SELECTION_PRIMARY, <span class="org-variable-name">which</span> gives the primary X  
+               selection.
+
+               the appropriate clipboard object. If no clipboard already exists, 
+    <span class="org-variable-name">Returns</span>&#160;:   a new one will be created. Once a clipboard object has been       
+               created, <span class="org-variable-name">it</span> is persistent <span class="org-keyword">for</span> all time. . transfer none.          
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>gtk_clipboard_request_text:
+<ul>
+<li>Requests the contents of the clipboard as text. When the text is later
+       received, it will be converted to UTF-8 if necessary, and callback will
+       be called.
+</li>
+<li>The text parameter to callback will contain the resulting text if the
+       request succeeded, or NULL if it failed. This could happen for various
+       reasons, in particular if the clipboard was empty or if the contents of
+       the clipboard could not be converted into text form.
+</li>
+<li>注意，callback是GtkClipboardTextReceivedFunc类型，调用
+       gtk_clipboard_request_text，必须定义和实现callback函数
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-c"><span class="org-type">void</span> <span class="org-function-name">gtk_clipboard_request_text</span>(<span class="org-type">GtkClipboard</span> *<span class="org-variable-name">clipboard</span>,
+                                <span class="org-type">GtkClipboardTextReceivedFunc</span> <span class="org-variable-name">callback</span>,
+                                <span class="org-type">gpointer</span> <span class="org-variable-name">user_data</span>);
+    <span class="org-constant">clipboard</span>&#160;: a <span class="org-type">GtkClipboard</span>                                                    
+
+    <span class="org-variable-name">callback</span>&#160;:  a function to call when the text is received, <span class="org-function-name">or</span> the retrieval    
+                fails. (It will always be called one way or <span class="org-type">the</span> <span class="org-variable-name">other</span>.)           
+    user_data&#160;: user data to pass to callback.                                    
+
+<span class="org-type">void</span> (*GtkClipboardTextReceivedFunc) (GtkClipboard *clipboard,
+                                      <span class="org-keyword">const</span> <span class="org-type">gchar</span> *<span class="org-variable-name">text</span>,
+                                      <span class="org-type">gpointer</span> <span class="org-variable-name">data</span>);
+    <span class="org-constant">clipboard</span>&#160;: <span class="org-type">the</span> <span class="org-type">GtkClipboard</span>                                                  
+
+    <span class="org-variable-name">text</span>&#160;:      the text received, <span class="org-variable-name">as</span> a UTF-8 encoded string, <span class="org-function-name">or</span> <span class="org-constant">NULL</span> <span class="org-keyword">if</span>          
+                retrieving the data failed.                                       
+    data&#160;:      the user_data supplied to gtk_clipboard_request_text().           
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>window size:
+<ul>
+<li>gtk<sub>window</sub><sub>set</sub><sub>default</sub><sub>size</sub>:
+<ul>
+<li>这是window初始化时的大小，可以缩小，放大，文档中称为"default size"
+</li>
+<li>如果"natural size"(gtk<sub>widget</sub><sub>set</sub><sub>size</sub><sub>request</sub>)大于"default size"，初始
+         化时使用"natural size"
+</li>
+</ul>
+
+</li>
+<li>gtk<sub>widget</sub><sub>set</sub><sub>size</sub><sub>request</sub>:
+<ul>
+<li>这是window最小的大小，不可以再缩小了
+</li>
+</ul>
+
+</li>
+<li>gtk<sub>window</sub><sub>set</sub><sub>geometry</sub><sub>hints</sub>:
+<ul>
+<li>更复杂的window size控制，以后再说&hellip;
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-08-22 10:35:00 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>latex 编码</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="latex 编码"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:49 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">latex 编码</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 编码</a>
+<ul>
+<li><a href="#sec-1-1">1.1 错误再现和分析</a></li>
+<li><a href="#sec-1-2">1.2 解决之道</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 方法1.</a></li>
+<li><a href="#sec-1-2-2">1.2.2 方法2.</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 编码</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+系统环境
+Debian stable
+en_US.UTF8
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 错误再现和分析</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>在此环境下，编辑一个 tex 输入文件，使用中文 CJK 宏包，并选用 GBK/GB 字符集。
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-latex"><span class="linenr">1:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\documentclass</span></span>[<span class="org-variable-name">a4paper,12pt</span>]{<span class="org-function-name">article</span>}
+<span class="linenr">2:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\usepackage</span></span>{<span class="org-function-name">CJK</span>}
+<span class="linenr">3:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">document</span>}
+<span class="linenr">4:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">CJK*</span>}{GB}{gbsn}
+<span class="linenr">5:  </span>  &#20320;&#22909;&#65281;
+<span class="linenr">6:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\end</span></span>{<span class="org-function-name">CJK*</span>}
+<span class="linenr">7:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\end</span></span>{<span class="org-function-name">document</span>}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+然后保存退出，用 pdflatex GB_sample.tex 一下，会发现系统报错，说什么“未定义的字体”之类（当然原文是英文的）。
+出现这一错误的原因是，系统环境是 en_US.UTF8，因此编辑文件时所用的字符都默认为 UTF-8 字符集
+中的文字，而不是 GBK 字符。因此用 pdflatex 想要得到正确的 pdf 文件是不可能的！
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 解决之道</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>知道了产生错误的原因，就可以很容易地解决它了。一共有两种方法可以解决这个问题。
+</p>
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 方法1.</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>把文件中的字符从 UTF-8 转换成 gb2312 就可以了。使用的工具是 iconv，这个工具大多数 Linux 发行版都有的。
+iconv -f utf8 -t gb2312 GB_sample.tex &gt; test.tex
+pdflatex test.tex
+这样就能得到正确的 pdf 文件
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 方法2.</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<p>直接使用 CJKutf8 宏包。由于我的环境是 en_US.UTF8 的环境，所以用 CJKutf8 是最适合我的。这样就免去了再进行编码转化的麻烦。
+而且如果你的 latex 中需要出现一点繁体的话，用这个宏包就再好不过了。
+</p>
+<p>
+范例：
+</p>
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-latex"><span class="linenr">1:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\documentclass</span></span>[<span class="org-variable-name">a4paper,12pt</span>]{<span class="org-function-name">article</span>}
+<span class="linenr">2:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\usepackage</span></span>{<span class="org-function-name">CJKutf8</span>}
+<span class="linenr">3:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">document</span>}
+<span class="linenr">4:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">CJK*</span>}{UTF8}{gbsn}
+<span class="linenr">5:  </span>  &#20320;&#22909;&#65281;
+<span class="linenr">6:  </span><span class="org-font-latex-sedate">\CJKfamily</span>{bsmi}
+<span class="linenr">7:  </span>  &#20013;&#22269;&#65281;
+<span class="linenr">8:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\end</span></span>{<span class="org-function-name">CJK*</span>}
+<span class="linenr">9:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\end</span></span>{<span class="org-function-name">document</span>}
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<p>
+然后保存为 UTF8_sample.tex，再用 pdflatex UTF8_sample.tex 就可以得到正确的 pdf 文件了。
+而且 pdf 文件中，还能看到繁体中文。
+</p>
+<p>
+在默认安装 latex-cjk 的情况下，latex 中只有四个免费的中文字体可以用，分别是
+gbsn（简体宋）、gkai（简体楷）、bsmi（繁体宋）、bkai（繁体楷）
+如果想得到黑体输出之类的话，就要自己添加字体了。这个我以后有空会研究一下的，网上也有方法，有兴趣的话可以自己先用 google 搜索着看看。
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 总结</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>{CJK} 环境下，中文字符后面会自动加上空格和 newline（换行符），
+而 {CJK*} 环境则不会这么做。
+这两种环境，可以用
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-latex"><span class="linenr">1:  </span><span class="org-font-latex-sedate">\CJKspace</span>      CJK*----&gt;CJK
+<span class="linenr">2:  </span><span class="org-font-latex-sedate">\CJKnospace</span>    CJK-----&gt;CJK*
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+来临时切换。一般推荐使用 CJK* 环境。否则在排版一些比较复杂的文档，比如数学公式时，可能会出现莫名其妙的错误。
+</p>
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-sh">* \CJKtilde
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<p>
+这个用于把‘~’的定义从一个不可打断的空格变为一个 CJK 字符的 1/4 大小的空格。这样就
+能在中文字符之间插入英文字符或者其它非中文字符，而又不会引起中文字体的变形、错位
+等情形。尤其是在 \hbox 这种命令中成为重要。在 bibTex 中，要用‘{~}’代替‘~’。用
+\standardtilde 可以让‘~’恢复原来的定义。不过一般而言没有必要这么做的。你可以用
+\nbs（non-breakabel space，laTex 命令 \nonbreakspace 的缩写）来生成一个不可打断的
+空格。
+</p>
+<p>
+我的意见是，一定要在开头使用上 \CJKtilde，这样把英文放在两个‘~’之间。用‘~’来代替原来想要输入的空格，
+如：
+</p>
+<p>
+“你好~China~，这样在中英文溷排时，就不至于出现字符错位之类的问题。”
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:49 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

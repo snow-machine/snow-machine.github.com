@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>486-02E</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="486-02E"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-03-27 21:27:59 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">486-02E</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 486-02E</a>
+<ul>
+<li><a href="#sec-1-1">1.1 第一迭代 &sim; 第三迭代开发日志</a></li>
+<li><a href="#sec-1-2">1.2 第四迭代 &sim; 第五迭代开发日志</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 486-02E</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 第一迭代 &sim; 第三迭代开发日志</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ol>
+<li>Oct 16 13:13:27     2009
+<ul>
+<li>修改时序，速度1KHZ!
+</li>
+</ul>
+
+</li>
+<li>Thu Oct 22 13:14:21     2009
+<ul>
+<li>storeSpi-遗留clear方法!
+</li>
+<li>需要完善客户端以xls方式导入awg参数?  
+</li>
+</ul>
+
+</li>
+<li>Sat Oct 24 09:44:06     2009
+<ul>
+<li>storeIoCol.c-getSlip增加判断条件!
+</li>
+<li>修改计算波长算法?      
+</li>
+</ul>
+
+</li>
+<li>Mon Oct 26 13:06:04     2009
+<ul>
+<li>编写读写Comm<sub>store？</sub>
+</li>
+<li>完善测试？测试时间?
+</li>
+<li>编写单通道、循环检测?
+</li>
+</ul>
+
+</li>
+<li>Mon Nov  2 16:31:14     2009
+<ul>
+<li>validate.h增加验证采样值？
+</li>
+</ul>
+
+</li>
+<li>Tue Nov 3 10:59:45 2009  
+<ul>
+<li>storeSpiTest.c testMaGetSlData L243 只能测通switchState!=0    
+</li>
+<li>control.c t2时间只有在测试时才开!
+</li>
+</ul>
+
+</li>
+<li>Wed Nov  4 09:52:47     2009
+<ul>
+<li>processorMa 不响应逆程？
+</li>
+</ul>
+
+</li>
+<li>Mon Nov  9 14:20:11     2009
+<ul>
+<li>processorSl doDisplay()先做updateMessage 再循环发送数据！
+</li>
+<li>显示与复原放在一个周期里
+</li>
+</ul>
+
+</li>
+<li>Tue Nov 10 15:19:23     2009
+<ul>
+<li>displayLcd.c&ndash;chunnel  ！
+</li>
+<li>lcdCycVibration.c&ndash;ptobe  ！
+</li>
+</ul>
+
+</li>
+<li>Wed Nov 11 14:17:42     2009
+<ul>
+<li>lcdCycVibration&ndash;增加当前中心波长？
+</li>
+</ul>
+
+</li>
+<li>Fri Dec 18 17:51:00     2009
+<ul>
+<li>查询通道无探头，是否应返回提示报文？
+</li>
+<li>循环报文，通道都无探头，是否应返回提示报文？
+</li>
+</ul>
+
+</li>
+<li>Mon Dec 21 15:39:41     2009
+<ul>
+<li>serialRecoed.c-setSpeed and getSpeed
+</li>
+<li>recordCyc.h   -add mul state
+</li>
+<li>lcdCycVibration-增加历史数据回放？
+</li>
+<li>vibration &amp; wave &amp; slip 共用存储区?
+</li>
+</ul>
+
+</li>
+<li>Tue Dec 22 09:25:18     2009
+<ul>
+<li>update 486-02E tex-mul add 0xFF
+</li>
+<li>完善serialRecord.c串口接收
+</li>
+<li>rm ST<sub>END</sub> for serialDisplay.c
+</li>
+<li>更改Lcd光谱擦除、显示方式?
+</li>
+<li>reply方式query&lt;0x41都可
+</li>
+<li>record.h make change to update
+</li>
+<li>much wrong processorSl.c-doRecord
+</li>
+</ul>
+
+</li>
+<li>Wed Dec 23 15:50:25     2009
+<ul>
+<li>recordMulCyc格式,少atten
+</li>
+<li>第四次迭代文档修改-报文表格
+</li>
+<li>合并displayLcd的coninPause+comeinSend to setStatus
+</li>
+<li>displayLcd的pBuffer-&gt;lenght=make后,可取消
+</li>
+<li>record\dispalyLcd 合并一个接口?
+</li>
+</ul>
+
+</li>
+<li>Fri Dec 25 11:27:38     2009
+<ul>
+<li>修改时序，record改为定时发送，定时700微秒?YESss!
+</li>
+</ul>
+
+</li>
+<li>Mon Dec 28 14:43:40     2009
+<ul>
+<li>修改时序，修改时序，查询在master，lcd显示在slave? NOoo!
+</li>
+<li>增加光开关类
+</li>
+</ul>
+
+</li>
+<li>Tue Dec 29 09:45:37     2009
+<ul>
+<li>由于ma不能切换光开关，lcd不能触发光开关切换，开机默认是全通道循环all
+</li>
+<li>如接入设备（包含上位机），lcd显示将会不正常，必须重新开机或设备（上位机）上设lcd显示按钮
+</li>
+<li>去掉lcd波长振动界面，加强上位机、削弱lcd显示?
+</li>
+<li>recordallcyc速度由 CONFIG<sub>SWITCH</sub><sub>SPEED决定</sub>
+</li>
+<li>去除recordMulCyc类?
+</li>
+<li>storeIoCol存入0x00，storeSpi读出为0xFF, switchState?
+</li>
+<li>record发送少atten
+</li>
+<li>ad cpu 应该也连上P7，光开关，以便读取光开关位置
+</li>
+<li>多通道使用逐步累加通道方式
+</li>
+<li>去除写入ma采样值
+</li>
+<li>ma sl 都切换光开关
+</li>
+<li>加强lcd的波长振动
+</li>
+</ul>
+
+</li>
+<li>Thu Dec 31 11:27:32     2009
+<ul>
+<li>ma 写入波长衰减后，chunnel-&gt;statue set false,计算完波长衰减后，chunnel-&gt;status
+       set true
+</li>
+<li>rm storeIoCol set function!
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 第四迭代 &sim; 第五迭代开发日志</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ol>
+<li>Fri Jan  1 22:35:28     2010
+<ul>
+<li>只能由MA控制光开关
+</li>
+<li>修改时序，写操作契约
+</li>
+<li>光开关位置地址0x500
+</li>
+</ul>
+
+</li>
+<li>Sun Jan  3 11:32:48     2010
+<ul>
+<li>recordCyc - all -&gt;mul
+</li>
+<li>查看record发出的lenght是否*0x04
+</li>
+</ul>
+
+</li>
+<li>Mon Jan  4 10:45:30     2010
+<ul>
+<li>测试时序主要工作时间
+</li>
+<li>修改架构，record displayLcd合一
+</li>
+<li>上位机选择除1K,不刷新探头数
+</li>
+</ul>
+
+</li>
+<li>Tue Jan  5 11:56:51     2010
+<ul>
+<li>上位机切换到2通道，有错误数据
+</li>
+<li>简化record接口
+</li>
+<li>简化processoe接口 getImmanence getExternal
+</li>
+<li>raySwitch-doTurn&ndash;response!!
+</li>
+<li>RECORD<sub>STATUS</sub><sub>PAUSE</sub> 不需要
+</li>
+<li>displayBuffer  - sendBuffer 合并
+</li>
+<li>makeDis-  - makeRec- 合并
+</li>
+<li>dataBase-makeRecProbe似乎数据长度为0x06
+</li>
+</ul>
+
+</li>
+<li>Wed Jan  6 10:10:14     2010
+<ul>
+<li>// 复原数据状态 可以去掉
+</li>
+<li>#define DATABASE<sub>SIMULATE</sub><sub>STOP</sub>                 \
+</li>
+<li>0x00
+</li>
+<li>ma-display放在取光开关之前，发出高级响应，make数据
+</li>
+</ul>
+
+</li>
+<li>Fri Jan  8 09:34:55     2010
+<ul>
+<li>通讯cpu与采样cpu之间，通过29～32连接，传递光开关位置
+</li>
+</ul>
+
+</li>
+<li>Sun Jan 10 13:21:14     2010
+<ul>
+<li>lcd设置问题，不能使用编号0，因为上传码有0
+</li>
+<li>lcd info wave 首界面不能有通道选择
+</li>
+</ul>
+
+</li>
+<li>Thu Jan 14 00:19:24     2010
+<ul>
+<li>探头界面 停止
+</li>
+<li>探头界面 动态更新波长
+</li>
+<li>探头界面 坐标与波形对不准，80-middle
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-19 星期二 
+<ul>
+<li>doGetSlip           &ndash;240
+</li>
+<li>maSetmaData    &ndash;230
+</li>
+<li>maGetSlData     &ndash;140
+</li>
+<li>docalculator       &ndash;330
+</li>
+<li>doSimProbeData&ndash;150
+</li>
+<li>doSimClean       &ndash;70
+</li>
+<li>doSimRand        &ndash;220
+</li>
+<li>doSimVibData    &ndash;860
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-20 星期三 
+<ul>
+<li>doGetSlip           &ndash;240
+</li>
+<li>maSetmaData    &ndash;230
+</li>
+<li>maGetSlData     &ndash;140
+</li>
+<li>docalculator       &ndash;330
+</li>
+<li>doSimProbeData&ndash;150
+</li>
+<li>doSimClean       &ndash;70
+</li>
+<li>doSimRand        &ndash;220
+</li>
+<li>doSimVibData    &ndash;190
+</li>
+<li>lcd波长界面，还是丢从板数据!
+</li>
+<li>增加控制时判断store状态!
+</li>
+<li>现有时序Ma正程放弃comm<sub>store时，已用500微秒以上，</sub>
+        造成sl在逆程与ma同时控制comm<sub>store</sub>,引起时序溷乱，
+</li>
+<li>解决1：增加控制comm<sub>store判断状态，如发现有cpu控制，</sub>
+        主动放弃
+</li>
+<li>解决2：sl-逆程读光开关位置后，如没有光开关请求，打开延时时序，延时100微秒
+        再打开comm<sub>store；如有光开关请求，不用开延时，因为后面不用打开comm</sub><sub>store</sub>
+</li>
+<li>这样处理后，在信息界面不再出现，  造成sl在逆程与ma同时控制comm<sub>store情况。</sub>
+        但是在光谱与波长界面还是出现，说明有复原数据后，现有周期不足以满足lcd显示要求，
+        需要增加时序时间。
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-21 星期四 
+<ul>
+<li>试验：将扫描周期加宽到1.5ms，观察
+        ma和sl控制store的现象没有了；但是ma正程扫描信号来临时，系统状态是display，经
+        分析发现，makeSimBuffer的浮点数运算耗时太多，占用整个周期，改为乘整数。此问题
+        不用修改，在光谱界面只是造成系统速度减半而已！不用为了有lcd而改动扫描
+        周期！
+</li>
+<li>根据跳线判断，是否执行lcd显示及复原数据?
+</li>
+<li>上位机波长界面去掉横坐标，改为与单片机一样的滑动显示方式，只需5000点?
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-22 星期五 
+<ul>
+<li>决定有lcd和无lcd不修改扫描周期，软件能自动适应，根据跳线判断有无lcd；有lcd的系统频率降低到500HZ，
+        无lcd的系统频率是1K。
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-23 星期六 
+<ul>
+<li>sl执行完取采样值，开启定时，定时400微秒后，进入读取光开关位置状态
+</li>
+<li>ad正程开始进入读取关闭光开关位置，顺序执行，在写入光开关位置前控制store,这样才
+</li>
+</ul>
+
+<p>      能保证一个周期执行完采样、滤波、写入滤波值，其中滤波耗时最大，大约600微秒
+</p><ul>
+<li>现在整个系统都不依赖与正逆程，只依赖于扫描周期
+</li>
+<li>ma不在正程开始控制comm<sub>store，而在取交换数据前控制comm</sub><sub>store</sub>
+</li>
+<li>sl不在读光开关位置前控制comm<sub>store</sub>,而在取ma波长衰减前控制comm<sub>store</sub>
+</li>
+<li>ad似乎可以执行顺序：滤波&ndash;写入滤波值&ndash;采样，?
+</li>
+<li>需要整理修改后的程序？
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-25 星期一 
+<ul>
+<li>ma似乎可以把生成lcd显示报文放在写入ma波长衰减之后？
+</li>
+<li>sl似乎可以使用与ma一样的发送方式?
+</li>
+<li>测试全探头时序
+</li>
+<li>sl执行完取采样值，开启定时，定时300微秒后，进入读取光开关位置状态
+</li>
+<li>测试1K整个周期执行，结论：当探头数小于等于10，整个系统运行在1K频率下，超过10个
+        探头，&gt;8的探头频率是500HZ
+</li>
+<li>修改control定时10微秒
+</li>
+<li>去掉了pca0的逆程响应，0x31-0x21
+</li>
+<li>ad与sl冲突，尤其在无探头的通道时，但ad与ma没有冲突，sl与ma的区别仅在于sl有一路
+        ad的store坏了，换store应该就好了.不是的！
+</li>
+<li>发现一个大问题，sl与本板的ad时序是反的，前面ad与sl冲突,但ad与ma不冲突问题找到
+        了,ad应该把写滤波数据放在滤波之后.
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-26 星期二 
+<ul>
+<li>发现大问题：ad采样完8个信道，没有及时关闭tim3，造成第一个信道值有时变成第8信道
+        数据
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-27 星期三 
+<ul>
+<li>程序改为带lcd，光谱界面scan发生状态错误，work<sub>status</sub>= DATABASE<sub>PRO</sub><sub>WOR</sub><sub>SLIP</sub>
+</li>
+<li>displayInfo 去掉了update = false
+</li>
+<li>vibration make=true 不执行复原
+</li>
+<li>上位机波长界面探头数出现太慢
+</li>
+<li>上位机波长界面范围默认太宽
+</li>
+<li>上位机光谱界面停止时，点滚动条居然能运行一下】
+</li>
+<li>上位机保存波形成图片，格式为第一个，再次保存，出现异常
+</li>
+<li>上位机光谱界面最大最小波长应与lcd一致
+</li>
+<li>lcd光谱界面放大后位置，放大后波长坐标有问题
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-28 星期四 
+<ul>
+<li>lcd光谱界面有时sl探头闪动
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-01-30 星期六 
+<ul>
+<li>无lcd时序，探头号小于8的，在奇数周期传送，探头号大于等于8的，在偶数周期传送
+</li>
+<li>有lcd时序，探头号小于8的，在周期%3==1传送，探头号大于等于8的，在周期%3==2传
+        送，lcd显示在周期%3==0
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-02-01 星期一 
+<ul>
+<li>为保证1K的解调指标，需更改时序，ma做通讯，sl做显
+        示；sl不需要多快的速度，ma每周期固定传送4个探头数据，每周期固定传送4个信道采样
+        值，分4个周期传送完一个通道；ma保证不管多少探头都能达到1K，sl每周期将16个信道数据
+        存入store，每周期只取8个探头数据，8个ma信道数据，分2个周期取到一个ma通道数据；如
+        有lcd，分4个周期取到一个ma通道数据。
+</li>
+<li>ma报文发送使用并行方式，在计算波长衰减时，同时开始，直至ma正程开始，大概可有
+        600微秒，可以传送60个字节.No!
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-02-04 星期四 
+<ul>
+<li>修改计算波长算法，两个信道加起来大于D00
+</li>
+<li>传递run<sub>debug</sub>
+</li>
+</ul>
+
+</li>
+<li>当前日期: 2010-02-08 星期一 
+<ul>
+<li>修改计算波长算法，用比例法 ok
+</li>
+<li>lcd光谱界面闪动,ma通讯时产生 ok
+</li>
+<li>加入ad光开关连线
+</li>
+</ul>
+
+</li>
+<li>Tue Feb 23 17:10:34     2010
+<ul>
+<li>上位机解决了：关闭时异常；关闭setup后，窗体退到任务栏
+</li>
+<li>上位机问题：双击标题栏，界面会最大化；波信导出成图片，emf格式两次保存一个名字，会
+        出现异常
+</li>
+<li>使用2根光开关连线到ad，先做4通道
+</li>
+</ul>
+
+</li>
+<li>Wed Feb 24 09:36:18     2010
+<ul>
+<li>上位机遗留：信息导出成excel,txt,pdf
+</li>
+<li>编写通用高速串口助手
+</li>
+</ul>
+
+</li>
+<li>Thu Feb 25 12:13:25     2010
+<ul>
+<li>上位机波长界面：导出功能,excel,txt,pdf
+</li>
+<li>光谱、波长导出成图片，gif，pnp,bmp
+</li>
+</ul>
+
+</li>
+<li>Mon Mar  8 15:47:24     2010
+<ul>
+<li>486-02E Super Info、Wave等应保存为本类型而不是Form
+</li>
+</ul>
+
+</li>
+<li>Mon Mar 15 09:02:40     2010
+<ul>
+<li>发现02E报文协议有问题，查询报文应与658系列一致，41H-&gt;31H
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-03-27 21:27:59 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

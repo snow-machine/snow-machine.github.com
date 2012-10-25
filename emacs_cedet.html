@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8" xml:lang="utf-8">
+<head>
+<title>cedet</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="cedet"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-04-27 21:30:18 CST"/>
+<meta name="author" content="machine of awareness"/>
+<meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet"
+                     href="css/core.css"
+                     type="text/css">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div class="nav">
+  <ul> Menu
+    <li><a href="#">top</a></li>
+    <li><a href="index.html">index</a></li>
+  </ul>
+</div>
+
+<div id="content">
+<h1 class="title">cedet</h1>
+
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 cedet升级到1.1版</a></li>
+<li><a href="#sec-2">2 加载c-mode出错</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> cedet升级到1.1版</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<ul>
+<li>2012-04-20发现了cedet升级到了1.1版，立刻下载编译
+</li>
+<li>ecb提示只兼容cedet版本 1.0.6pre ~ 1.0.9，在ecb-upgrade.el下找到
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">all needs for the requirements check</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">TODO: Klaus Berndl &lt;<a href="mailto:klaus.berndl&#64;sdm.de">klaus.berndl&#64;sdm.de</a>&gt;: maybe we should set this to pre6</span>
+(<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-min</span> '(1 0 2 6))
+(<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-max</span> '(1 0 4 9))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>改成，支持到cedet1.1.4.9
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">all needs for the requirements check</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">TODO: Klaus Berndl &lt;<a href="mailto:klaus.berndl&#64;sdm.de">klaus.berndl&#64;sdm.de</a>&gt;: maybe we should set this to pre6</span>
+(<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-min</span> '(1 0 2 6))
+(<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-max</span> '(1 1 4 9))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+<ul>
+<li>运行jdee时出现：“JDEE requires a version of CEDET between 1.0beta2 and 1.0
+    (found 1.1beta)”的错误
+</li>
+<li>配置jde运行时不进行版本检查 
+</li>
+</ul>
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp">(jde-check-version-flag nil)) 
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 加载c-mode出错</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<ul>
+<li>load-file一个c文件，提示“File mode specification error:
+    (wrong-type-argument stringp 1)”
+</li>
+<li>设置： M-x customize-variable debug-on-error &ndash;&gt; always，再次load-file一个c文
+    件，提示
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp">Debugger entered--Lisp error: (wrong-type-argument stringp 1)
+string-match(<span class="org-string">"\n"</span> 1 0)
+split-string(1 <span class="org-string">"\n"</span>)
+semantic-cpp-defs(1)
+semantic-gcc-setup()
+byte-code(<span class="org-string">"&#8;&#25;\306\307 BC\310\311..."</span>)
+semantic-default-c-setup()
+run-hooks(c-mode-common-hook c-mode-hook)
+apply(run-hooks (c-mode-common-hook c-mode-hook))
+run-mode-hooks(c-mode-common-hook c-mode-hook)
+c-mode()
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+<ul>
+<li>可以看出，是加载c-mode时调用c-mode-hook，查看"C-h v c-mode-hook",看到内容
+    是：(semantic-default-c-setup cscope:hook)
+</li>
+<li>加载semantic-default-c-setup出错，定位到semantic-cpp-defs函数内
+</li>
+<li>查看"C-h f semantic-cpp-defs"，定位到semantic-gcc.el
+</li>
+<li>semantic-cpp-defs(1)，第一句，(let ((lines (split-string str "\n"))，判断str
+    是数字1，报出string-match("\n" 1 0)第二个参数，wrong-type-argument
+</li>
+<li>问题是传到semantic-cpp-defs的参数应该是个字符串，怎么是个数字1？
+</li>
+<li>暂且不管问题怎么产生的，在semantic-cpp-defs中加一个判断，避开这个问题
+</li>
+</ul>
+
+
+
+
+<div class="emacs-outer">
+<div class="emacs-title-right">
+<div class="emacs-title-left">
+<div class="emacs-cont-left">
+<div class="emacs-cont-right">
+<div class="emacs-footer-right">
+<div class="emacs-footer-left">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">TODO 120422</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">change by a machine of awareness</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">(defun semantic-cpp-defs (str)</span>
+<span class="org-comment-delimiter">;;   </span><span class="org-comment">"Convert CPP output STR into a list of cons cells with defines for C++."</span>
+<span class="org-comment-delimiter">;;   </span><span class="org-comment">(let ((lines (split-string str "\n"))</span>
+<span class="org-comment-delimiter">;;         </span><span class="org-comment">(lst nil))</span>
+<span class="org-comment-delimiter">;;     </span><span class="org-comment">(dolist (L lines)</span>
+<span class="org-comment-delimiter">;;       </span><span class="org-comment">(let ((dat (split-string L)))</span>
+<span class="org-comment-delimiter">;;         </span><span class="org-comment">(when (= (length dat) 3)</span>
+<span class="org-comment-delimiter">;;           </span><span class="org-comment">(add-to-list 'lst (cons (nth 1 dat) (nth 2 dat))))))</span>
+<span class="org-comment-delimiter">;;      </span><span class="org-comment">lst))</span>
+(<span class="org-keyword">defun</span> <span class="org-function-name">semantic-cpp-defs</span> (str)
+  <span class="org-doc">"Convert CPP output STR into a list of cons cells with defines for C++."</span>
+  (<span class="org-keyword">let</span> ((lines nil)
+        (lst nil))
+    (<span class="org-keyword">if</span> (not (numberp str))
+        (setq lines (split-string str <span class="org-string">"\n"</span>)))
+    (<span class="org-keyword">dolist</span> (L lines)
+      (<span class="org-keyword">let</span> ((dat (split-string L)))
+        (<span class="org-keyword">when</span> (= (length dat) 3)
+          (add-to-list 'lst (cons (nth 1 dat) (nth 2 dat))))))
+    lst))
+</pre>
+</div></div></div></div></div></div></div>
+
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2012-04-27 21:30:18 CST</p>
+<p class="author">Author: machine of awareness</p>
+<p class="creator">Org version 7.8.06 with Emacs version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
