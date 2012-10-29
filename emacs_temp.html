@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="emacs学习"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:16 CST"/>
+<meta name="generated" content="2012-10-29 09:53:56 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -535,22 +535,137 @@ M-e             org-forward-sentence
 <div class="outline-text-2" id="text-6">
 
 <ul>
-<li>操作
+<li>flag标记与mark标记
+    flag标记用于删除文件(`x')操作，mark标记用于其他操作；有flag标记的文件前显示
+    `D'，有mark标记的文件前显示`*'；文件只能有一个标记，flag或mark
 <ul>
-<li>n &lt;SPC&gt; C-n：dired-next-line，p C-p：dired-previous-line
+<li>`d'(dired-flag-file-deletion)：给当前文件置`flag'
 </li>
-<li>d(dired-flag-file-deletion)：标定删除，u(dired-unmark)：取消删除标定
+<li>`#'：给所有自动保存文件置`flag'
 </li>
-<li>&lt;DEL&gt;(dired-unmark-backward)：移到上一行，并取消删除标定
+<li>`~'：给所有备份文性置`flag'
 </li>
-<li>x(dired-do-flagged-delete)：删除已标定的文件
+<li>`% &amp;'：给所有废弃文件置`flag'，如.toc .log .aux(latex中的临时文件)，废弃
+      文件由变量`dired-garbage-files-regexp'定义，默认值是
+      "\\(?:\\.\\(?:aux\\|bak\\|dvi\\|log\\|orig\\|rej\\|toc\\)\\)\\'"
 </li>
-<li>
+<li>`% d REGEXP &lt;RET&gt;'：给所有匹配正则表达式的文件置`flag'
+</li>
+<li>`x'(dired-do-flagged-delete)：删除有`flag'的文件
+</li>
+<li>`m' `* m'：给当前文件置`mark'
+</li>
+<li>`* *'：给所有可执行文件置`mark'
+</li>
+<li>`* @'：给所有symbolic links文件置`mark'
+</li>
+<li>`* /'：给所有文件夹置`mark'
+</li>
+<li>a`* s'：给所有文件和文件夹置`mark'，除了`.'和`..'文件夹
+</li>
+<li>`t'`* t'(dired-toggle-marks)：所有没有`mark'的文件，置`mark',所有已有
+      `mark'的文件，取消`mark'
+</li>
+<li>`% m REGEXP &lt;RET&gt;'`* % REGEXP &lt;RET&gt;'：给所有匹配正则表达式的文件置`mark'，
+      与`% d'类似，只是`% m'置的是`mark'，`% d'置的是`flag'
+</li>
+<li>`% g REGEXP &lt;RET&gt;'：给所有内容匹配正则表达式的文件置`mark'
+</li>
+<li>`C-x u'`C-<sub>'`C</sub>-/'：撤消上次标记操作
+</li>
+<li>`u'`* u'(dired-unmark)：取消当前文件标记
+</li>
+<li>`U'`* !'：取消所有文件标记
+</li>
+<li>`&lt;DEL&gt;'`* &lt;DEL&gt;'(dired-unmark-backward)：移到上一行，并取消`flag'或mark
 </li>
 </ul>
 
 </li>
-<li>
+<li>文件操作
+<ul>
+<li>n &lt;SPC&gt; C-n：dired-next-line，p C-p：dired-previous-line
+</li>
+<li>`* C-n'`M-}'(dired-next-marked-file)：移到下一个已有标记的文件
+</li>
+<li>`* C-p'`M-{'(dired-prev-marked-file)：移到上一个已有标记的文件
+</li>
+<li>`f' `e' `&lt;RET&gt;'：访问文件，类似于`C-x C-f'
+</li>
+<li>`o'：在另一个window中打开文件，类似于`C-x 4 C-f'
+</li>
+<li>`v'：以只读方式打开文件
+</li>
+<li>`i'：显示子目录
+</li>
+<li>`<sup>'：访问父目录</sup>
+</li>
+<li>`g'：刷新Dired buffer
+</li>
+</ul>
+
+</li>
+<li>命令
+    命令如有前缀参数N，命令操作从当前文件开始的N个文件；如果有文件
+    有`mark'标记，操作所有`mark'标记的文件；否则操作当前文件
+<ul>
+<li>`k'：隐藏文件
+</li>
+<li>`C NEW &lt;RET&gt;'(dired-to-copy)：复制文件，相当于shell cp命令
+</li>
+<li>`D'(dired-do-delete)：删除文件，相当于shell rm命令
+</li>
+<li>`R NEW &lt;RET&gt;'(dired-do-rename)：重命名文件，相当于shell mv命令
+</li>
+<li>`H NEW &lt;RET&gt;'(dired-do-hardlink)：建立hardlink文件，相当于shell ln命令
+</li>
+<li>`S NEW &lt;RET&gt;'(dired-do-symlink)：建立symlink文件，相当于shell ln -s命令
+</li>
+<li>`M MODESPEC &lt;RET&gt;'(dired-do-chmod)：修改文件权限，相当于shell chmod命令
+</li>
+<li>`G NEWGROUP &lt;RET&gt;'(dired-do-chgrp)：修改文件群组，相当于shell chgrp命令
+</li>
+<li>`O NEWOWNER &lt;RET&gt;'(dired-do-chown)：修改文件所有者，相当于shell chown命令
+</li>
+<li>`T TIMESTAMP &lt;RET&gt;'(dired-do-touch)：更改文件的修改时间，相当于shell touch
+      命令
+</li>
+<li>`L'(dired-do-load)：加载emacs lisp文件
+</li>
+<li>`B'(dired-do-byte-compile)：编译emacs lisp文件
+</li>
+<li>`A REGEXP &lt;RET&gt;'(dired-do-search)：在文件内容中搜索匹配正则表达式，类似于
+      `tags-search'命令，光标停在搜索成功位置，用`M-,'继续搜索
+</li>
+<li>`Q REGEXP &lt;RET&gt;'(dired-do-query-replace-regexp)：在文件中搜索替换，类似于
+      `tags-query-replace'，每次替换都询问，用`M-,'继续搜索替换
+</li>
+<li>`M-s a C-s'(dired-do-isearch)：在多个文件中搜索
+</li>
+<li>`M-s a M-C-s'(dired-do-isearch-regexp)：在多个文件中搜索匹配正则表头式
+</li>
+<li>`w'(dired-copy-filename-as-kill)：将有mark的文件名复制到kill ring中
+</li>
+</ul>
+
+</li>
+<li>子目录操作
+    当Dired buffer中有子目录显示，以下命令用于目录之间移动
+<ul>
+<li>`C-M-n'：移到下一个目录
+</li>
+<li>`C-M-p'：移到下一个目录
+</li>
+<li>`C-M-u'：移到父目录
+</li>
+<li>`C-M-d'：移到第一个子目录
+</li>
+<li>`$'：隐藏或显示当前目录内容
+</li>
+<li>`M-$'：隐藏或显示所有目录内容
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -599,7 +714,6 @@ M-e             org-forward-sentence
 </li>
 </ul>
 
-
 </div>
 
 </div>
@@ -619,7 +733,7 @@ M-e             org-forward-sentence
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:16 CST</p>
+<p class="date">Date: 2012-10-29 09:53:56 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
