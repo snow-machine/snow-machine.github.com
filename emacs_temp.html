@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="emacs学习"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-29 09:53:56 CST"/>
+<meta name="generated" content="2012-10-30 08:58:21 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -128,7 +128,8 @@
 </li>
 <li><a href="#sec-6">6 dired</a></li>
 <li><a href="#sec-7">7 bookmark</a></li>
-<li><a href="#sec-8">8 github</a></li>
+<li><a href="#sec-8">8 version control</a></li>
+<li><a href="#sec-9">9 github</a></li>
 </ul>
 </div>
 </div>
@@ -521,7 +522,20 @@ M-e             org-forward-sentence
 </ul>
 
 </li>
-<li>dired中，按Q
+<li>dired中
+<ul>
+<li>`A REGEXP &lt;RET&gt;'(dired-do-search)：在文件内容中搜索匹配正则表达式，类似于
+      `tags-search'命令，光标停在搜索成功位置，用`M-,'继续搜索
+</li>
+<li>`Q REGEXP &lt;RET&gt;'(dired-do-query-replace-regexp)：在文件中搜索替换，类似于
+       `tags-query-replace'，每次替换都询问，用`M-,'继续搜索替换
+</li>
+<li>`M-s a C-s'(dired-do-isearch)：在多个文件中搜索
+</li>
+<li>`M-s a M-C-s'(dired-do-isearch-regexp)：在多个文件中搜索匹配正则表头式
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -719,8 +733,52 @@ M-e             org-forward-sentence
 </div>
 
 <div id="outline-container-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> github</h2>
+<h2 id="sec-8"><span class="section-number-2">8</span> version control</h2>
 <div class="outline-text-2" id="text-8">
+
+<ul>
+<li>~revert mode 需要了解
+</li>
+<li>~Filesets 需要了解
+</li>
+<li>~Change Log 需要了解
+</li>
+<li>~Hooks 需要了解
+</li>
+<li>`C-x v v'(vc-next-action)：提交修改。emacs弹出*VC-Log*，请求你输入提交信息，
+    再按`C-c C-c'(log-edit-done)确认提交；在*VC-Log*中，按`C-c
+    d'(log-edit-show-diff)，显示文件修改情况
+</li>
+<li>`C-u C-x v v'：如果文件未修改，恢复指定版本；文件已修改，建立分支
+</li>
+<li>`C-x v ~ REVERSION &lt;RET&gt;'(vc-revision-other-window)：提取文件以前的版本
+</li>
+<li>`C-x v ='(vc-diff)：显示当前文件相对版本库的修改
+</li>
+<li>`C-u C-x v = &lt;RET&gt; OLDVERS &lt;RET&gt; NEWVERS &lt;RET&gt;'：显示两个版本的修改
+</li>
+<li>`C-x v g'(vc-annotate)：建立一个新的buffer，毎行用顔色区分是哪个版本加入的，
+    毎行开头显示建立的版本号。在annotate buffer中，按`p'：显示上一个版本
+    annotate，`n'：显示下一版本annotate，`j'：跳到当前行对应的版本，`a'：显示当
+    前行版本之前annotate，`f'：提取当前行对应版本，`d'：显示当前行版本与上一版本
+    的修改，`D'：显示当前行版本与上一版本，库里所有文件修改情况，`l'：显示当前行
+    版本log，`w'：显示最新版本annotate，`v'：显示或消除毎行版本号
+</li>
+<li>`C-x v i'(vc-register)：在库中加入文件
+</li>
+<li>`C-x v l'(vc-print-log)：显示文件所有log
+</li>
+<li>`C-x v d'(vc-dir)：显示目录中所有文件修改情况
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> github</h2>
+<div class="outline-text-2" id="text-9">
 
 <ul>
 <li>用git clone git@github.com:mojombo/mojombo.github.com.git命令克隆，应该不用毎
@@ -733,7 +791,7 @@ M-e             org-forward-sentence
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2012-10-29 09:53:56 CST</p>
+<p class="date">Date: 2012-10-30 08:58:21 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
