@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="emacs学习"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-30 08:58:21 CST"/>
+<meta name="generated" content="2012-11-20 17:41:17 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -117,19 +117,22 @@
 <li><a href="#sec-3-3">3.3 C-x C-n (set-goal-column)</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4 清理buffer中的空格、空行</a></li>
-<li><a href="#sec-5">5 搜索与替换</a>
+<li><a href="#sec-4">4 搜索与替换</a>
 <ul>
-<li><a href="#sec-5-1">5.1 当前buffer中的搜索</a></li>
-<li><a href="#sec-5-2">5.2 当前buffer中的regexp搜索</a></li>
-<li><a href="#sec-5-3">5.3 当前buffer中的替换</a></li>
-<li><a href="#sec-5-4">5.4 多个文件中的搜索</a></li>
+<li><a href="#sec-4-1">4.1 当前buffer中的搜索</a></li>
+<li><a href="#sec-4-2">4.2 当前buffer中的regexp搜索</a></li>
+<li><a href="#sec-4-3">4.3 当前buffer中的替换</a></li>
+<li><a href="#sec-4-4">4.4 多个文件中的搜索</a></li>
 </ul>
 </li>
+<li><a href="#sec-5">5 快速切换buffer</a></li>
 <li><a href="#sec-6">6 dired</a></li>
 <li><a href="#sec-7">7 bookmark</a></li>
 <li><a href="#sec-8">8 version control</a></li>
-<li><a href="#sec-9">9 github</a></li>
+<li><a href="#sec-9">9 tags</a></li>
+<li><a href="#sec-10">10 faces</a></li>
+<li><a href="#sec-11">11 program</a></li>
+<li><a href="#sec-12">12 github</a></li>
 </ul>
 </div>
 </div>
@@ -163,13 +166,7 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">Major Mode Bindings Starting With ESC:
 key             binding
 ---             -------
@@ -180,8 +177,6 @@ M-a             org-backward-sentence
 M-e             org-forward-sentence
 ...
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
@@ -283,77 +278,21 @@ M-e             org-forward-sentence
 </li>
 </ul>
 
-
 </div>
 </div>
 
 </div>
 
 <div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 清理buffer中的空格、空行</h2>
+<h2 id="sec-4"><span class="section-number-2">4</span> 搜索与替换</h2>
 <div class="outline-text-2" id="text-4">
 
-<ul>
-<li>常从w3m中复制c代码，毎行后面都跟着很多的空格，有时行与行之间有很多空行。
-
-</li>
-<li>去除一行后面多余空格，只留一个空格，可以用`ESC SPC',去除行与行之间多余空行，
-    只留一个空行，可以用`delete-blank-lines'。
-
-</li>
-<li>但毎一行这样做很麻烦，我想自动处理整个buffer，实现
-<ol>
-<li>去除一行后面多余空格，只留一个空格
-</li>
-<li>去除行与行之间多余空行，只留一个空行 
-</li>
-</ol>
-
-</li>
-</ul>
-
-
-
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">clean buffer  </span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">machine-clean-buffer</span> ()  
-   <span class="org-doc">"&#21435;&#38500;&#19968;&#34892;&#21518;&#38754;&#22810;&#20313;&#31354;&#26684;&#65292;&#21482;&#30041;&#19968;&#20010;&#31354;&#26684;&#65307;&#21435;&#38500;&#34892;&#19982;&#34892;&#20043;&#38388;&#22810;&#20313;&#31354;&#34892;&#65292;&#21482;  </span>
-<span class="org-doc">&#30041;&#19968;&#20010;&#31354;&#34892;."</span>  
-   (interactive)  
-   (<span class="org-keyword">save-excursion</span>  
-     (goto-char (point-min))  
-     <span class="org-comment-delimiter">;; </span><span class="org-comment">&#21028;&#26029;&#22810;&#20010;&#31354;&#34892;</span>
-     (<span class="org-keyword">while</span> (re-search-forward <span class="org-string">"^[ \t]*\n[ \t]*$"</span> nil t)  
-       (delete-blank-lines)  
-       (forward-line))  
-     (goto-char (point-min))  
-     (<span class="org-keyword">while</span> (re-search-forward <span class="org-string">".$"</span> nil t)  
-       (just-one-space))))  
-</pre>
-</div></div></div></div></div></div></div>
-
-
 
 </div>
 
-</div>
-
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 搜索与替换</h2>
-<div class="outline-text-2" id="text-5">
-
-
-</div>
-
-<div id="outline-container-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 当前buffer中的搜索</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 当前buffer中的搜索</h3>
+<div class="outline-text-3" id="text-4-1">
 
 <ul>
 <li>`C-s' `C-r'，向前，向后搜索，光标移跟着移动。如`C-s FOO'，光标移到FOO后面
@@ -400,9 +339,9 @@ M-e             org-forward-sentence
 
 </div>
 
-<div id="outline-container-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 当前buffer中的regexp搜索</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 当前buffer中的regexp搜索</h3>
+<div class="outline-text-3" id="text-4-2">
 
 <ul>
 <li>用regexp-builder可以方便的测试正则表达式
@@ -452,9 +391,9 @@ M-e             org-forward-sentence
 
 </div>
 
-<div id="outline-container-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> 当前buffer中的替换</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 当前buffer中的替换</h3>
+<div class="outline-text-3" id="text-4-3">
 
 <ol>
 <li>M-x replace-string &lt;RET&gt; foo &lt;RET&gt; bar &lt;RET&gt;
@@ -489,9 +428,9 @@ M-e             org-forward-sentence
 
 </div>
 
-<div id="outline-container-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> 多个文件中的搜索</h3>
-<div class="outline-text-3" id="text-5-4">
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> 多个文件中的搜索</h3>
+<div class="outline-text-3" id="text-4-4">
 
 <ul>
 <li>M-x multi-occur &lt;RET&gt; BUFFERS &lt;RET&gt; REGEXP &lt;RET&gt;
@@ -540,6 +479,20 @@ M-e             org-forward-sentence
 </ul>
 
 </div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 快速切换buffer</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li>iswitchb-mode：进入iswitchb模式，用`C-x b'开启(iswitchb-buffer)，`C-s'：将第
+    一个buffer放到最后，`C-r'：将最后一个buffer移到最前
+</li>
+</ul>
+
 </div>
 
 </div>
@@ -739,11 +692,7 @@ M-e             org-forward-sentence
 <ul>
 <li>~revert mode 需要了解
 </li>
-<li>~Filesets 需要了解
-</li>
-<li>~Change Log 需要了解
-</li>
-<li>~Hooks 需要了解
+<li>~program 需要了解
 </li>
 <li>`C-x v v'(vc-next-action)：提交修改。emacs弹出*VC-Log*，请求你输入提交信息，
     再按`C-c C-c'(log-edit-done)确认提交；在*VC-Log*中，按`C-c
@@ -777,8 +726,125 @@ M-e             org-forward-sentence
 </div>
 
 <div id="outline-container-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> github</h2>
+<h2 id="sec-9"><span class="section-number-2">9</span> tags</h2>
 <div class="outline-text-2" id="text-9">
+
+<ul>
+<li>在shell中执行"etags *.[chCH]"，建立c源程序的TAGS
+</li>
+<li>`M-.'(find-tag)：找到函数定义，并跳到函数定义位置
+</li>
+<li>可以用`etags *.[chCH]'生成TAGS，但许多系统限制生成文件数目，一个简单的方式可
+    以绕过限制，`find . -name "*.[chCH]" -print | etags -'
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> faces</h2>
+<div class="outline-text-2" id="text-10">
+
+<ul>
+<li>(set-face-background &lt;RET &gt;FACE &lt;RET&gt; COLOR &lt;RET&gt;)：设置指定face的背景色
+</li>
+<li>(set-face-foreground &lt;RET &gt;FACE &lt;RET&gt; COLOR &lt;RET&gt;)：设置指定face的前景色
+</li>
+<li>高亮face：highlight isearch query-replace lazy-highlight region
+    secondary-selection trailing-whitespace nobreak-space escape-glyph
+</li>
+<li>用于frame外观的face：mode-line mode-line-inactive mode-line-highlight
+    mode-line-buffer-id header-line vertical-border minibuffer-prompt fringe
+    scroll-bar border cursor mouse tool-bar tooltip menu
+</li>
+<li>`C-x C-='`C-x C&ndash;'`C-x C-0'(text-scale-adjust)：增加/减小/还厡当前face的字体
+    大小
+</li>
+<li>font-lock-mode：辅助模式，用于各种主模式的显示加强，能识别出绝大多数编
+    程模式(cc-mode,java-mode,lisp-mode)的注释，函数，并以加强方式显示。
+    font-lock-mode使用几个face，如：font-lock-string-face font-lock-comment-face
+    等，可以使用`M-x customize-group &lt;ENT&gt; font-lock-faces &lt;ENT&gt;'修改faces
+</li>
+<li>highlight-changes-mode：辅助模式，文件的修改将显示为红色
+</li>
+<li>hi-lock-mode：辅助模式，`C-x w h'(highlight-regexp REGEXP &lt;RET&gt; FACE &lt;ENT&gt;),
+    指定匹配内容的face，`C-x w r'(unhighlight-regexp REGEXP &lt;RET&gt;):消除匹配内容
+    的face
+</li>
+<li>`M-o o'(facemenu-set-face)：修改region中的文字face，region必须是选中的。当buffer处
+    于font-lock-mode模式，修改会被font-lock-mode覆盖
+</li>
+<li>(facemenu-remove-all)：消除region中文字所有属性
+</li>
+<li>(describe-text-properties)：列出当前point指向文字的属性
+</li>
+<li>(list-faces-display)：列出所有faces
+</li>
+<li>(list-colors-display)：列出所有colors
+</li>
+<li>(facemenu-set-foreground)(facemenu-set-background)：设置region的顔色，如
+    region未指定，设置将输入文字的顔色
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> program</h2>
+<div class="outline-text-2" id="text-11">
+
+<ul>
+<li>`C-j'(newline-and-indent)：用于程序代码，不用不注释，不能在预处理后加`\'
+</li>
+<li>`M-j'(c-indent-new-comment-line)：用于程序代码，用于注释，不能在预处理后加`\'
+</li>
+<li>(c-context-line-break)：用于程序代码，用于注释，能在预处理后加`\'
+</li>
+<li>`C-M-a'：移到函数定义开始
+</li>
+<li>`C-M-e'：移到函数定义结束
+</li>
+<li>`C-M-h'：选中整个函数
+</li>
+<li>`imenu'：读取程序中的函数列表，imenu-add-menubar-index：在menu生成index
+</li>
+<li>`C-M-q'：以`{}'(c语言)，`()'(lisp语言)包围的语句块，光标放在第一个括号
+    处，按`C-M-q'，可缩进括号内的语句。lisp中对应命令indent-pp-sexp，c中对应命令
+    c-indent-exp
+</li>
+<li>`C-M-\'(indent-region)：根据上一行，缩进region中的语句
+</li>
+<li>(indent-code-rigidly)：不根据上一行，将region中的语句向右整体缩进
+</li>
+<li>`C-c C-q'(c-indent-defun)：自动缩进一个函数内部所有语句
+</li>
+<li>`M-;'：注释当前行插或注释region，如是region再次按`M-;'可取消注释
+</li>
+<li>`C-h S'(info-lookup-symbol)：在info中查看symbol
+</li>
+<li>(man/manual-entry)(woman)：用man/woman显示entry项
+</li>
+<li>(align)：自动整理一段文字(代码)，c程序中对齐等于号，括号等
+</li>
+<li>(toggle-selective-display)：根据(current-column)缩进或展开代码
+</li>
+<li>`C-x &lt;TAB&gt;'(indent-rigidly)：将region整体移动一个字符宽度
+</li>
+<li>`C-x r o'(open-rectangle)：将region文字整体向右，移动rectangle宽度
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> github</h2>
+<div class="outline-text-2" id="text-12">
 
 <ul>
 <li>用git clone git@github.com:mojombo/mojombo.github.com.git命令克隆，应该不用毎
@@ -786,12 +852,37 @@ M-e             org-forward-sentence
 </li>
 </ul>
 
-</div>
+
+
+
+<p>
+-name emacs\*-exec ls -ld {} \;
+</p></div>
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-30 08:58:21 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:17 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

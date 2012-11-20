@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Gtk总结"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:37 CST"/>
+<meta name="generated" content="2012-11-20 17:41:00 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -136,17 +136,9 @@
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c">gtk_window_set_title(GTK_WINDOW(window), <span class="org-string">"awareness"</span>);
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -167,17 +159,9 @@
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c">gtk_window_set_title(GTK_WINDOW(window), <span class="org-string">"awareness"</span>);
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -186,18 +170,10 @@
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="org-preprocessor">#define</span> <span class="org-function-name">GTK_WINDOW</span>(<span class="org-variable-name">obj</span>)                                                       
         (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_WINDOW, GtkWindow))     
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -206,18 +182,10 @@
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="org-preprocessor">#define</span> <span class="org-function-name">G_TYPE_CHECK_INSTANCE_CAST</span>(<span class="org-variable-name">instance</span>, <span class="org-variable-name">g_type</span>, <span class="org-variable-name">c_type</span>)
     (_G_TYPE_CIC ((instance), (g_type), c_type))                      
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>                                                                              
@@ -229,13 +197,7 @@
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">GObject                                                                       
  +--GInitiallyUnowned                                                         
      +-- GtkObject                                                            
@@ -244,8 +206,6 @@
                        +-- GtkBin                                             
                              +-- GtkWindow                                    
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -255,13 +215,7 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="org-keyword">struct</span> <span class="org-type">_GtkWindow</span>
 {
   <span class="org-type">GtkBin</span> <span class="org-variable-name">bin</span>;
@@ -300,8 +254,6 @@
   guint has_focus_chain : 1;                                                  
 };                                                                            
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -338,13 +290,7 @@ GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget�
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c">GtkClipboard *gtk_widget_get_clipboard (GtkWidget *widget,
                                         <span class="org-type">GdkAtom</span> <span class="org-variable-name">selection</span>);
     <span class="org-constant">widget</span>&#160;:    a GtkWidget             
@@ -358,8 +304,6 @@ GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget�
     <span class="org-variable-name">Returns</span>&#160;:   a new one will be created. Once a clipboard object has been       
                created, <span class="org-variable-name">it</span> is persistent <span class="org-keyword">for</span> all time. . transfer none.          
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <ul>
 <li>gtk_clipboard_request_text:
@@ -384,13 +328,7 @@ GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget�
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="org-type">void</span> <span class="org-function-name">gtk_clipboard_request_text</span>(<span class="org-type">GtkClipboard</span> *<span class="org-variable-name">clipboard</span>,
                                 <span class="org-type">GtkClipboardTextReceivedFunc</span> <span class="org-variable-name">callback</span>,
                                 <span class="org-type">gpointer</span> <span class="org-variable-name">user_data</span>);
@@ -409,8 +347,6 @@ GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget�
                 retrieving the data failed.                                       
     data&#160;:      the user_data supplied to gtk_clipboard_request_text().           
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
@@ -453,8 +389,28 @@ GtkWindow的成员有一个GtkBin，GtkContainer的成员中有一个GtkWidget�
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:37 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:00 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

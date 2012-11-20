@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="The difference between hard and soft links"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:36 CST"/>
+<meta name="generated" content="2012-11-20 17:40:59 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -142,20 +142,12 @@ The data part is associated with something called an 'inode'. The inode carries 
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">                       .---------------&gt; ! data ! ! data ! etc
                       /                  +------+ !------+
 ! permbits, etc ! data addresses !
 +------------inode---------------+
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -163,20 +155,12 @@ The filename part carries a name and an associated inode number.
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">                 .--------------&gt; ! permbits, etc ! addresses !
                 /                 +---------inode-------------+
 ! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
 +--------------------+
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -184,13 +168,7 @@ More than one filename can reference the same inode number; these files are said
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
 +--------------------+
                 <span class="org-sh-escaped-newline">\</span>
@@ -199,8 +177,6 @@ More than one filename can reference the same inode number; these files are said
 ! othername ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
 +---------------------+
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -213,13 +189,7 @@ the special file. This special file is called a 'soft link' or a 'symbolic link'
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">     ! filename ! inode <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
      +--------------------+
                      <span class="org-sh-escaped-newline">\</span>
@@ -247,8 +217,6 @@ the special file. This special file is called a 'soft link' or a 'symbolic link'
 <span class="org-string">  '</span>-&gt;  ! data !  ! data ! etc.
        +------+  +------+ 
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -292,13 +260,7 @@ ln in action
 Let's start off with an empty directory, and create a file in it
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ ls -lia 
 total 3
   73477 drwxr-xr-x   2 lpitcher users        1024 Mar 11 20:16 .
@@ -315,8 +277,6 @@ total 4
 ~/directory $ cat basic.file
 This is a file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -324,13 +284,7 @@ Now, let's make a hardlink to the file
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ ln basic.file hardlink.file
 
 ~/directory $ ls -lia 
@@ -343,8 +297,6 @@ total 5
 ~/directory $ cat hardlink.file
 This is a file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -361,13 +313,7 @@ We see that:
 If we change the permissions on basic.file:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ chmod a+w basic.file
 
 ~/directory $ ls -lia 
@@ -377,8 +323,6 @@ total 5
   73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 basic.file
   73478 -rw-rw-rw-   2 lpitcher users          15 Mar 11 20:17 hardlink.file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -392,13 +336,7 @@ have different file names.
 Let's now make a softlink to the original file:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ ln -s basic.file softlink.file
 
 ~/directory $ ls -lia 
@@ -412,8 +350,6 @@ total 5
 ~/directory $ cat softlink.file
 This is a file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -426,13 +362,7 @@ it exhibit the same file permissions. It does show a new permission bit: the 'l'
 If we delete basic.file:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ rm basic.file
 
 ~/directory $ ls -lia 
@@ -442,42 +372,24 @@ total 4
   73478 -rw-rw-rw-   1 lpitcher users          15 Mar 11 20:17 hardlink.file
   73479 lrwxrwxrwx   1 lpitcher users          10 Mar 11 20:24 softlink.file -&gt; basic.file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 then we lose the ability to access the linked data through the softlink:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr">1:  </span>~/directory $ cat softlink.file
 <span class="linenr">2:  </span>cat: softlink.file: No such file or directory
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 However, we still have access to the original data through the hardlink:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/directory $ cat hardlink.file
 This is a file
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -504,18 +416,10 @@ Have you ever found yourself in this position: you notice that /var/log/messages
 (or some other syslog-owned file) has grown too big, and you
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">rm /var/log/messages
 touch /var/log/messages
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -525,17 +429,9 @@ part open still (syslogd), and the OS won't release the space for the data until
 the process closes it. In order to complete your space reclamation, you have to
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh"><span class="org-builtin">kill</span> -SIGHUP <span class="org-sh-quoted-exec">`cat /var/run/syslogd.pid`</span>
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -546,13 +442,7 @@ You can use this to your advantage in programs: have you ever wondered how you
 could hide a temporary file? Well, you could do the following:
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr"> 1:  </span>{
 <span class="linenr"> 2:  </span>   <span class="org-type">FILE</span> *<span class="org-variable-name">fp</span>;
 <span class="linenr"> 3:  </span>
@@ -565,15 +455,33 @@ could hide a temporary file? Well, you could do the following:
 <span class="linenr">10:  </span>   fclose(fp); <span class="org-comment-delimiter">/* </span><span class="org-comment">finally release the data part </span><span class="org-comment-delimiter">*/</span>
 <span class="linenr">11:  </span>}
 </pre>
-</div></div></div></div></div></div></div>
-
 
 </div>
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:36 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:40:59 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="latex 安装字体"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:41 CST"/>
+<meta name="generated" content="2012-11-20 17:41:05 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -143,17 +143,9 @@
 执行下述命令完整安装TexLive和Latex宏包
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">sudo apt-get install texlive-full
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
@@ -169,51 +161,27 @@
 安装好TexLive+ latex CJK以后，还需要安装一个软件──fontforge用于生成字体：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">sudo apt-get install fontforge
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 生成字体前，请自己准备你需要生成的字体文件：simsun.ttc，simhei.ttf等，这里以simsun.ttc（宋体）为例。
 准备好后下载下面这个包，解压到一个地方，如自己的主目录~/backup/setup/font：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">http://code-of-tualatrix.googlecode.com/files/font.tar.bz2
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 然后把simsun.ttc也复制到~/backup/setup/font里去，执行下面的命令生成字体地图：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh"><span class="org-builtin">cd</span> ~/backup/setup/font
 <span class="org-keyword">time</span> fontforge -script subfonts.pe simsun.ttc song Unicode.sfd
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 加time是为了计算时间，因为比较耗时. 我花了一个小时生成song.
@@ -232,13 +200,7 @@
 在~/backup/setup/font下，建立一个makemap文件，内容如下：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh"><span class="org-keyword">for</span> i<span class="org-keyword"> in</span> *.tfm
 <span class="org-keyword">do</span>
 cat &gt;&gt; song.map &lt;&lt; EOF
@@ -246,36 +208,20 @@ cat &gt;&gt; song.map &lt;&lt; EOF
 <span class="org-sh-heredoc">EOF</span>
 <span class="org-keyword">done</span>
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 然后在终端下执行：chmod +x makemap让文件加上执行权限，最后执行：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">./makemap
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 再建立一个一个c70song.fd文件：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-latex"><span class="linenr">1:  </span><span class="org-comment-delimiter">% </span><span class="org-comment">This is c70song.fd for CJK package.</span>
 <span class="linenr">2:  </span><span class="org-comment-delimiter">% </span><span class="org-comment">created by Edward G.J. Lee</span>
 <span class="linenr">3:  </span><span class="org-comment-delimiter">% </span><span class="org-comment">modify by Yue Wang</span>
@@ -285,8 +231,6 @@ cat &gt;&gt; song.map &lt;&lt; EOF
 <span class="linenr">7:  </span><span class="org-font-latex-sedate">\DeclareFontShape</span>{C70}{song}{bx}{n}{&lt;-&gt; CJKb * song}{<span class="org-font-latex-sedate">\CJKbold</span>}
 <span class="linenr">8:  </span><span class="org-font-latex-sedate">\endinput</span>
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 好的，相关文件都已生成，开始复制字体使其生效。
@@ -296,56 +240,32 @@ cat &gt;&gt; song.map &lt;&lt; EOF
 删除：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">mkdir -p ~/.texmf-var/fonts/map/dvips/CJK
 mkdir -p ~/.texmf-var/fonts/tfm/CJK/song
 mkdir -p ~/.texmf-var/fonts/type1/CJK/song
 mkdir -p ~/.texmf-var/tex/latex/CJK/UTF8
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 建立完这层层叠叠的目录以后，就把刚刚生成的字体复制进去吧。
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">cp ~/backup/setup/font/song.map ~/.texmf-var/fonts/map/dvips/CJK
 cp ~/backup/setup/font/*.tfm ~/.texmf-var/fonts/tfm/CJK/song
 cp ~/backup/setup/font/*.pfb ~/.texmf-var/fonts/type1/CJK/song
 cp ~/backup/setup/font/c70song.fd ~/.texmf-var/tex/latex/CJK/UTF8
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 复制完后就执行命令刷新缓存，让它生效：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">sudo texhash
 updmap --enable Map song.map
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 假如一切顺序的话， 就测试一下我们安装的song体是否能用吧。
@@ -354,13 +274,7 @@ updmap --enable Map song.map
 在任意位置编辑这个文件，然后保存为test.tex，
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-tex"><span class="linenr"> 1:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\documentclass</span></span>{<span class="org-function-name">article</span>}
 <span class="linenr"> 2:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\usepackage</span></span>{<span class="org-function-name">CJKutf8</span>}
 <span class="linenr"> 3:  </span><span class="org-font-latex-sedate"><span class="org-keyword">\begin</span></span>{<span class="org-function-name">document</span>}
@@ -372,8 +286,6 @@ updmap --enable Map song.map
 <span class="linenr"> 9:  </span><span class="org-font-latex-math">$latex test.tex</span>
 <span class="linenr">10:  </span><span class="org-font-latex-math">$</span>dvipdf test.dvi
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
@@ -404,34 +316,18 @@ updmap --enable Map song.map
 <p>可以编辑：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">~/.texmf-config/updmap.d/10local.cfg
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 内容：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">Map ~/.texmf-var/fonts/map/dvips/CJK/wqyhei.map
 Map ~/.texmf-var/fonts/map/dvips/CJK/song.map
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <p>
 刷新字体缓存仅使用updmap即可
@@ -441,8 +337,28 @@ Map ~/.texmf-var/fonts/map/dvips/CJK/song.map
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:41 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:05 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

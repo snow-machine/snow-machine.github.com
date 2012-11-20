@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="make"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:50 CST"/>
+<meta name="generated" content="2012-11-20 17:41:22 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -165,20 +165,12 @@ make通过比较对应文件（规则的目标和依赖，）的最后修改时�
 一个简单的Makefile描述规则组成：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-make"><span class="linenr">1:  </span>TARGET... : PREREQUISITES...
 <span class="linenr">2:  </span>COMMAND
 <span class="linenr">3:  </span>...
 <span class="linenr">4:  </span>...
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -233,13 +225,7 @@ make程序根据规则的依赖关系，决定是否执行规则所定义的命�
 如下：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-make"><span class="linenr"> 1:  </span>#sample Makefile
 <span class="linenr"> 2:  </span>edit : main.o kbd.o command.o display.o \
 <span class="linenr"> 3:  </span>   insert.o search.o files.o utils.o
@@ -274,8 +260,6 @@ make程序根据规则的依赖关系，决定是否执行规则所定义的命�
 <span class="linenr">32:  </span>  rm edit main.o kbd.o command.o display.o \
 <span class="linenr">33:  </span>   insert.o search.o files.o utils.o
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -436,20 +420,12 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 同样是上边的例子，我们来看一下终极目标“edit”所在的规则：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr">1:  </span><span class="org-constant">edit</span> : main.o kbd.o command.o display.o \
 <span class="linenr">2:  </span>   insert.o search.o files.o utils.o
 <span class="linenr">3:  </span>  cc -o edit main.o kbd.o command.o display.o \
 <span class="linenr">4:  </span>   insert.o search.o files.o utils.o
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -466,18 +442,10 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 一行：
 </p>
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr">1:  </span>objects = main.o kbd.o command.o display.o \
 <span class="linenr">2:  </span>   insert.o search.o files.o utils.o
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -487,13 +455,7 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr"> 1:  </span>objects = main.o kbd.o command.o display.o \
 <span class="linenr"> 2:  </span>   insert.o search.o files.o utils.o
 <span class="linenr"> 3:  </span>
@@ -507,8 +469,6 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 <span class="linenr">11:  </span>clean :
 <span class="linenr">12:  </span>  rm edit $(objects)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p> 
@@ -542,13 +502,7 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr"> 1:  </span><span class="org-preprocessor"># sample</span> Makefile
 <span class="linenr"> 2:  </span>objects = main.o kbd.o command.o display.o \
 <span class="linenr"> 3:  </span>   insert.o search.o files.o utils.o
@@ -569,8 +523,6 @@ make的命令行指定重建目标，那么这个目标所在的规则就会被�
 <span class="linenr">18:  </span>clean :
 <span class="linenr">19:  </span>  rm edit $(objects)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p> 
@@ -593,13 +545,7 @@ Makefile中，目标使用隐含规则生成，我们就可以也可以书写另
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr"> 1:  </span><span class="org-preprocessor">#sample</span> Makefile
 <span class="linenr"> 2:  </span>objects = main.o kbd.o command.o display.o \
 <span class="linenr"> 3:  </span>   insert.o search.o files.o utils.o
@@ -611,8 +557,6 @@ Makefile中，目标使用隐含规则生成，我们就可以也可以书写另
 <span class="linenr"> 9:  </span>kbd.o command.o files.o : command.h
 <span class="linenr">10:  </span>display.o insert.o search.o files.o : buffer.h
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p>
@@ -645,18 +589,10 @@ Makefile中，目标使用隐含规则生成，我们就可以也可以书写另
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr">1:  </span><span class="org-constant">clean</span> :
 <span class="linenr">2:  </span>  <span class="org-type">rm</span> <span class="org-function-name">edit</span> $(objects)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p> 
@@ -664,19 +600,11 @@ Makefile中，目标使用隐含规则生成，我们就可以也可以书写另
 </p>
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-c"><span class="linenr">1:  </span>.PHONY : clean
 <span class="linenr">2:  </span>clean :
 <span class="linenr">3:  </span>  -rm edit $(objects)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <p> 
@@ -707,8 +635,28 @@ Makefile中，目标使用隐含规则生成，我们就可以也可以书写另
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:50 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:22 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

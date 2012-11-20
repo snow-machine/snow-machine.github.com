@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cedet"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:49 CST"/>
+<meta name="generated" content="2012-11-20 17:41:21 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -129,13 +129,7 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">all needs for the requirements check</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
@@ -144,8 +138,6 @@
 (<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-min</span> '(1 0 2 6))
 (<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-max</span> '(1 0 4 9))
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <ul>
 <li>改成，支持到cedet1.1.4.9
@@ -154,13 +146,7 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">all needs for the requirements check</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">----------------------------------------------------------------------</span>
@@ -169,8 +155,6 @@
 (<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-min</span> '(1 0 2 6))
 (<span class="org-keyword">defconst</span> <span class="org-variable-name">ecb-required-cedet-version-max</span> '(1 1 4 9))
 </pre>
-</div></div></div></div></div></div></div>
-
 
 <ul>
 <li>运行jdee时出现：“JDEE requires a version of CEDET between 1.0beta2 and 1.0
@@ -182,17 +166,9 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-emacs-lisp">(jde-check-version-flag nil)) 
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
@@ -216,13 +192,6 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
 <pre class="src src-emacs-lisp">Debugger entered--Lisp error: (wrong-type-argument stringp 1)
 string-match(<span class="org-string">"\n"</span> 1 0)
 split-string(1 <span class="org-string">"\n"</span>)
@@ -235,9 +204,6 @@ apply(run-hooks (c-mode-common-hook c-mode-hook))
 run-mode-hooks(c-mode-common-hook c-mode-hook)
 c-mode()
 </pre>
-</div></div></div></div></div></div></div>
-
-
 
 <ul>
 <li>可以看出，是加载c-mode时调用c-mode-hook，查看"C-h v c-mode-hook",看到内容
@@ -259,13 +225,7 @@ c-mode()
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">TODO 120422</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">change by a machine of awareness</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">(defun semantic-cpp-defs (str)</span>
@@ -289,16 +249,34 @@ c-mode()
           (add-to-list 'lst (cons (nth 1 dat) (nth 2 dat))))))
     lst))
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 </div>
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:49 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:21 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="linux字体"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2012-10-26 10:14:38 CST"/>
+<meta name="generated" content="2012-11-20 17:41:01 CST"/>
 <meta name="author" content="machine of awareness"/>
 <meta name="description" content="email: machine.of.awareness@gmail.com,learn elisp from 09/2011"/>
 <meta name="keywords" content=""/>
@@ -149,19 +149,11 @@
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">user:/home/user# apt-cache search wqy
 ttf-wqy-zenhei - <span class="org-string">"WenQuanYi Zen Hei"</span> A Hei-Ti Style (sans-serif) Chinese font
 xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <ul>
@@ -171,13 +163,7 @@ xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-emacs-lisp">(create-fontset-from-fontset-spec
 <span class="org-string">"-*-courier-medium-r-normal-*-17-*-*-*-*-*-fontset-user,</span>
 <span class="org-string">chinese-gb2312:-*-wenquanyi bitmap song-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
@@ -187,8 +173,6 @@ xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
 (setq default-frame-alist (append '((font . <span class="org-string">"fontset-user"</span>)) default-frame-alist))
 (set-default-font <span class="org-string">"fontset-user"</span>)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <ul>
@@ -203,19 +187,11 @@ xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-sh">Section <span class="org-string">"Files"</span>
         FontPath   <span class="org-string">"/usr/share/fonts/truetype/myttf/"</span>
 EndSection
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <ul>
@@ -234,13 +210,7 @@ EndSection
 
 
 
-<div class="emacs-outer">
-<div class="emacs-title-right">
-<div class="emacs-title-left">
-<div class="emacs-cont-left">
-<div class="emacs-cont-right">
-<div class="emacs-footer-right">
-<div class="emacs-footer-left">
+
 <pre class="src src-lisp">(create-fontset-from-fontset-spec
 <span class="org-string">"-*-courier-medium-r-normal-*-17-*-*-*-*-*-fontset-user,</span>
 <span class="org-string">chinese-gb2312:-*-song ti-medium-r-normal-*-16-*-*-*-*-*-*-*,</span>
@@ -250,8 +220,6 @@ EndSection
 (setq default-frame-alist (append '((font . <span class="org-string">"fontset-user"</span>)) default-frame-alist))
 (set-default-font <span class="org-string">"fontset-user"</span>)
 </pre>
-</div></div></div></div></div></div></div>
-
 
 
 <ul>
@@ -280,8 +248,28 @@ EndSection
 </div>
 </div>
 
-<div id="postamble">
-<p class="date">Date: 2012-10-26 10:14:38 CST</p>
+<div id="postamble"><br/>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32
+"><a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_renren"></a>
+<a class="jiathis_button_googleplus"></a>
+<a class="jiathis_button_fb"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_twitter"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334998199836638" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
+<!-- UJian Button END -->
+<br/>
+
+<p class="date">Date: 2012-11-20 17:41:01 CST</p>
 <p class="author">Author: machine of awareness</p>
 <p class="creator">Org version 7.8.06 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
